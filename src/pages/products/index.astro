@@ -1,0 +1,77 @@
+---
+import { getCollection } from "astro:content";
+import MainLayout from "@layouts/MainLayout.astro";
+
+const products = await getCollection("products");
+
+const categoryLabels: Record<string, string> = {
+  "kitchen-faucets": "Kitchen Faucets",
+  "basin-faucets": "Basin Faucets",
+  "shower-systems": "Shower Systems",
+  "bath-mixers": "Bath Mixers",
+  accessories: "Accessories",
+};
+
+const categoryIcons: Record<string, string> = {
+  "kitchen-faucets": "🚰",
+  "basin-faucets": "🪞",
+  "shower-systems": "🚿",
+  "bath-mixers": "🛁",
+  accessories: "🔩",
+};
+---
+
+<MainLayout
+  title="Products"
+  description="Complete sanitary ware catalog — kitchen faucets, basin faucets, shower systems, bath mixers, and accessories for B2B buyers."
+>
+  <section class="section-padding">
+    <div class="container-tight">
+      <div class="mx-auto max-w-2xl text-center">
+        <h1 class="heading-1">Product Catalog</h1>
+        <p class="mt-4 text-lg text-gray-500">
+          {products.length} products across {Object.keys(categoryLabels).length} categories — ready for B2B inquiry
+        </p>
+      </div>
+
+      <div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          products.map((product) => {
+            const { title, model, category, specs } = product.data;
+            const slug = product.slug;
+            return (
+              <a
+                href={`/products/${slug}`}
+                class="group flex flex-col rounded-xl border border-gray-100 bg-white p-6 transition-all duration-200 hover:border-ocean-200 hover:shadow-lg"
+              >
+                <div class="flex items-center gap-2">
+                  <span class="text-2xl">{categoryIcons[category] || "📦"}</span>
+                  <span class="rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-500">
+                    {categoryLabels[category] || category}
+                  </span>
+                </div>
+                <h3 class="mt-3 text-lg font-semibold text-gray-900 group-hover:text-ocean-600">
+                  {title}
+                </h3>
+                <p class="mt-1 font-mono text-sm text-ocean-600">{model}</p>
+                {
+                  specs?.finish && (
+                    <p class="mt-2 text-sm text-gray-500">{specs.finish}</p>
+                  )
+                }
+                <div class="mt-auto pt-4">
+                  <span class="inline-flex items-center gap-1 text-sm font-medium text-ocean-600 group-hover:gap-2 transition-all">
+                    View details &amp; inquire
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </span>
+                </div>
+              </a>
+            );
+          })
+        }
+      </div>
+    </div>
+  </section>
+</MainLayout>

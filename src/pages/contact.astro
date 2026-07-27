@@ -1,0 +1,42 @@
+---
+import MainLayout from "@layouts/MainLayout.astro";
+import QuickInquiry from "@components/inquiry/QuickInquiry";
+---
+
+<MainLayout
+  title="Contact & Inquiry"
+  description="Send your product inquiry to SDN Faucet. Tell us your requirements and we'll respond with pricing and samples within 24 hours."
+>
+  <section class="section-padding">
+    <div class="container-tight">
+      <div class="mx-auto max-w-2xl text-center">
+        <h1 class="heading-1">Get in Touch</h1>
+        <p class="mt-4 text-lg text-gray-500">
+          Tell us your product requirements. We'll respond within 24 hours.
+        </p>
+      </div>
+
+      <div class="mt-16 mx-auto max-w-xl">
+        <QuickInquiry client:load />
+
+        <div class="mt-12 rounded-xl bg-gray-50 p-8">
+          <h3 class="heading-3">Other Ways to Reach Us</h3>
+          <div class="mt-4 space-y-3 text-sm text-gray-500">
+            <p>
+              <strong>Email:</strong>
+              <a href="mailto:sales@sdnfaucet.com" class="text-ocean-600 hover:underline">
+                sales@sdnfaucet.com
+              </a>
+            </p>
+            <p>
+              <strong>Location:</strong> Quanzhou, Fujian, China
+            </p>
+            <p>
+              <strong>Response time:</strong> Within 24 hours on business days
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>

@@ -1,0 +1,28 @@
+---
+// Turnstile Script — loads Cloudflare Turnstile and exposes token globally
+const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || "1x00000000000000000000AA";
+---
+
+<script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" defer></script>
+<script is:inline>
+  window.turnstileLoadCallback = function () {
+    if (typeof turnstile === 'undefined') return;
+    const container = document.getElementById('turnstile-container');
+    if (!container) return;
+    window.turnstileWidgetId = turnstile.render(container, {
+      sitekey: '{siteKey}',
+      callback: function (token) {
+        window.turnstileToken = token;
+      },
+      'expired-callback': function () {
+        window.turnstileToken = undefined;
+      },
+      theme: 'light',
+    });
+  };
+
+  // Also try to load if the API already loaded
+  document.addEventListener('DOMContentLoaded', function () {
+    setTimeout(window.turnstileLoadCallback, 200);
+  });
+</script>
