@@ -1,10 +1,12 @@
-name: Deploy to Cloudflare Pages
+name: Deploy
+
 on:
   push:
     branches: [main]
   workflow_dispatch:
+
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -13,8 +15,16 @@ jobs:
           node-version: 20
       - run: npm install
       - run: npm run build
-      - name: Deploy to Cloudflare Pages
-        uses: cloudflare/wrangler-action@v3
+      - uses: actions/upload-pages-artifact@v3
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          command: pages deploy dist --project-name=sdnfaucet --branch=main
+          path: dist
+      - uses: actions/deploy-pages@v4
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
