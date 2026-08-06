@@ -86,7 +86,7 @@ async function sendEmail(
     },
     body: JSON.stringify({
       from: "SDN Faucet <system@accio-ai.com>",
-      to: [recipientEmail],
+      to: [recipientEmail, "yansuwan58@gmail.com"],
       reply_to: body.email,
       subject: `New Inquiry: ${body.product || "General"} from ${body.name}${body.company ? ` (${body.company})` : ""}`,
       html: htmlBody,
