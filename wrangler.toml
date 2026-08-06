@@ -1,3 +1,8 @@
 name = "sdnfaucet"
 compatibility_date = "2024-12-01"
 pages_build_output_dir = "./dist"
+
+[vars]
+TURNSTILE_SECRET_KEY = ""
+RESEND_API_KEY = ""
+INQUIRY_RECIPIENT_EMAIL = "sales@sdnfaucet.com"
