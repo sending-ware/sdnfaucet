@@ -5,7 +5,7 @@
  * - Validates input
  * - Verifies Turnstile token server-side
  * - Sends email notification via Resend API
- * - Optionally stores to Cloudflare KV
+ * - Optional KV persistence via INQUIRY_STORE binding
  */
 
 interface InquiryBody {
@@ -100,6 +100,7 @@ export const onRequestPost: PagesFunction<{
   TURNSTILE_SECRET_KEY: string;
   INQUIRY_RECIPIENT_EMAIL: string;
   RESEND_API_KEY?: string;
+  INQUIRY_STORE: KVNamespace;
 }> = async ({ request, env }) => {
   // CORS headers
   const headers: Record<string, string> = {
@@ -166,6 +167,18 @@ export const onRequestPost: PagesFunction<{
     } else {
       console.log("RESEND_API_KEY not configured — email skipped");
       console.log("Inquiry received:", JSON.stringify(body, null, 2));
+    }
+
+    // 4. Persist to KV (if INQUIRY_STORE binding is configured)
+    if (env.INQUIRY_STORE) {
+      const timestamp = new Date().toISOString();
+      const key = `inquiry:${timestamp}:${body.email}`;
+      try {
+        await env.INQUIRY_STORE.put(key, JSON.stringify({ ...body, timestamp }));
+      } catch (kvErr) {
+        console.error("KV persistence failed:", kvErr);
+        // Don't fail the request — KV is best-effort
+      }
     }
 
     return new Response(
