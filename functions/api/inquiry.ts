@@ -2,10 +2,10 @@
  * Cloudflare Pages Function — Inquiry Form Handler
  *
  * POST /api/inquiry
- *   - Validates input
- *   - Verifies Turnstile token server-side
- *   - Sends email notification via Resend API
- *   - Optionally stores to Cloudflare KV
+ * - Validates input
+ * - Verifies Turnstile token server-side
+ * - Sends email notification via Resend API
+ * - Optionally stores to Cloudflare KV
  */
 
 interface InquiryBody {
@@ -64,24 +64,19 @@ async function sendEmail(
   resendApiKey: string,
 ): Promise<boolean> {
   const htmlBody = `
-    <div style="font-family: Arial, sans-serif; max-width: 600px;">
-      <h2 style="color: #0369a1;">New Inquiry from SDN Faucet Website</h2>
-      <table style="width: 100%; border-collapse: collapse; margin-top: 16px;">
-        <tr><td style="padding: 8px; border-bottom: 1px solid #e5e7eb; font-weight: bold;">Name</td><td style="padding: 8px; border-bottom: 1px solid #e5e7eb;">${body.name}</td></tr>
-        <tr><td style="padding: 8px; border-bottom: 1px solid #e5e7eb; font-weight: bold;">Email</td><td style="padding: 8px; border-bottom: 1px solid #e5e7eb;">${body.email}</td></tr>
-        ${body.company ? `<tr><td style="padding: 8px; border-bottom: 1px solid #e5e7eb; font-weight: bold;">Company</td><td style="padding: 8px; border-bottom: 1px solid #e5e7eb;">${body.company}</td></tr>` : ""}
-        ${body.product ? `<tr><td style="padding: 8px; border-bottom: 1px solid #e5e7eb; font-weight: bold;">Product</td><td style="padding: 8px; border-bottom: 1px solid #e5e7eb;">${body.product}</td></tr>` : ""}
-        ${body.quantity ? `<tr><td style="padding: 8px; border-bottom: 1px solid #e5e7eb; font-weight: bold;">Quantity</td><td style="padding: 8px; border-bottom: 1px solid #e5e7eb;">${body.quantity}</td></tr>` : ""}
-      </table>
-      <div style="margin-top: 16px; padding: 16px; background: #f9fafb; border-radius: 8px;">
-        <h3 style="margin: 0 0 8px 0; font-size: 14px; color: #6b7280;">Message:</h3>
-        <p style="margin: 0; white-space: pre-wrap; color: #374151;">${body.message.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</p>
-      </div>
-      <p style="margin-top: 16px; font-size: 12px; color: #9ca3af;">
-        Sent from sdnfaucet.com inquiry form — ${new Date().toISOString()}
-      </p>
-    </div>
-  `;
+<h2>New Inquiry from SDN Faucet Website</h2>
+<table>
+  <tr><td><strong>Name</strong></td><td>${body.name}</td></tr>
+  <tr><td><strong>Email</strong></td><td>${body.email}</td></tr>
+  <tr><td><strong>Company</strong></td><td>${body.company || "—"}</td></tr>
+  <tr><td><strong>Product</strong></td><td>${body.product || "—"}</td></tr>
+  <tr><td><strong>Quantity</strong></td><td>${body.quantity || "—"}</td></tr>
+</table>
+<h3>Message:</h3>
+<blockquote>${body.message.replace(/\n/g, "<br>")}</blockquote>
+<hr>
+<p><small>Sent from sdnfaucet.com inquiry form — ${new Date().toISOString()}</small></p>
+`;
 
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
@@ -90,7 +85,7 @@ async function sendEmail(
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      from: "SDN Faucet <inquiry@sdnfaucet.com>",
+      from: "SDN Faucet <system@accio-ai.com>",
       to: [recipientEmail],
       reply_to: body.email,
       subject: `New Inquiry: ${body.product || "General"} from ${body.name}${body.company ? ` (${body.company})` : ""}`,
@@ -155,7 +150,7 @@ export const onRequestPost: PagesFunction<{
     }
 
     // 3. Send email notification (if Resend API key is configured)
-    const recipientEmail = env.INQUIRY_RECIPIENT_EMAIL || "sales@sdnfaucet.com";
+    const recipientEmail = env.INQUIRY_RECIPIENT_EMAIL || "sending@sdnfaucet.com";
     const resendKey = env.RESEND_API_KEY;
 
     if (resendKey) {
