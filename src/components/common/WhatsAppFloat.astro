@@ -1,14 +1,13 @@
 ---
-// WhatsApp Floating Button
-// Replace with your actual WhatsApp number (international format, no + or spaces)
-const whatsappNumber = import.meta.env.PUBLIC_WHATSAPP_NUMBER || "8613800000000";
+const whatsappNumber = import.meta.env.PUBLIC_WHATSAPP_NUMBER || "8613064536231";
 const whatsappMessage = encodeURIComponent(
   "Hello SDN Faucet,\n\nI'm interested in your sanitary ware products. Please send me more information.",
 );
+const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 ---
 
 <a
-  href="https://wa.me/{whatsappNumber}?text={whatsappMessage}"
+  href={whatsappLink}
   target="_blank"
   rel="noopener noreferrer"
   class="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-green-500 text-white shadow-lg transition-all duration-300 hover:scale-110 hover:bg-green-600 hover:shadow-xl sm:bottom-8 sm:right-8"
