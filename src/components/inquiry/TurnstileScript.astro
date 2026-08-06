@@ -4,13 +4,13 @@ const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || "1x0000000000000000
 ---
 
 <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" defer></script>
-<script is:inline>
+<script is:inline define:vars={{ siteKey }}>
   window.turnstileLoadCallback = function () {
     if (typeof turnstile === 'undefined') return;
     const container = document.getElementById('turnstile-container');
     if (!container) return;
     window.turnstileWidgetId = turnstile.render(container, {
-      sitekey: '{siteKey}',
+      sitekey: siteKey,
       callback: function (token) {
         window.turnstileToken = token;
       },
