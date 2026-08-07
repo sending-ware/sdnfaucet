@@ -11,7 +11,7 @@ export interface Props {
 const {
   title,
   description,
-  image = "/images/og-default.jpg",
+  image = "https://sc02.alicdn.com/kf/Af26bc4625fb345588d112662bb13cd09u.png",
   lang = "en",
 } = Astro.props;
 
@@ -34,45 +34,3 @@ const siteName = "SDN Faucet - Sanitary Ware Manufacturer";
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:image" content={new URL(image, Astro.site)} />
     <meta property="og:site_name" content={siteName} />
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
-
-    <!-- Canonical -->
-    <link rel="canonical" href={canonicalURL} />
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
-    <!-- JSON-LD Structured Data -->
-    <script type="application/ld+json" is:inline>
-      {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Quanzhou Shengdanni Sanitary Ware Co., Ltd.",
-        "alternateName": "SDN Faucet",
-        "url": "https://www.sdnfaucet.com",
-        "description": "Professional sanitary ware manufacturer specializing in kitchen faucets, basin faucets, shower systems, and bathroom accessories for global B2B buyers.",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Quanzhou",
-          "addressRegion": "Fujian",
-          "addressCountry": "CN"
-        },
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "email": "sales@sdnfaucet.com",
-          "contactType": "sales",
-          "availableLanguage": ["English", "Chinese"]
-        }
-      }
-    </script>
-
-    <title>{title} | SDN Faucet</title>
-  </head>
-  <body class="min-h-screen bg-white antialiased">
-    <slot />
-  </body>
-</html>
