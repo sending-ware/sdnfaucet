@@ -3,6 +3,7 @@ title: "SDN-904 / 905 Overhead Shower"
 category: "shower-systems"
 model: "SDN-904 / SDN-905"
 featured: true
+image: "https://sc02.alicdn.com/kf/Ac2a9ba1f20fb4e8f9527ada5cd48b9f8I.png"
 publishDate: 2026-07-01
 specs:
   material: "304 Stainless Steel / ABS"
@@ -14,7 +15,6 @@ specs:
     - "304 stainless steel face plate"
     - "Swivel ball joint"
 ---
-
 ## SDN-904 / 905 Overhead Shower
 
 Large-format square overhead showers for premium shower system packages. Available in 12-inch (SDN-904) and 16-inch (SDN-905) sizes.
