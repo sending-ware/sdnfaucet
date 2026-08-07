@@ -1,5 +1,6 @@
 ---
 title: "SDN-G153 Stainless Steel Basin Faucet"
+image: "https://sc02.alicdn.com/kf/A86808dcc2c1045c8a883d2296ee0261aA.png"
 category: "basin-faucets"
 model: "SDN-G153"
 featured: true
