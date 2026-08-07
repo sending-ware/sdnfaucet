@@ -4,6 +4,7 @@ category: "bath-mixers"
 model: "SDN-BM01"
 featured: false
 publishDate: 2026-07-01
+image: "https://sc02.alicdn.com/kf/A77b9956cbf3844208835d4e9e2d379a0e.png"
 specs:
   material: "Brass body"
   finish: "Chrome / Brushed Nickel"
@@ -15,11 +16,15 @@ specs:
     - "Wall-mounted installation"
 ---
 
+
 ## Bath Shower Mixer Set
+
 
 Complete bath and shower mixing solution for bathroom project packages. Includes wall-mounted mixer, bath spout, hand shower, hose, and bracket.
 
+
 ### Key Specifications
+
 
 | Parameter | Value |
 |---|---|
@@ -32,7 +37,9 @@ Complete bath and shower mixing solution for bathroom project packages. Includes
 | Connection | G1/2" |
 | Warranty | 5 years on cartridge |
 
+
 ### What's Included
+
 
 - Wall-mounted mixer body
 - Bath spout with aerator
@@ -41,7 +48,9 @@ Complete bath and shower mixing solution for bathroom project packages. Includes
 - Wall bracket
 - All mounting hardware and gaskets
 
+
 ### Ideal For
+
 
 - Bathroom renovation projects
 - Hotel bathroom packages
