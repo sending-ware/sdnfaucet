@@ -1,4 +1,5 @@
 ---
+image: "https://sc02.alicdn.com/kf/A4723dd488c8f4eaeab11c27cf1096ff6t.png"
 title: "SDN-7200 Series Kitchen Faucet"
 category: "kitchen-faucets"
 model: "SDN-7200A / 7200B"
