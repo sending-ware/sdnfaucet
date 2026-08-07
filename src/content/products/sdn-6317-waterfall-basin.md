@@ -1,5 +1,6 @@
 ---
 title: "SDN-6317 Waterfall Basin Faucet"
+image: "https://sc02.alicdn.com/kf/Ab516d8e6b6484898887800b17e10e100l.png"
 category: "basin-faucets"
 model: "SDN-6317B"
 featured: true
