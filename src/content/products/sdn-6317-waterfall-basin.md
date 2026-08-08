@@ -13,7 +13,7 @@ specs:
     - "Waterfall wide-flow spout"
     - "Hot & cold mixer"
     - "Ceramic disc cartridge"
-    - "Suitable for countertop basins"
+    - "Suitable for countertop basins"image:
 ---
 
 ## SDN-6317 Waterfall Basin Faucet
