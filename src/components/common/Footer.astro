@@ -1,54 +1,55 @@
 ---
-// Footer Component
+const currentYear = new Date().getFullYear();
 ---
 
-<footer class="border-t border-gray-100 bg-gray-50">
-  <div class="container-tight px-4 py-12 sm:px-6 lg:px-8">
-    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-      <!-- Brand -->
-      <div>
-        <a href="/" class="text-lg font-bold text-ocean-700">SDN Faucet</a>
-        <p class="mt-3 text-sm leading-relaxed text-gray-500">
-          Professional sanitary ware manufacturer from Quanzhou, China. Specializing in kitchen faucets, basin faucets, shower systems, and bathroom accessories.
+<footer class="bg-gray-900 pt-16 pb-8 text-gray-300">
+  <div class="container-tight px-4">
+    <div class="grid gap-12 lg:grid-cols-4">
+      <div class="lg:col-span-1">
+        <div class="flex items-center gap-2 text-white">
+          <span class="text-xl font-bold tracking-tight">SDN Faucet</span>
+        </div>
+        <p class="mt-4 text-sm leading-relaxed">
+          Professional sanitary ware manufacturer from Quanzhou, China. Specializing in high-quality kitchen and bathroom solutions.
         </p>
       </div>
 
-      <!-- Quick Links -->
       <div>
-        <h4 class="text-sm font-semibold text-gray-900">Products</h4>
-        <ul class="mt-3 space-y-2">
-          <li><a href="/products" class="text-sm text-gray-500 hover:text-ocean-600">Kitchen Faucets</a></li>
-          <li><a href="/products" class="text-sm text-gray-500 hover:text-ocean-600">Basin Faucets</a></li>
-          <li><a href="/products" class="text-sm text-gray-500 hover:text-ocean-600">Shower Systems</a></li>
-          <li><a href="/products" class="text-sm text-gray-500 hover:text-ocean-600">Accessories</a></li>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-white">Products</h3>
+        <ul class="mt-4 space-y-2 text-sm">
+          <li><a href="/products" class="hover:text-white">Kitchen Faucets</a></li>
+          <li><a href="/products" class="hover:text-white">Basin Mixers</a></li>
+          <li><a href="/products" class="hover:text-white">Shower Systems</a></li>
+          <li><a href="/products" class="hover:text-white">Accessories</a></li>
         </ul>
       </div>
 
-      <!-- Company -->
       <div>
-        <h4 class="text-sm font-semibold text-gray-900">Company</h4>
-        <ul class="mt-3 space-y-2">
-          <li><a href="/about" class="text-sm text-gray-500 hover:text-ocean-600">About Us</a></li>
-          <li><a href="/contact" class="text-sm text-gray-500 hover:text-ocean-600">Contact</a></li>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-white">Company</h3>
+        <ul class="mt-4 space-y-2 text-sm">
+          <li><a href="/about" class="hover:text-white">About Us</a></li>
+          <li><a href="/contact" class="hover:text-white">Contact</a></li>
         </ul>
       </div>
 
-      <!-- Contact -->
       <div>
-        <h4 class="text-sm font-semibold text-gray-900">Contact</h4>
-        <ul class="mt-3 space-y-2 text-sm text-gray-500">
-          <li>Quanzhou, Fujian, China</li>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-white">Contact</h3>
+        <ul class="mt-4 space-y-3 text-sm">
           <li>
-            <a href="mailto:sales@sdnfaucet.com" class="hover:text-ocean-600">
-              sales@sdnfaucet.com
-            </a>
+            Room 501, Building 1, Defa Technology, Chengxiang Town, Anxi County, Quanzhou City, Fujian Province, China
+          </li>
+          <li>
+            <a href="mailto:sending@sdnfaucet.com" class="hover:text-white">sending@sdnfaucet.com</a>
+          </li>
+          <li>
+            TEL/WHATSAPP: +86 13064536291 / +86 17750519615
           </li>
         </ul>
       </div>
     </div>
 
-    <div class="mt-10 border-t border-gray-200 pt-6 text-center text-xs text-gray-400">
-      &copy; {new Date().getFullYear()} Quanzhou Shengdanni Sanitary Ware Co., Ltd. All rights reserved.
+    <div class="mt-16 border-t border-gray-800 pt-8 text-center text-xs">
+      <p>&copy; {currentYear} Quanzhou Shengdanni Sanitary Ware Co., Ltd. All rights reserved.</p>
     </div>
   </div>
 </footer>
