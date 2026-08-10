@@ -63,3 +63,10 @@ import MainLayout from "@layouts/MainLayout.astro";
             >
               <img src={cat.image} alt={cat.title} class="h-40 w-full rounded-lg object-cover" loading="lazy" />
               <h3 class="mt-4 heading-3">{cat.title}</h3>
+              <p class="mt-2 text-sm text-gray-500">{cat.desc}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  </MainLayout>
