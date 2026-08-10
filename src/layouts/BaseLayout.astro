@@ -14,9 +14,6 @@ const {
   image = "https://sc02.alicdn.com/kf/Af26bc4625fb345588d112662bb13cd09u.png",
   lang = "en",
 } = Astro.props;
-
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const siteName = "SDN Faucet - Sanitary Ware Manufacturer";
 ---
 
 <!doctype html>
@@ -25,30 +22,18 @@ const siteName = "SDN Faucet - Sanitary Ware Manufacturer";
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <meta name="author" content="Quanzhou Shengdanni Sanitary Ware Co., Ltd." />
-
+    <title>{title} | SDN Faucet</title>
+    
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={canonicalURL} />
     <meta property="og:image" content={image} />
-    <meta property="og:site_name" content={siteName} />
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
-
-    <!-- Canonical -->
-    <link rel="canonical" href={canonicalURL} />
-
+    
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
-    <title>{title} | SDN Faucet</title>
   </head>
-  <body class="min-h-screen bg-white antialiased">
+  <body class="min-h-screen bg-white">
     <slot />
   </body>
 </html>
