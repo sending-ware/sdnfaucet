@@ -1,5 +1,6 @@
 ---
-title: "SDN-904 / 905 Overhead Shower"
+title: "SDN-904 / 905 Overhead Shower | Professional Stainless Steel Rainfall Shower"
+description: "Factory-supplied rainfall shower heads — 12-inch SDN-904 and 16-inch SDN-905 in 304 stainless steel with anti-limescale nozzles, ideal for wholesale shower packages."
 category: "shower-systems"
 model: "SDN-904 / SDN-905"
 featured: true
