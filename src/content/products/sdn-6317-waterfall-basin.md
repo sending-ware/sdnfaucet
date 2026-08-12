@@ -1,5 +1,6 @@
 ---
-title: "SDN-6317 Waterfall Basin Faucet"
+title: "SDN-6317 Waterfall Basin Faucet | Professional Stainless Steel Basin Mixer"
+description: "Factory-direct SDN-6317B waterfall basin faucet in stainless steel and brass — multi-finish options for hotel projects, retail display, and wholesale distribution."
 image: "https://sc02.alicdn.com/kf/Ab516d8e6b6484898887800b17e10e100l.png"
 category: "basin-faucets"
 model: "SDN-6317B"
