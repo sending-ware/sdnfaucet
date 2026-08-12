@@ -1,6 +1,7 @@
 ---
 image: "https://sc02.alicdn.com/kf/A4723dd488c8f4eaeab11c27cf1096ff6t.png"
-title: "SDN-7200 Series Kitchen Faucet"
+title: "SDN-7200 Kitchen Faucet | Professional 304 Stainless Steel Mixer"
+description: "Wholesale SDN-7200 pull-out kitchen faucet in 304 stainless steel with magnetic docking and dual-mode spray — engineered for commercial kitchens and B2B distributors."
 category: "kitchen-faucets"
 model: "SDN-7200A / 7200B"
 featured: true
