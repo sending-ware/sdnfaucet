@@ -1,4 +1,5 @@
 ---
+import MobileStickyBar from "@components/common/MobileStickyBar.astro";
 import Header from "@components/common/Header.astro";
 import Footer from "@components/common/Footer.astro";
 import WhatsAppFloat from "@components/common/WhatsAppFloat.astro";
@@ -20,6 +21,7 @@ const { title, description, image } = Astro.props;
     <slot />
   </main>
   <Footer />
+  <MobileStickyBar />
   <WhatsAppFloat />
   <TurnstileScript />
 </BaseLayout>
