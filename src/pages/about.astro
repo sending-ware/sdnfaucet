@@ -2,56 +2,75 @@
 import MainLayout from "@layouts/MainLayout.astro";
 ---
 
-<MainLayout
-  title="About Us"
-  description="Learn about Quanzhou Shengdanni Sanitary Ware - our manufacturing expertise, quality standards, and commitment to global B2B partners."
+<MainLayout 
+  title="About Us | Professional Faucet Manufacturer in Quanzhou"
+  description="Quanzhou Shengdanni Sanitary Ware Co., Ltd. is a professional manufacturer of faucets and shower systems. Learn about our quality standards, factory-direct wholesale, and OEM/ODM capabilities."
 >
-  <section class="section-padding">
-    <div class="container-tight">
+  <section class="section-padding bg-white">
+    <div class="container-tight px-4">
       <div class="mx-auto max-w-2xl text-center">
         <h1 class="heading-1">About SDN Faucet</h1>
-        <p class="mt-4 text-lg text-gray-500">
+        <p class="mt-4 text-gray-500">
           From Quanzhou's manufacturing hub to global markets.
         </p>
       </div>
 
-      <div class="mt-16 mx-auto max-w-3xl space-y-12">
+      <div class="mt-16 grid gap-12 lg:grid-cols-2">
         <div>
-          <h2 class="heading-2">Who We Are</h2>
-          <p class="mt-4 leading-relaxed text-gray-500">
-            Quanzhou Shengdanni Sanitary Ware Co., Ltd. is a professional manufacturer
-            based in Nan'an, Quanzhou — one of China's largest sanitary ware production
-            clusters. We specialize in the design, manufacturing, and export of kitchen
+          <h2 class="text-2xl font-bold text-gray-900">Who We Are</h2>
+          <p class="mt-4 text-lg leading-relaxed text-gray-500">
+            Quanzhou Shengdanni Sanitary Ware Co., Ltd. is a professional manufacturer 
+            based in Anxi County, Quanzhou — one of China's largest sanitary ware production 
+            clusters. We specialize in the design, manufacturing, and export of kitchen 
             faucets, basin mixers, shower systems, and bathroom accessories.
           </p>
         </div>
-
-        <div>
-          <h2 class="heading-2">Our Advantage</h2>
-          <ul class="mt-4 space-y-3">
-            {[
-              "Factory-direct pricing with no middleman markup",
-              "Rigorous quality control — pressure, finish, and function testing on every batch",
-              "Flexible MOQ for trial orders and mixed containers",
-              "International packaging and labeling compliant with destination market requirements",
-              "OEM/ODM capability — custom design, finish, and branding",
-              "Strategic location in Quanzhou with efficient logistics to major Chinese ports",
-            ].map((item) => (
-              <li class="flex items-start gap-3 text-gray-500">
-                <span class="mt-1 shrink-0 text-ocean-500">✓</span>
-                {item}
-              </li>
-            ))}
+        <div class="rounded-2xl bg-ocean-50 p-8 sm:p-12">
+          <h2 class="text-2xl font-bold text-gray-900">Our Advantage</h2>
+          <ul class="mt-6 space-y-4 text-gray-600">
+            <li class="flex items-start gap-3">
+              <span class="text-ocean-600">✓</span>
+              <span>Factory-direct pricing with no middleman markup</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-ocean-600">✓</span>
+              <span>Flexible MOQ for trial orders and mixed containers</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-ocean-600">✓</span>
+              <span>International packaging and labeling compliance</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-ocean-600">✓</span>
+              <span>OEM/ODM capability — custom design and branding</span>
+            </li>
           </ul>
         </div>
+      </div>
 
-        <div>
-          <h2 class="heading-2">Our Commitment</h2>
-          <p class="mt-4 leading-relaxed text-gray-500">
-            We believe in building long-term partnerships through product quality,
-            honest communication, and reliable delivery. Every inquiry gets a personal
-            response — no bots, no templates.
-          </p>
+      <!-- 新增：质量保障与信任模块 -->
+      <div class="mt-24 border-t border-gray-100 pt-16">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900">Global Quality Standards</h2>
+          <p class="mt-4 text-gray-500">Every product is tested to meet international performance and safety benchmarks.</p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div class="text-center p-6 border border-gray-100 rounded-xl hover:shadow-md transition-shadow">
+            <div class="text-ocean-600 font-bold text-xl mb-2">ISO 9001</div>
+            <p class="text-xs text-gray-400">Quality Management</p>
+          </div>
+          <div class="text-center p-6 border border-gray-100 rounded-xl hover:shadow-md transition-shadow">
+            <div class="text-green-600 font-bold text-xl mb-2">CE Mark</div>
+            <p class="text-xs text-gray-400">European Standards</p>
+          </div>
+          <div class="text-center p-6 border border-gray-100 rounded-xl hover:shadow-md transition-shadow">
+            <div class="text-blue-600 font-bold text-xl mb-2">100% QC</div>
+            <p class="text-xs text-gray-400">Pressure Tested</p>
+          </div>
+          <div class="text-center p-6 border border-gray-100 rounded-xl hover:shadow-md transition-shadow">
+            <div class="text-orange-600 font-bold text-xl mb-2">5 YEARS</div>
+            <p class="text-xs text-gray-400">Reliable Warranty</p>
+          </div>
         </div>
       </div>
     </div>
