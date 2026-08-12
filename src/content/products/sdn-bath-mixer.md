@@ -1,5 +1,6 @@
 ---
-title: "Bath Shower Mixer Set"
+title: "SDN-BM01 Bath Shower Mixer Set | Professional Brass Bath & Shower Mixer"
+description: "Factory-direct SDN-BM01 bath shower mixer set in brass with 3-function hand shower and 1.5m hose — complete packages for hotel projects and wholesale buyers."
 category: "bath-mixers"
 model: "SDN-BM01"
 featured: false
