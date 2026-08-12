@@ -1,5 +1,6 @@
 ---
-title: "Sanitary Ware Accessories"
+title: "Sanitary Ware Accessories | Professional Plumbing Parts & B2B Wholesale Supplies"
+description: "One-stop wholesale supply of sanitary ware accessories — angle valves, soap dispensers, cartridges, and mounting kits — with mixed-container shipping alongside faucet orders from our Quanzhou factory."
 category: "accessories"
 model: "SDN-ACC Series"
 featured: false
