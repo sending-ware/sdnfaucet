@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 
 const { product } = Astro.props;
 const { Content } = await product.render();
-const { title, model, specs } = product.data;
+const { title, model, specs, image, tech_image } = product.data;
 
 const categoryLabels: Record<string, string> = {
   "kitchen-faucets": "Kitchen Faucets",
@@ -38,6 +38,40 @@ const categoryLabels: Record<string, string> = {
         <span class="mx-2">/</span>
         <span class="text-gray-600">{title}</span>
       </nav>
+
+      <!-- Product Gallery: Lifestyle + Technical images -->
+      {
+        (image || tech_image) && (
+          <div class="mb-10 grid gap-6 sm:grid-cols-2">
+            {image && (
+              <figure class="overflow-hidden rounded-xl border border-gray-100 bg-white">
+                <img
+                  src={image}
+                  alt={`${title} - Lifestyle`}
+                  class="h-72 w-full object-cover"
+                  loading="lazy"
+                />
+                <figcaption class="py-2 text-center text-xs font-medium uppercase tracking-wide text-gray-400">
+                  Lifestyle
+                </figcaption>
+              </figure>
+            )}
+            {tech_image && (
+              <figure class="overflow-hidden rounded-xl border border-gray-100 bg-white">
+                <img
+                  src={tech_image}
+                  alt={`${title} - Technical / Selling Point`}
+                  class="h-72 w-full object-cover"
+                  loading="lazy"
+                />
+                <figcaption class="py-2 text-center text-xs font-medium uppercase tracking-wide text-gray-400">
+                  Technical / Selling Point
+                </figcaption>
+              </figure>
+            )}
+          </div>
+        )
+      }
 
       <div class="grid gap-12 lg:grid-cols-5">
         <!-- Left: Product Info -->
@@ -85,7 +119,7 @@ const categoryLabels: Record<string, string> = {
                 <ul class="mt-3 space-y-2">
                   {specs.features.map((f) => (
                     <li class="flex items-start gap-2 text-sm text-gray-600">
-                      <span class="mt-1 shrink-0 text-ocean-500">✓</span>
+                      <span class="mt-1 shrink-0 text-ocean-500">â</span>
                       {f}
                     </li>
                   ))}
