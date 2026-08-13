@@ -4,7 +4,8 @@ description: "Factory-supplied rainfall shower heads — 12-inch SDN-904 and 16-
 category: "shower-systems"
 model: "SDN-904 / SDN-905"
 featured: true
-image: "https://sc02.alicdn.com/kf/Ac2a9ba1f20fb4e8f9527ada5cd48b9f8I.png"
+image: "https://sc02.alicdn.com/kf/A521b341ed8714c0dbf468b6401106e2ag.png"
+tech_image: "https://sc02.alicdn.com/kf/A8fd940839976408499fbc950ecdab60aV.png"
 publishDate: 2026-07-01
 specs:
   material: "304 Stainless Steel / ABS"
