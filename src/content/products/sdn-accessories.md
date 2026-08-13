@@ -5,7 +5,8 @@ category: "accessories"
 model: "SDN-ACC Series"
 featured: false
 publishDate: 2026-07-01
-image: "https://sc02.alicdn.com/kf/A6fa1adbd0d9f48078c469b08b8516295y.png"
+image: "https://sc02.alicdn.com/kf/A2e4fc75d1e314d27ab847e555f2392b0J.png"
+tech_image: "https://sc02.alicdn.com/kf/Ae7c028757d994671983653c6da2e2a52J.png"
 specs:
   material: "Brass / Stainless Steel"
   finish: "Chrome / Various"
