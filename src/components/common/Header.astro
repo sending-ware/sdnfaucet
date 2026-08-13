@@ -2,12 +2,12 @@
 // Header Component
 import LanguageSwitcher from "./LanguageSwitcher.astro";
 const currentPath = Astro.url.pathname;
-const localeMatch = currentPath.match(/^\/(zh|ar)/);
+const localeMatch = currentPath.match(/^\/(zh|ar)(?=\/|$)/);
 const localePrefix = localeMatch ? `/${localeMatch[1]}` : '';
 const navLinks = [
-{ label: "Products", href: "/products" },
-{ label: "About", href: "/about" },
-{ label: "Contact", href: "/contact" },
+  { label: "Products", href: "/products" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ];
 ---
 
