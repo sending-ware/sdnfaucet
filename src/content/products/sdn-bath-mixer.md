@@ -5,7 +5,8 @@ category: "bath-mixers"
 model: "SDN-BM01"
 featured: false
 publishDate: 2026-07-01
-image: "https://sc02.alicdn.com/kf/A77b9956cbf3844208835d4e9e2d379a0e.png"
+image: "https://sc02.alicdn.com/kf/A5e65b8d46d514667ae4527d5b98fd9e1W.png"
+tech_image: "https://sc02.alicdn.com/kf/A32081c00e9da46839e098c66cc2de94ca.png"
 specs:
   material: "Brass body"
   finish: "Chrome / Brushed Nickel"
