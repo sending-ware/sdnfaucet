@@ -1,7 +1,8 @@
 ---
 title: "SDN-G153 Basin Faucet | Professional 304 Stainless Steel Mixer"
 description: "Wholesale SDN-G153 single-lever basin faucet in 304 stainless steel with multi-finish options — ex-factory pricing and consistent batch quality for distributors."
-image: "https://sc02.alicdn.com/kf/A86808dcc2c1045c8a883d2296ee0261aA.png"
+image: "https://sc02.alicdn.com/kf/A3b4edd617b2044ea803ef4431c43a60eL.png"
+tech_image: "https://sc02.alicdn.com/kf/Aa60fe5f8bf1d48a0b562629386df76a9c.png"
 category: "basin-faucets"
 model: "SDN-G153"
 featured: true
