@@ -1,0 +1,59 @@
+---
+// Language Switcher — English / 简体中文 / العربية
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+const currentLocale = Astro.currentLocale ?? "en";
+
+const languages = [
+  { code: "en", label: "English", href: getRelativeLocaleUrl("en", "/") },
+  { code: "zh", label: "简体中文", href: getRelativeLocaleUrl("zh", "/") },
+  { code: "ar", label: "العربية", href: getRelativeLocaleUrl("ar", "/") },
+];
+---
+
+<div class="relative shrink-0">
+  <details class="group relative">
+    <summary
+      class="flex cursor-pointer list-none items-center gap-1.5 rounded-lg border border-gray-200 px-3 py-2 text-sm font-medium text-gray-600 transition-colors hover:border-ocean-200 hover:text-ocean-600 [&::-webkit-details-marker]:hidden"
+      aria-label="Language switcher"
+    >
+      <!-- Earth icon -->
+      <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M12 21a9 9 0 100-18 9 9 0 000 18zm0 0c2.5-2.2 3.8-5.3 3.8-9S14.5 5.2 12 3c-2.5 2.2-3.8 5.3-3.8 9s1.3 6.8 3.8 9z"
+        />
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12h18" />
+      </svg>
+      <span>{currentLocale.toUpperCase()}</span>
+      <svg
+        class="h-3 w-3 text-gray-400 transition-transform group-open:rotate-180"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      </svg>
+    </summary>
+
+    <div class="absolute end-0 top-full mt-2 w-44 overflow-hidden rounded-lg border border-gray-100 bg-white py-1 shadow-lg">
+      {languages.map((lang) => (
+        <a
+          href={lang.href}
+          aria-current={lang.code === currentLocale ? "true" : undefined}
+          class:list={[
+            "block px-4 py-2 text-sm transition-colors",
+            lang.code === currentLocale
+              ? "bg-ocean-50 font-semibold text-ocean-700"
+              : "text-gray-600 hover:bg-gray-50 hover:text-ocean-600",
+          ]}
+        >
+          {lang.label}
+        </a>
+      ))}
+    </div>
+  </details>
+</div>
