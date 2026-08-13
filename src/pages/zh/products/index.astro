@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 import MainLayout from "@layouts/MainLayout.astro";
 
-const products = await getCollection("products");
+const products = await getCollection("products", ({ id }) => id.startsWith("zh/"));
 
 const categoryLabels: Record<string, string> = {
   "kitchen-faucets": "厨房水龙头",
@@ -39,7 +39,7 @@ const categoryIcons: Record<string, string> = {
         {
           products.map((product) => {
             const { title, model, category, specs } = product.data;
-            const slug = product.slug;
+            const slug = product.slug.replace(/^zh\//, "");
             return (
               <a
                 href={`/zh/products/${slug}`}
