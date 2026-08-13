@@ -1,0 +1,46 @@
+---
+import MainLayout from "@layouts/MainLayout.astro";
+import QuickInquiry from "@components/inquiry/QuickInquiry";
+---
+
+<MainLayout
+  lang="zh"
+  title="联系我们与询价 | SDN Faucet"
+  description="联系 SDN Faucet，获取高品质厨房与卫浴洁具。我们提供专业的OEM/ODM服务和工厂直销价格。"
+>
+  <section class="section-padding bg-white">
+    <div class="container-tight px-4">
+      <div class="mx-auto max-w-2xl text-center">
+        <h1 class="heading-1">联系我们</h1>
+        <p class="mt-4 text-gray-500">
+          告诉我们您的产品需求，我们将在24小时内回复。
+        </p>
+      </div>
+
+      <div class="mt-12">
+        <QuickInquiry client:load />
+      </div>
+
+      <div class="mt-20 rounded-2xl bg-gray-50 p-8 sm:p-12">
+        <h2 class="text-2xl font-bold text-gray-900">其他联系方式</h2>
+        <div class="mt-4 space-y-4 text-sm text-gray-500">
+          <p>
+            <strong>邮箱：</strong>
+            <a href="mailto:sending@sdnfaucet.com" class="text-ocean-600 hover:underline">sending@sdnfaucet.com</a>
+          </p>
+          <p>
+            <strong>电话/WhatsApp：</strong>
+            <a href="tel:+8613064536291" class="text-ocean-600 hover:underline">+86 13064536291</a> /
+            <a href="tel:+8617750519615" class="text-ocean-600 hover:underline">+86 17750519615</a>
+          </p>
+          <p>
+            <strong>地址：</strong>中国福建省泉州市安溪县城厢镇德法科技园1号楼501室
+          </p>
+          <p>
+            <strong>回复时间：</strong>工作日24小时内
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>
