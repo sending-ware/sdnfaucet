@@ -14,9 +14,13 @@ export interface Props {
 }
 
 const { title, description, image, lang } = Astro.props;
+
+// RTL-safe locale resolution: explicit prop wins, else detect from the URL.
+const localeMatch = Astro.url.pathname.match(/^\/(zh|ar)(?=\/|$)/);
+const resolvedLang = lang ?? (localeMatch ? localeMatch[1] : "en");
 ---
 
-<BaseLayout {title} {description} {image} {lang}>
+<BaseLayout {title} {description} {image} lang={resolvedLang}>
   <Header />
   <main>
     <slot />
