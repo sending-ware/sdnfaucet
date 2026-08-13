@@ -1,13 +1,22 @@
 ---
 // Header Component
 import LanguageSwitcher from "./LanguageSwitcher.astro";
-const currentPath = Astro.url.pathname;
-const localeMatch = currentPath.match(/^\/(zh|ar)(?=\/|$)/);
-const localePrefix = localeMatch ? `/${localeMatch[1]}` : '';
+
+const locale = Astro.currentLocale ?? "en";
+const localePrefix = locale === "en" ? "" : `/${locale}`;
+
+const labels = {
+  en: { products: "Products", about: "About", contact: "Contact", getQuote: "Get Quote" },
+  zh: { products: "产品", about: "关于我们", contact: "联系我们", getQuote: "获取报价" },
+  ar: { products: "المنتجات", about: "من نحن", contact: "اتصل بنا", getQuote: "طلب عرض سعر" },
+};
+
+const t = labels[locale] ?? labels.en;
+
 const navLinks = [
-  { label: "Products", href: "/products" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
+  { label: t.products, href: "/products" },
+  { label: t.about, href: "/about" },
+  { label: t.contact, href: "/contact" },
 ];
 ---
 
@@ -26,7 +35,7 @@ const navLinks = [
         </a>
       ))}
       <a href={`${localePrefix}/contact`} class="btn-primary text-sm !py-2 !px-4">
-        Get Quote
+        {t.getQuote}
       </a>
       <LanguageSwitcher />
     </div>

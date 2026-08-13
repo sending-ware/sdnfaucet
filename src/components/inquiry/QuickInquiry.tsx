@@ -9,15 +9,71 @@ interface InquiryFormData {
   message: string;
 }
 
+export interface InquiryLabels {
+  name: string;
+  email: string;
+  company: string;
+  quantity: string;
+  requirements: string;
+  namePlaceholder: string;
+  emailPlaceholder: string;
+  companyPlaceholder: string;
+  quantityPlaceholder: string;
+  messagePlaceholder: string;
+  nameRequired: string;
+  emailRequired: string;
+  emailInvalid: string;
+  messageRequired: string;
+  interestTemplate: string;
+  submit: string;
+  submitting: string;
+  successTitle: string;
+  successMessage: string;
+  errorMessage: string;
+  privacyNote: string;
+}
+
+const defaultLabels: InquiryLabels = {
+  name: "Name",
+  email: "Email",
+  company: "Company",
+  quantity: "Quantity (approx.)",
+  requirements: "Requirements",
+  namePlaceholder: "Your full name",
+  emailPlaceholder: "your@company.com",
+  companyPlaceholder: "Your company",
+  quantityPlaceholder: "e.g. 500 pcs",
+  messagePlaceholder:
+    "Tell us about: target market, finish preference, OEM needs, packaging requirements...",
+  nameRequired: "Name is required",
+  emailRequired: "Email is required",
+  emailInvalid: "Please enter a valid email",
+  messageRequired: "Please describe your requirements",
+  interestTemplate:
+    "I'm interested in {productName} ({productModel}). Please send pricing and MOQ details.",
+  submit: "Send Inquiry Now",
+  submitting: "Submitting...",
+  successTitle: "Inquiry Sent Successfully!",
+  successMessage: "We'll review your requirements and respond within 24 hours.",
+  errorMessage:
+    "Submission failed. Please try again or email us directly at sales@sdnfaucet.com",
+  privacyNote:
+    "Protected by Turnstile. Your info is only used to respond to this inquiry.",
+};
+
 interface QuickInquiryProps {
   productModel?: string;
   productName?: string;
+  inquiryLabels?: Partial<InquiryLabels>;
 }
 
 export default function QuickInquiry({
   productModel,
   productName,
+  inquiryLabels,
 }: QuickInquiryProps) {
+  const labels: InquiryLabels = { ...defaultLabels, ...inquiryLabels };
+
   const [form, setForm] = useState<InquiryFormData>({
     name: "",
     email: "",
@@ -25,7 +81,9 @@ export default function QuickInquiry({
     product: productModel || "",
     quantity: "",
     message: productName
-      ? `I'm interested in ${productName} (${productModel}). Please send pricing and MOQ details.`
+      ? labels.interestTemplate
+          .replace("{productName}", productName)
+          .replace("{productModel}", productModel || "")
       : "",
   });
   const [status, setStatus] = useState<
@@ -35,17 +93,17 @@ export default function QuickInquiry({
 
   const validate = useCallback((): boolean => {
     const newErrors: Partial<InquiryFormData> = {};
-    if (!form.name.trim()) newErrors.name = "Name is required";
+    if (!form.name.trim()) newErrors.name = labels.nameRequired;
     if (!form.email.trim()) {
-      newErrors.email = "Email is required";
+      newErrors.email = labels.emailRequired;
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
-      newErrors.email = "Please enter a valid email";
+      newErrors.email = labels.emailInvalid;
     }
     if (!form.message.trim())
-      newErrors.message = "Please describe your requirements";
+      newErrors.message = labels.messageRequired;
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
-  }, [form]);
+  }, [form, labels]);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -115,10 +173,10 @@ export default function QuickInquiry({
           </svg>
         </div>
         <h3 className="text-lg font-semibold text-green-800">
-          Inquiry Sent Successfully!
+          {labels.successTitle}
         </h3>
         <p className="mt-2 text-sm text-green-600">
-          We'll review your requirements and respond within 24 hours.
+          {labels.successMessage}
         </p>
       </div>
     );
@@ -128,7 +186,7 @@ export default function QuickInquiry({
     <form onSubmit={handleSubmit} className="space-y-5" noValidate>
       <div>
         <label htmlFor="iq-name" className={labelClass}>
-          Name <span className="text-red-500">*</span>
+          {labels.name} <span className="text-red-500">*</span>
         </label>
         <input
           type="text"
@@ -137,14 +195,14 @@ export default function QuickInquiry({
           value={form.name}
           onChange={handleChange}
           className={`${inputClass} ${errors.name ? "border-red-400 focus:border-red-500 focus:ring-red-500/20" : ""}`}
-          placeholder="Your full name"
+          placeholder={labels.namePlaceholder}
         />
         {errors.name && <p className={errorClass}>{errors.name}</p>}
       </div>
 
       <div>
         <label htmlFor="iq-email" className={labelClass}>
-          Email <span className="text-red-500">*</span>
+          {labels.email} <span className="text-red-500">*</span>
         </label>
         <input
           type="email"
@@ -153,7 +211,7 @@ export default function QuickInquiry({
           value={form.email}
           onChange={handleChange}
           className={`${inputClass} ${errors.email ? "border-red-400 focus:border-red-500 focus:ring-red-500/20" : ""}`}
-          placeholder="your@company.com"
+          placeholder={labels.emailPlaceholder}
         />
         {errors.email && <p className={errorClass}>{errors.email}</p>}
       </div>
@@ -161,7 +219,7 @@ export default function QuickInquiry({
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="iq-company" className={labelClass}>
-            Company
+            {labels.company}
           </label>
           <input
             type="text"
@@ -170,12 +228,12 @@ export default function QuickInquiry({
             value={form.company}
             onChange={handleChange}
             className={inputClass}
-            placeholder="Your company"
+            placeholder={labels.companyPlaceholder}
           />
         </div>
         <div>
           <label htmlFor="iq-quantity" className={labelClass}>
-            Quantity (approx.)
+            {labels.quantity}
           </label>
           <input
             type="text"
@@ -184,14 +242,14 @@ export default function QuickInquiry({
             value={form.quantity}
             onChange={handleChange}
             className={inputClass}
-            placeholder="e.g. 500 pcs"
+            placeholder={labels.quantityPlaceholder}
           />
         </div>
       </div>
 
       <div>
         <label htmlFor="iq-message" className={labelClass}>
-          Requirements <span className="text-red-500">*</span>
+          {labels.requirements} <span className="text-red-500">*</span>
         </label>
         <textarea
           id="iq-message"
@@ -200,7 +258,7 @@ export default function QuickInquiry({
           value={form.message}
           onChange={handleChange}
           className={`${inputClass} resize-y ${errors.message ? "border-red-400 focus:border-red-500 focus:ring-red-500/20" : ""}`}
-          placeholder="Tell us about: target market, finish preference, OEM needs, packaging requirements..."
+          placeholder={labels.messagePlaceholder}
         />
         {errors.message && <p className={errorClass}>{errors.message}</p>}
       </div>
@@ -235,23 +293,21 @@ export default function QuickInquiry({
                 d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
               />
             </svg>
-            Submitting...
+            {labels.submitting}
           </span>
         ) : (
-          "Send Inquiry Now"
+          labels.submit
         )}
       </button>
 
       {status === "error" && (
         <p className="text-center text-sm text-red-500">
-          Submission failed. Please try again or email us directly at
-          sales@sdnfaucet.com
+          {labels.errorMessage}
         </p>
       )}
 
       <p className="text-center text-xs text-gray-400">
-        Protected by Turnstile. Your info is only used to respond to this
-        inquiry.
+        {labels.privacyNote}
       </p>
     </form>
   );

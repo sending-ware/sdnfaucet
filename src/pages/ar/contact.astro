@@ -1,6 +1,30 @@
 ---
 import MainLayout from "@layouts/MainLayout.astro";
 import QuickInquiry from "@components/inquiry/QuickInquiry";
+
+const inquiryLabels = {
+  name: "الاسم",
+  email: "البريد الإلكتروني",
+  company: "الشركة",
+  quantity: "الكمية (تقريبًا)",
+  requirements: "المتطلبات",
+  namePlaceholder: "اسمك الكامل",
+  emailPlaceholder: "your@company.com",
+  companyPlaceholder: "شركتك",
+  quantityPlaceholder: "مثال: 500 قطعة",
+  messagePlaceholder: "أخبرنا عن: السوق المستهدف، تفضيل التشطيب، احتياجات OEM، متطلبات التغليف...",
+  nameRequired: "الاسم مطلوب",
+  emailRequired: "البريد الإلكتروني مطلوب",
+  emailInvalid: "يرجى إدخال بريد إلكتروني صحيح",
+  messageRequired: "يرجى وصف متطلباتك",
+  interestTemplate: "أنا مهتم بـ {productName} ({productModel}). يرجى إرسال الأسعار وتفاصيل الحد الأدنى للطلب.",
+  submit: "إرسال الاستفسار الآن",
+  submitting: "جارٍ الإرسال...",
+  successTitle: "تم إرسال الاستفسار بنجاح!",
+  successMessage: "سنراجع متطلباتك ونرد عليك خلال 24 ساعة.",
+  errorMessage: "فشل الإرسال. يرجى المحاولة مرة أخرى أو مراسلتنا مباشرة على sales@sdnfaucet.com",
+  privacyNote: "محمي بواسطة Turnstile. تُستخدم معلوماتك فقط للرد على هذا الاستفسار.",
+};
 ---
 
 <MainLayout
@@ -18,7 +42,7 @@ import QuickInquiry from "@components/inquiry/QuickInquiry";
       </div>
 
       <div class="mt-12">
-        <QuickInquiry client:load />
+        <QuickInquiry client:load {inquiryLabels} />
       </div>
 
       <div class="mt-20 rounded-2xl bg-gray-50 p-8 sm:p-12">
