@@ -1,56 +1,5 @@
 ---
 const currentYear = new Date().getFullYear();
-const currentPath = Astro.url.pathname;
-const localeMatch = currentPath.match(/^\/(zh|ar)/);
-const locale = localeMatch ? localeMatch[1] : "en";
-const localePrefix = locale === "en" ? "" : `/${locale}`;
-
-const translations = {
-  en: {
-    desc: "Professional sanitary ware manufacturer from Quanzhou, China. Specializing in high-quality kitchen and bathroom solutions.",
-    products: "Products",
-    company: "Company",
-    contact: "Contact",
-    about: "About Us",
-    kitchen: "Kitchen Faucets",
-    basin: "Basin Mixers",
-    shower: "Shower Systems",
-    accessories: "Accessories",
-    address: "Room 501, Building 1, Defa Technology, Chengxiang Town, Anxi County, Quanzhou City, Fujian Province, China",
-    reply: "Response within 24 hours on workdays",
-    rights: "All rights reserved.",
-  },
-  zh: {
-    desc: "来自中国泉州的专业卫浴制造商。专注于高品质厨房与卫浴解决方案。",
-    products: "产品中心",
-    company: "关于公司",
-    contact: "联系我们",
-    about: "关于我们",
-    kitchen: "厨房水龙头",
-    basin: "面盆龙头",
-    shower: "淋浴系统",
-    accessories: "卫浴配件",
-    address: "中国福建省泉州市安溪县城厢镇德法科技园1号楼501室",
-    reply: "工作日24小时内回复",
-    rights: "版权所有。",
-  },
-  ar: {
-    desc: "شركة مصنعة متخصصة للأدوات الصحية من تشيوانتشو، الصين. متخصصون في حلول المطبخ والحمام عالية الجودة.",
-    products: "المنتجات",
-    company: "الشركة",
-    contact: "اتصل بنا",
-    about: "من نحن",
-    kitchen: "خلاطات المطبخ",
-    basin: "خلاطات الأحواض",
-    shower: "أنظمة الدش",
-    accessories: "الملحقات",
-    address: "الغرفة 501، مبنى 1، مجمع ديفا التقني، بلدة تشنغشيانغ، مقاطعة آنشي، مدينة تشيوانتشو، مقاطعة فوجيان، الصين",
-    reply: "الرد خلال 24 ساعة في أيام العمل",
-    rights: "جميع الحقوق محفوظة.",
-  }
-};
-
-const t = translations[locale as keyof typeof translations] || translations.en;
 ---
 
 <footer class="bg-gray-900 pt-16 pb-8 text-gray-300">
@@ -61,33 +10,33 @@ const t = translations[locale as keyof typeof translations] || translations.en;
           <span class="text-xl font-bold tracking-tight">SDN Faucet</span>
         </div>
         <p class="mt-4 text-sm leading-relaxed">
-          {t.desc}
+          Professional sanitary ware manufacturer from Quanzhou, China. Specializing in high-quality kitchen and bathroom solutions.
         </p>
       </div>
 
       <div>
-        <h3 class="text-sm font-semibold uppercase tracking-wider text-white">{t.products}</h3>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-white">Products</h3>
         <ul class="mt-4 space-y-2 text-sm">
-          <li><a href={`${localePrefix}/products`} class="hover:text-white">{t.kitchen}</a></li>
-          <li><a href={`${localePrefix}/products`} class="hover:text-white">{t.basin}</a></li>
-          <li><a href={`${localePrefix}/products`} class="hover:text-white">{t.shower}</a></li>
-          <li><a href={`${localePrefix}/products`} class="hover:text-white">{t.accessories}</a></li>
+          <li><a href="/products" class="hover:text-white">Kitchen Faucets</a></li>
+          <li><a href="/products" class="hover:text-white">Basin Mixers</a></li>
+          <li><a href="/products" class="hover:text-white">Shower Systems</a></li>
+          <li><a href="/products" class="hover:text-white">Accessories</a></li>
         </ul>
       </div>
 
       <div>
-        <h3 class="text-sm font-semibold uppercase tracking-wider text-white">{t.company}</h3>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-white">Company</h3>
         <ul class="mt-4 space-y-2 text-sm">
-          <li><a href={`${localePrefix}/about`} class="hover:text-white">{t.about}</a></li>
-          <li><a href={`${localePrefix}/contact`} class="hover:text-white">{t.contact}</a></li>
+          <li><a href="/about" class="hover:text-white">About Us</a></li>
+          <li><a href="/contact" class="hover:text-white">Contact</a></li>
         </ul>
       </div>
 
       <div>
-        <h3 class="text-sm font-semibold uppercase tracking-wider text-white">{t.contact}</h3>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-white">Contact</h3>
         <ul class="mt-4 space-y-3 text-sm">
           <li>
-            {t.address}
+            Room 501, Building 1, Defa Technology, Chengxiang Town, Anxi County, Quanzhou City, Fujian Province, China
           </li>
           <li>
             <a href="mailto:sending@sdnfaucet.com" class="hover:text-white">sending@sdnfaucet.com</a>
@@ -95,15 +44,12 @@ const t = translations[locale as keyof typeof translations] || translations.en;
           <li>
             TEL/WHATSAPP: +86 13064536291 / +86 17750519615
           </li>
-          <li>
-            {t.reply}
-          </li>
         </ul>
       </div>
     </div>
 
     <div class="mt-16 border-t border-gray-800 pt-8 text-center text-xs">
-      <p>&copy; {currentYear} Quanzhou Shengdanni Sanitary Ware Co., Ltd. {t.rights}</p>
+      <p>&copy; {currentYear} Quanzhou Shengdanni Sanitary Ware Co., Ltd. All rights reserved.</p>
     </div>
   </div>
 </footer>
