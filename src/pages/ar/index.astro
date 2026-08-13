@@ -1,0 +1,75 @@
+---
+import MainLayout from "@layouts/MainLayout.astro";
+---
+
+
+<MainLayout
+  lang="ar"
+  title="SDN Faucet | الشركة المصنعة المهنية للأدوات الصحية ومورّد الجملة B2B"
+  description="SDN Faucet هي شركة رائدة في تصنيع الأدوات الصحية من تشيوانتشو بالصين. نوفر خلاطات مطبخ عالية الجودة وخلاطات أحواض وأنظمة دش للموزعين العالميين B2B."
+>
+  <!-- Hero Section -->
+    <!-- Hero Section -->
+  <section class="relative overflow-hidden bg-cover bg-no-repeat py-20 sm:py-32" style="background-image: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url('https://sc02.alicdn.com/kf/Af26bc4625fb345588d112662bb13cd09u.png'); background-position: center 25%;">
+    <div class="container-tight px-4 pb-16 pt-20 sm:px-6 sm:pb-24 sm:pt-28 lg:px-8 lg:pb-32 lg:pt-36">
+      <div class="mx-auto max-w-3xl text-center">
+        <span class="inline-block rounded-full bg-ocean-100 px-4 py-1.5 text-xs font-semibold tracking-wide text-ocean-700">
+          مصنع الأدوات الصحية B2B
+        </span>
+        <h1 class="mt-6 heading-1 animate-fade-in">
+          خلاطات فاخرة وأدوات صحية
+          <span class="block text-ocean-600">من تشيوانتشو إلى الأسواق العالمية</span>
+        </h1>
+        <p class="mt-6 text-lg leading-relaxed text-gray-500 animate-slide-up">
+          بفضل خبرتنا التصنيعية الممتدة لسنوات في مركز صناعة الأدوات الصحية في جنوب الصين،
+          نوفر خلاطات المطبخ وخلاطات الأحواض وأنظمة الدش وملحقات الحمام التي تلبي معايير الجودة الدولية.
+        </p>
+        <div class="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center animate-slide-up">
+          <a href="/products" class="btn-primary min-w-[180px]">
+            عرض المنتجات
+          </a>
+          <a href="/contact" class="btn-secondary min-w-[180px]">
+            طلب عرض سعر
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Product Categories -->
+  <section class="section-padding bg-white">
+    <div class="container-tight">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="heading-2">فئات المنتجات</h2>
+        <p class="mt-4 text-gray-500">
+          من المطبخ إلى الحمام — حلول كاملة للأدوات الصحية للمستوردين والموزعين ومشتري المشاريع.
+        </p>
+      </div>
+
+
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          [
+            { image: "https://sc02.alicdn.com/kf/A4723dd488c8f4eaeab11c27cf1096ff6t.png", title: "خلاطات المطبخ", desc: "سلسلة سحب خارجي وسحب سفلي ودوران 360° من الفولاذ المقاوم للصدأ 304 والنحاس." },
+            { image: "https://sc02.alicdn.com/kf/Ab516d8e6b6484898887800b17e10e100l.png", title: "خلاطات الأحواض", desc: "خلاطات الماء الساخن والبارد وتصاميم الشلال وخيارات التثبيت على الحائط للحمامات العصرية." },
+            { image: "https://sc02.alicdn.com/kf/Ac2a9ba1f20fb4e8f9527ada5cd48b9f8I.png", title: "أنظمة الدش", desc: "دش علوي ومرشات يدوية ومجموعات ABS والفولاذ المقاوم للصدأ." },
+            { image: "https://sc02.alicdn.com/kf/A77b9956cbf3844208835d4e9e2d379a0e.png", title: "خلاطات الحمام", desc: "خلاطات دش الحمام ومجموعات بخاخ البيديه لحزم حمامات كاملة." },
+            { image: "https://sc02.alicdn.com/kf/A6fa1adbd0d9f48078c469b08b8516295y.png", title: "الملحقات", desc: "صمامات زاوية وموزعات صابون وقطع غيار للشراء من مصدر واحد." },
+            { image: "https://sc02.alicdn.com/kf/Af26bc4625fb345588d112662bb13cd09u.png", title: "OEM / ODM", desc: "تصميم وتشطيب وتغليف مخصص لتلبية متطلبات علامتك التجارية." },
+          ].map((cat) => (
+            <a
+              href="/products"
+              class="group rounded-xl border border-gray-100 bg-white p-6 transition-all duration-200 hover:border-ocean-200 hover:shadow-lg"
+            >
+              <div class="overflow-hidden bg-gray-50/50">
+                <img src={cat.image} alt={cat.title} class="aspect-[16/9] w-full object-contain p-4 transition-transform duration-300 group-hover:scale-105" loading="lazy" />
+              </div>
+              <h3 class="mt-4 heading-3">{cat.title}</h3>
+              <p class="mt-2 text-sm text-gray-500">{cat.desc}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  </MainLayout>

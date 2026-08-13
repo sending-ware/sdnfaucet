@@ -14,10 +14,13 @@ const {
   image = "https://sc02.alicdn.com/kf/Af26bc4625fb345588d112662bb13cd09u.png",
   lang = "en",
 } = Astro.props;
+
+// RTL support: Arabic pages render right-to-left
+const dir = lang === "ar" ? "rtl" : "ltr";
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang} dir={dir}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
