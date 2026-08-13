@@ -1,5 +1,6 @@
 ---
 // Header Component
+import LanguageSwitcher from "./LanguageSwitcher.astro";
 const navLinks = [
   { label: "Products", href: "/products" },
   { label: "About", href: "/about" },
@@ -27,6 +28,7 @@ const navLinks = [
       <a href="/contact" class="btn-primary text-sm !py-2 !px-4">
         Get Quote
       </a>
+      <LanguageSwitcher />
     </div>
 
     <!-- Mobile menu button (placeholder) -->
