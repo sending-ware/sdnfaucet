@@ -1,0 +1,62 @@
+---
+import { getCollection } from "astro:content";
+import MainLayout from "@layouts/MainLayout.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog", ({ id }) => {
+    return id.startsWith("zh/");
+  });
+  return posts.map((post) => ({
+    params: { slug: post.slug.replace("zh/", "") },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<MainLayout
+  lang="zh"
+  title={`${post.data.title} | 圣丹尼卫浴`}
+  description={post.data.description}
+  image={post.data.image}
+>
+  <article class="section-padding bg-white">
+    <div class="container-tight px-4">
+      <nav class="mb-8 text-sm text-gray-500">
+        <a href="/zh/" class="hover:text-ocean-600">首页</a>
+        <span class="mx-2">/</span>
+        <a href="/zh/blog" class="hover:text-ocean-600">技术百科</a>
+        <span class="mx-2">/</span>
+        <span class="text-gray-900">{post.data.title}</span>
+      </nav>
+
+      <header class="max-w-3xl">
+        <h1 class="heading-1">{post.data.title}</h1>
+        <div class="mt-4 flex items-center gap-4 text-sm text-gray-500">
+          <span>{post.data.publishDate.toLocaleDateString("zh-CN")}</span>
+          <span>•</span>
+          <span>作者：{post.data.author}</span>
+        </div>
+      </header>
+
+      {post.data.image && (
+        <img src={post.data.image} alt={post.data.title} class="mt-12 rounded-2xl w-full aspect-video object-cover shadow-lg" />
+      )}
+
+      <div class="mt-12 prose prose-lg prose-ocean max-w-none">
+        <Content />
+      </div>
+
+      <div class="mt-20 rounded-2xl bg-ocean-50 p-8 text-center border border-ocean-100">
+        <h3 class="text-xl font-bold text-ocean-900">对我们的产品感兴趣？</h3>
+        <p class="mt-2 text-ocean-700">下载 2026 年度画册获取详细参数，或直接联系我们的专家团队。</p>
+        <div class="mt-8 flex flex-wrap justify-center gap-4">
+          <a href="/sdn_faucet_2026_catalog.pdf" target="_blank" class="btn-primary">下载 2026 画册</a>
+          <a href="/zh/contact" class="btn-secondary">联系我们</a>
+        </div>
+      </div>
+    </div>
+  </article>
+</MainLayout>
