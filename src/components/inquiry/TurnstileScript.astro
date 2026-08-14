@@ -6,10 +6,24 @@
 // "For testing only" widget that can get stuck ("Checking your Browser",
 // "Verification failed", "Verification expired") and blocks real visitors.
 //
-// If PUBLIC_TURNSTILE_SITE_KEY is missing, the widget is skipped entirely and
-// QuickInquiry shows a localized configuration message with email/WhatsApp
-// fallbacks instead of leaving the user stuck.
-const siteKey = (import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || "").trim();
+// If PUBLIC_TURNSTILE_SITE_KEY is missing — or is set to one of Cloudflare's
+// well-known test keys — the widget is skipped entirely and QuickInquiry shows
+// a localized configuration message with email/WhatsApp fallbacks instead of
+// leaving the user stuck.
+
+// Cloudflare's published test site keys. They must never be served to
+// production visitors, even if an environment variable is misconfigured.
+const TURNSTILE_TEST_KEYS = [
+  "1x00000000000000000000AA", // always passes
+  "2x00000000000000000000AB", // always blocks
+  "1x00000000000000000000AB", // forces interactive challenge
+  "1x00000000000000000000BB", // forces non-interactive challenge
+];
+
+const configuredKey = (import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || "").trim();
+const siteKey = TURNSTILE_TEST_KEYS.includes(configuredKey)
+  ? ""
+  : configuredKey;
 const hasSiteKey = siteKey.length > 0;
 ---
 
