@@ -26,4 +26,15 @@ const products = defineCollection({
   }),
 });
 
-export const collections = { products };
+const blog = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    publishDate: z.date(),
+    author: z.string(),
+    image: z.string(),
+    tags: z.array(z.string()),
+  }),
+});
+
+export const collections = { products, blog };
