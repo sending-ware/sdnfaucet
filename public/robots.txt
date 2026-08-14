@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
-
 Sitemap: https://www.sdnfaucet.com/sitemap-index.xml
+Sitemap: https://www.sdnfaucet.com/sitemap-0.xml
