@@ -1,20 +1,38 @@
 ---
 // Header Component
 import LanguageSwitcher from "./LanguageSwitcher.astro";
-
 const locale = Astro.currentLocale ?? "en";
 const localePrefix = locale === "en" ? "" : `/${locale}`;
 
-const labels = {
-  en: { products: "Products", about: "About", contact: "Contact", getQuote: "Get Quote" },
-  zh: { products: "产品", about: "关于我们", contact: "联系我们", getQuote: "获取报价" },
-  ar: { products: "المنتجات", about: "من نحن", contact: "اتصل بنا", getQuote: "طلب عرض سعر" },
+const translations = {
+  en: {
+    products: "Products",
+    blog: "Blog",
+    about: "About",
+    contact: "Contact",
+    getQuote: "Get Quote",
+  },
+  zh: {
+    products: "产品中心",
+    blog: "技术百科",
+    about: "关于我们",
+    contact: "联系我们",
+    getQuote: "获取报价",
+  },
+  ar: {
+    products: "المنتجات",
+    blog: "الموسوعة التقنية",
+    about: "حول",
+    contact: "اتصل بنا",
+    getQuote: "اطلب سعراً",
+  },
 };
 
-const t = labels[locale] ?? labels.en;
+const t = translations[locale as keyof typeof translations] || translations.en;
 
 const navLinks = [
   { label: t.products, href: "/products" },
+  { label: t.blog, href: "/blog" },
   { label: t.about, href: "/about" },
   { label: t.contact, href: "/contact" },
 ];
@@ -22,11 +40,10 @@ const navLinks = [
 
 <header class="sticky top-0 z-50 border-b border-gray-100 bg-white/95 backdrop-blur-sm">
   <nav class="container-tight flex items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-    <a href={localePrefix || '/'} class="flex items-center gap-2 text-xl font-bold text-ocean-700">
+    <a href={localePrefix || "/"} class="flex items-center gap-2 text-xl font-bold text-ocean-700">
       <span class="text-2xl">💧</span>
       <span class="hidden sm:inline">SDN Faucet</span>
     </a>
-
     <!-- Desktop nav -->
     <div class="hidden items-center gap-8 md:flex">
       {navLinks.map((link) => (
@@ -39,15 +56,11 @@ const navLinks = [
       </a>
       <LanguageSwitcher />
     </div>
-
-    <!-- Mobile: language switcher + menu button (switcher visible on all devices) -->
-    <div class="flex items-center gap-2 md:hidden">
-      <LanguageSwitcher />
-      <button class="inline-flex items-center justify-center rounded-lg p-2 text-gray-600 hover:bg-gray-100" aria-label="Open menu">
-        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-    </div>
+    <!-- Mobile menu button (placeholder) -->
+    <button class="inline-flex items-center justify-center rounded-lg p-2 text-gray-600 hover:bg-gray-100 md:hidden" aria-label="Open menu">
+      <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
   </nav>
 </header>
