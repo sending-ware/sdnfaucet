@@ -21,6 +21,41 @@ const resolvedLang = lang ?? (localeMatch ? localeMatch[1] : "en");
 ---
 
 <BaseLayout {title} {description} {image} lang={resolvedLang}>
+  <script type="application/ld+json" is:inline>
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.sdnfaucet.com/#organization",
+      "name": "SDN Faucet | Quanzhou Shengdanni Sanitary Ware Co., Ltd.",
+      "url": "https://www.sdnfaucet.com",
+      "logo": "https://sc02.alicdn.com/kf/A085f47d0bc0b43f5a0b088e0504c8d4f0.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Room 501, Building 1, Deva Technology Park",
+        "addressLocality": "Anxi County, Quanzhou",
+        "addressRegion": "Fujian",
+        "addressCountry": "CN"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+86 13064536291",
+        "contactType": "Sales",
+        "availableLanguage": ["English", "Chinese", "Arabic"]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.sdnfaucet.com/#website",
+      "url": "https://www.sdnfaucet.com",
+      "name": "SDN Faucet",
+      "description": "Professional Sanitary Ware Manufacturer from Quanzhou, China",
+      "publisher": { "@id": "https://www.sdnfaucet.com/#organization" }
+    }
+  ]
+}
+  </script>
   <Header />
   <main>
     <slot />
@@ -30,3 +65,4 @@ const resolvedLang = lang ?? (localeMatch ? localeMatch[1] : "en");
   <WhatsAppFloat />
   <TurnstileScript />
 </BaseLayout>
+
