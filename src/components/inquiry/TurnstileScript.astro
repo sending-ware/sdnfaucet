@@ -1,28 +1,111 @@
 ---
-// Turnstile Script — loads Cloudflare Turnstile and exposes token globally
-const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || "1x00000000000000000000AA";
+// Turnstile Script — loads Cloudflare Turnstile only when a real site key is configured.
+//
+// IMPORTANT: there is deliberately NO fallback to the Cloudflare test site key
+// ("1x00000000000000000000AA"). Using a test key in production renders a
+// "For testing only" widget that can get stuck ("Checking your Browser",
+// "Verification failed", "Verification expired") and blocks real visitors.
+//
+// If PUBLIC_TURNSTILE_SITE_KEY is missing, the widget is skipped entirely and
+// QuickInquiry shows a localized configuration message with email/WhatsApp
+// fallbacks instead of leaving the user stuck.
+const siteKey = (import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || "").trim();
+const hasSiteKey = siteKey.length > 0;
 ---
 
-<script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" defer></script>
+{hasSiteKey && (
+  <script
+    is:inline
+    src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&amp;onload=onloadTurnstileCallback"
+    defer
+  ></script>
+)}
 <script is:inline define:vars={{ siteKey }}>
-  window.turnstileLoadCallback = function () {
-    if (typeof turnstile === 'undefined') return;
-    const container = document.getElementById('turnstile-container');
-    if (!container) return;
-    window.turnstileWidgetId = turnstile.render(container, {
-      sitekey: siteKey,
-      callback: function (token) {
-        window.turnstileToken = token;
-      },
-      'expired-callback': function () {
-        window.turnstileToken = undefined;
-      },
-      theme: 'light',
-    });
-  };
+  (function () {
+    window.__turnstileState = {
+      siteKey: siteKey || null,
+      widgetId: null,
+      // loading | ready | error | expired | unconfigured
+      status: siteKey ? "loading" : "unconfigured",
+    };
 
-  // Also try to load if the API already loaded
-  document.addEventListener('DOMContentLoaded', function () {
-    setTimeout(window.turnstileLoadCallback, 200);
-  });
+    function notify(eventName) {
+      try {
+        window.dispatchEvent(new CustomEvent(eventName));
+      } catch (err) {
+        /* ignore */
+      }
+    }
+
+    function renderTurnstile() {
+      var state = window.__turnstileState;
+      var container = document.getElementById("turnstile-container");
+      // No site key configured: never render a test widget, never block users.
+      if (!container || !state.siteKey) return;
+
+      // API not ready yet — will be retried via onload callback / timeout.
+      if (typeof turnstile === "undefined") {
+        state.status = "loading";
+        return;
+      }
+
+      // Avoid duplicate render: remove any previously rendered widget.
+      if (state.widgetId !== null) {
+        try {
+          turnstile.remove(state.widgetId);
+        } catch (err) {
+          /* ignore */
+        }
+        state.widgetId = null;
+      }
+
+      state.status = "loading";
+      try {
+        state.widgetId = turnstile.render(container, {
+          sitekey: state.siteKey,
+          callback: function (token) {
+            window.turnstileToken = token;
+            state.status = "ready";
+            notify("turnstile:success");
+          },
+          "error-callback": function () {
+            window.turnstileToken = undefined;
+            state.status = "error";
+            notify("turnstile:error");
+          },
+          "expired-callback": function () {
+            window.turnstileToken = undefined;
+            state.status = "expired";
+            notify("turnstile:expired");
+          },
+          theme: "light",
+        });
+      } catch (err) {
+        state.status = "error";
+        notify("turnstile:error");
+      }
+    }
+
+    window.__renderTurnstile = renderTurnstile;
+
+    // Public retry path: clears any stale token and renders a fresh widget.
+    window.__retryTurnstile = function () {
+      window.turnstileToken = undefined;
+      renderTurnstile();
+    };
+
+    if (!siteKey) return;
+
+    window.onloadTurnstileCallback = renderTurnstile;
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", renderTurnstile);
+    } else {
+      renderTurnstile();
+    }
+
+    // Safety net: the container may not exist yet when the API callback
+    // fires (e.g. React hydrates after the API has already loaded).
+    setTimeout(renderTurnstile, 1500);
+  })();
 </script>
