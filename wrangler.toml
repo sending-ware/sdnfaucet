@@ -5,8 +5,6 @@ pages_build_output_dir = "./dist"
 [vars]
 # Public Turnstile site key (safe in source); secret key is supplied via Cloudflare Pages Secret.
 PUBLIC_TURNSTILE_SITE_KEY = "0x4AAAAAAEQYwYwLLZ32_IZ5"
-# Email API key is supplied at deploy time via Cloudflare Pages env vars; never commit a real key here.
-RESEND_API_KEY = ""
 INQUIRY_RECIPIENT_EMAIL = "sending@sdnfaucet.com"
 
 [[kv_namespaces]]
