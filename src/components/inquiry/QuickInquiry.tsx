@@ -125,9 +125,15 @@ export default function QuickInquiry({
       setTurnstileStatus("unconfigured");
     }
     // Make sure the widget is rendered now that this component has mounted
-    // the container (no-op if it already rendered successfully).
+    // the container — but ONLY when the script does not already own a widget.
+    // Calling render again over an existing widget used to make the script
+    // remove and re-render it (destructive), leaving desktop visitors with
+    // rapid duplicate or stuck widgets.
     if (typeof w.__renderTurnstile === "function") {
-      w.__renderTurnstile();
+      const turnstileState = w.__turnstileState;
+      if (!turnstileState || turnstileState.widgetId === null) {
+        w.__renderTurnstile();
+      }
     }
 
     return () => {
@@ -194,11 +200,19 @@ export default function QuickInquiry({
 
       if (!res.ok) throw new Error("Submission failed");
       setStatus("success");
-      (window as any).turnstileToken = undefined;
-      if ((window as any).turnstileWidgetId) {
-        (window as any).turnstile?.reset(
-          (window as any).turnstileWidgetId,
-        );
+      const w = window as any;
+      w.turnstileToken = undefined;
+      // Reset the live widget so the next inquiry starts with a fresh token.
+      // The script's single source of truth is __turnstileState.widgetId —
+      // the old global turnstileWidgetId was never set, so reset() using it
+      // silently no-op'd and left a consumed token behind.
+      const widgetId = w.__turnstileState && w.__turnstileState.widgetId;
+      if (widgetId) {
+        try {
+          w.turnstile?.reset(widgetId);
+        } catch (err) {
+          /* ignore */
+        }
       }
     } catch {
       setStatus("error");

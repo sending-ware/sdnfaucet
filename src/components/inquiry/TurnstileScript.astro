@@ -63,7 +63,20 @@ const hasSiteKey = siteKey.length > 0;
         return;
       }
 
-      // Avoid duplicate render: remove any previously rendered widget.
+      // A widget already exists and is still active (loading/ready): never
+      // remove and re-render it. Doing so on every mount/retry is what
+      // produces rapid duplicate or stuck widgets for desktop visitors.
+      // Re-render only when there is no widget yet or the previous one hit a
+      // terminal state (error/expired).
+      if (
+        state.widgetId !== null &&
+        (state.status === "loading" || state.status === "ready")
+      ) {
+        return;
+      }
+
+      // Terminal state (error/expired): drop the stale widget before
+      // rendering a fresh one.
       if (state.widgetId !== null) {
         try {
           turnstile.remove(state.widgetId);
@@ -102,9 +115,25 @@ const hasSiteKey = siteKey.length > 0;
 
     window.__renderTurnstile = renderTurnstile;
 
-    // Public retry path: clears any stale token and renders a fresh widget.
+    // Public retry path: clears any stale token, then resets the existing
+    // widget in place (non-destructive, avoids duplicate widgets). Falls back
+    // to a fresh remove/re-render only when the widget cannot be reset.
     window.__retryTurnstile = function () {
+      var state = window.__turnstileState;
       window.turnstileToken = undefined;
+      if (
+        state.widgetId !== null &&
+        typeof turnstile !== "undefined" &&
+        typeof turnstile.reset === "function"
+      ) {
+        try {
+          turnstile.reset(state.widgetId);
+          state.status = "loading";
+          return;
+        } catch (err) {
+          /* fall through to remove/re-render */
+        }
+      }
       renderTurnstile();
     };
 
