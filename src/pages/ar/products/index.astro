@@ -19,6 +19,23 @@ const categoryIcons: Record<string, string> = {
   "bath-mixers": "🛁",
   accessories: "🔩",
 };
+const productNameLabels: Record<string, string> = {
+  "sdn-6317-waterfall-basin": "خلاط حوض شلال SDN-6317",
+  "sdn-7200-kitchen-faucet": "خلاط مطبخ SDN-7200",
+  "sdn-904-shower-head": "دش سقفي مطري SDN-904 / 905",
+  "sdn-accessories": "مستلزمات صحية",
+  "sdn-bath-mixer": "طقم خلاط حوض استحمام SDN-BM01",
+  "sdn-g153-basin-faucet": "خلاط حوض SDN-G153",
+};
+
+const finishLabels: Record<string, string> = {
+  "Black / Chrome / White / Brushed Gold": "أسود / كروم / أبيض / ذهبي مصقول",
+  "Chrome / Brushed Nickel / Matte Black": "كروم / نيكل مصقول / أسود مطفي",
+  "Chrome / Matte Black": "كروم / أسود مطفي",
+  "Chrome / Various": "كروم / متعدد",
+  "Chrome / Brushed Nickel": "كروم / نيكل مصقول",
+  "Chrome / Brushed Nickel / Brushed Gold": "كروم / نيكل مصقول / ذهبي مصقول",
+};
 ---
 
 <MainLayout
@@ -52,12 +69,12 @@ const categoryIcons: Record<string, string> = {
                   </span>
                 </div>
                 <h3 class="mt-3 text-lg font-semibold text-gray-900 group-hover:text-ocean-600">
-                  {title}
+                  {productNameLabels[slug] || title}
                 </h3>
                 <p class="mt-1 font-mono text-sm text-ocean-600">{model}</p>
                 {
                   specs?.finish && (
-                    <p class="mt-2 text-sm text-gray-500">{specs.finish}</p>
+                    <p class="mt-2 text-sm text-gray-500">{finishLabels[specs.finish] || specs.finish}</p>
                   )
                 }
                 <div class="mt-auto pt-4">
