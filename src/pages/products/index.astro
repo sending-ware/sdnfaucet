@@ -45,32 +45,76 @@ const categoryIcons: Record<string, string> = {
   accessories: "🔩",
 };
 
-const pageText: Record<string, { title: string; description: string; heading: string; subtitle: (count: number, cats: number) => string; cta: string }> = {
+const pageText: Record<
+  string,
+  {
+    title: string;
+    description: string;
+    heading: string;
+    subtitle: (count: number, cats: number) => string;
+    detailsCta: string;
+    waCta: string;
+    waLabel: string;
+    emailCta: string;
+    moqPrompt: string;
+    waText: (title: string, model: string) => string;
+    emailSubject: (title: string, model: string) => string;
+    emailBody: (title: string, model: string) => string;
+  }
+> = {
   en: {
     title: "B2B Sanitary Ware Catalog | Wholesale Kitchen Faucets & Luxury Showers",
     description: "Explore SDN Faucet's complete B2B catalog. Factory-direct pricing on commercial kitchen mixers and luxury rainfall showers.",
     heading: "Product Catalog",
     subtitle: (count, cats) => `${count} products across ${cats} categories — ready for B2B inquiry`,
-    cta: "View details & inquire",
+    detailsCta: "View details & inquire",
+    waCta: "Get wholesale quote",
+    waLabel: "WhatsApp inquiry",
+    emailCta: "Email inquiry",
+    moqPrompt: "Ask about MOQ",
+    waText: (title, model) => `Hello SDN Faucet, I'd like a wholesale quote for ${title} (${model}). Please share pricing, MOQ and lead time.`,
+    emailSubject: (title, model) => `Wholesale quote: ${model} — ${title}`,
+    emailBody: (title, model) => `Hello SDN Faucet,\n\nI'd like a wholesale quote for ${title} (${model}).\nPlease share pricing, MOQ and lead time.\n\nThank you.`,
   },
   zh: {
     title: "卫浴产品目录 | 批发厨房水龙头与豪华淋浴系统",
     description: "浏览SDN Faucet完整B2B产品目录。商用厨房混水龙头与豪华顶喷淋浴系统，工厂直销价格。",
     heading: "产品目录",
     subtitle: (count, cats) => `${count} 款产品，覆盖 ${cats} 大品类 —— 欢迎B2B询价`,
-    cta: "查看详情并询价",
+    detailsCta: "查看规格与详情",
+    waCta: "获取批发报价",
+    waLabel: "WhatsApp 询价",
+    emailCta: "邮件询价",
+    moqPrompt: "可询问 MOQ",
+    waText: (title, model) => `您好，SDN Faucet，我想咨询 ${title}（${model}）的批发报价，请分享价格、MOQ 和交期。`,
+    emailSubject: (title, model) => `批发报价：${model} — ${title}`,
+    emailBody: (title, model) => `您好，SDN Faucet，\n\n我想咨询 ${title}（${model}）的批发报价，请分享价格、MOQ 和交期。\n\n谢谢。`,
   },
   ar: {
     title: "كتالوج الأدوات الصحية B2B | خلاطات مطبخ بالجملة ودشات فاخرة",
     description: "استكشف كتالوج SDN Faucet الكامل للبيع بالجملة B2B. أسعار مباشرة من المصنع لخلاطات المطبخ ودشات الأمطار الفاخرة.",
     heading: "كتالوج المنتجات",
     subtitle: (count, cats) => `${count} منتجات في ${cats} فئات — جاهزة لاستفسارات B2B`,
-    cta: "عرض التفاصيل والاستفسار",
+    detailsCta: "عرض المواصفات والتفاصيل",
+    waCta: "احصل على عرض جملة",
+    waLabel: "استفسار واتساب",
+    emailCta: "استفسار بالبريد",
+    moqPrompt: "استفسر عن MOQ",
+    waText: (title, model) => `مرحباً SDN Faucet، أود الحصول على عرض جملة لـ ${title} (${model})، يرجى مشاركة السعر وMOQ ومدة التسليم.`,
+    emailSubject: (title, model) => `عرض جملة: ${model} — ${title}`,
+    emailBody: (title, model) => `مرحباً SDN Faucet،\n\nأود الحصول على عرض جملة لـ ${title} (${model})، يرجى مشاركة السعر وMOQ ومدة التسليم.\n\nشكراً.`,
   },
 };
 
 const t = pageText[locale] ?? pageText.en;
 const labels = categoryLabels[locale] ?? categoryLabels.en;
+
+const waBase = "https://wa.me/8613064536291";
+const mailTo = "sending@sdnfaucet.com";
+const waHref = (title: string, model: string) =>
+  `${waBase}?text=${encodeURIComponent(t.waText(title, model))}`;
+const mailHref = (title: string, model: string) =>
+  `mailto:${mailTo}?subject=${encodeURIComponent(t.emailSubject(title, model))}&body=${encodeURIComponent(t.emailBody(title, model))}`;
 ---
 
 <MainLayout lang={locale} title={t.title} description={t.description}>
@@ -89,10 +133,7 @@ const labels = categoryLabels[locale] ?? categoryLabels.en;
             const { title, model, category, specs } = product.data;
             const slug = product.slug;
             return (
-              <a
-                href={`${localePrefix}/products/${slug}`}
-                class="group flex flex-col rounded-xl border border-gray-100 bg-white p-6 transition-all duration-200 hover:border-ocean-200 hover:shadow-lg"
-              >
+              <div class="group flex flex-col rounded-xl border border-gray-100 bg-white p-6 transition-all duration-200 hover:border-ocean-200 hover:shadow-lg">
                 <div class="flex items-center gap-2">
                   <span class="text-2xl">{categoryIcons[category] || "📦"}</span>
                   <span class="rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-500">
@@ -108,15 +149,44 @@ const labels = categoryLabels[locale] ?? categoryLabels.en;
                     <p class="mt-2 text-sm text-gray-500">{specs.finish}</p>
                   )
                 }
+                <p class="mt-2 text-xs font-medium text-gray-400">
+                  MOQ · {t.moqPrompt}
+                </p>
                 <div class="mt-auto pt-4">
-                  <span class="inline-flex items-center gap-1 text-sm font-medium text-ocean-600 group-hover:gap-2 transition-all">
-                    {t.cta}
-                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
-                  </span>
+                  <a
+                    href={`${localePrefix}/products/${slug}`}
+                    class="btn-primary w-full !py-2.5 text-center"
+                  >
+                    {t.detailsCta}
+                  </a>
+                  <div class="mt-2 grid grid-cols-2 gap-2">
+                    <a
+                      href={waHref(title, model)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={t.waLabel}
+                      title={t.waLabel}
+                      class="inline-flex items-center justify-center gap-1.5 rounded-lg border border-green-600 bg-green-50 px-2 py-2 text-xs font-medium text-green-700 transition-colors hover:bg-green-100"
+                    >
+                      <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                      </svg>
+                      <span>{t.waCta}</span>
+                    </a>
+                    <a
+                      href={mailHref(title, model)}
+                      aria-label={t.emailCta}
+                      title={t.emailCta}
+                      class="inline-flex items-center justify-center gap-1.5 rounded-lg border border-ocean-200 bg-ocean-50 px-2 py-2 text-xs font-medium text-ocean-700 transition-colors hover:bg-ocean-100"
+                    >
+                      <svg class="h-4 w-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                      </svg>
+                      <span>{t.emailCta}</span>
+                    </a>
+                  </div>
                 </div>
-              </a>
+              </div>
             );
           })
         }
