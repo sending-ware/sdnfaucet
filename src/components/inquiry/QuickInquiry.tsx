@@ -61,7 +61,7 @@ const defaultLabels: InquiryLabels = {
   successTitle: "Inquiry Sent Successfully!",
   successMessage: "We'll review your requirements and respond within 24 hours.",
   errorMessage:
-    "Submission failed. Please try again or email us directly at sales@sdnfaucet.com",
+    "Submission failed. Please try again or email us directly at sending@sdnfaucet.com",
   turnstileError:
     "Security verification did not complete. Please retry the verification, or contact us directly via email or WhatsApp.",
   turnstileRetry: "Retry Verification",
