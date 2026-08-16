@@ -150,39 +150,56 @@ export const onRequestPost: PagesFunction<{
       );
     }
 
-    // 3. Send email notification (if Resend API key is configured)
-    const recipientEmail = env.INQUIRY_RECIPIENT_EMAIL || "sending@sdnfaucet.com";
-    const resendKey = env.RESEND_API_KEY;
-
-    if (resendKey) {
-      const emailSent = await sendEmail(
-        body as InquiryBody,
-        recipientEmail,
-        resendKey,
-      );
-      if (!emailSent) {
-        console.error("Failed to send email notification");
-        // Don't fail the request — email is best-effort
-      }
-    } else {
-      console.log("RESEND_API_KEY not configured — email skipped");
-      console.log("Inquiry received:", JSON.stringify(body, null, 2));
-    }
-
-    // 4. Persist to KV (if INQUIRY_STORE binding is configured)
+    // 3. Persist to KV before attempting email so no inquiry is lost.
+    let persisted = false;
     if (env.INQUIRY_STORE) {
       const timestamp = new Date().toISOString();
       const key = `inquiry:${timestamp}:${body.email}`;
       try {
         await env.INQUIRY_STORE.put(key, JSON.stringify({ ...body, timestamp }));
+        persisted = true;
       } catch (kvErr) {
         console.error("KV persistence failed:", kvErr);
-        // Don't fail the request — KV is best-effort
       }
     }
 
+    // 4. Send email notification and report its real status.
+    const recipientEmail = env.INQUIRY_RECIPIENT_EMAIL || "sending@sdnfaucet.com";
+    const resendKey = env.RESEND_API_KEY;
+
+    if (!resendKey) {
+      console.error("RESEND_API_KEY not configured");
+      return new Response(
+        JSON.stringify({
+          success: false,
+          code: "email_failed",
+          persisted,
+          error: "Inquiry saved, but email notification is not configured. Please contact us via WhatsApp or email.",
+        }),
+        { status: 502, headers },
+      );
+    }
+
+    const emailSent = await sendEmail(
+      body as InquiryBody,
+      recipientEmail,
+      resendKey,
+    );
+    if (!emailSent) {
+      console.error("Failed to send email notification");
+      return new Response(
+        JSON.stringify({
+          success: false,
+          code: "email_failed",
+          persisted,
+          error: "Inquiry saved, but email notification failed. Please contact us via WhatsApp or email.",
+        }),
+        { status: 502, headers },
+      );
+    }
+
     return new Response(
-      JSON.stringify({ success: true }),
+      JSON.stringify({ success: true, persisted }),
       { status: 200, headers },
     );
   } catch (err) {

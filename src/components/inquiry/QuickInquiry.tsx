@@ -30,6 +30,7 @@ export interface InquiryLabels {
   successTitle: string;
   successMessage: string;
   errorMessage: string;
+  emailFailedText: string;
   turnstileError: string;
   turnstileRetry: string;
   turnstileConfigMessage: string;
@@ -62,6 +63,8 @@ const defaultLabels: InquiryLabels = {
   successMessage: "We'll review your requirements and respond within 24 hours.",
   errorMessage:
     "Submission failed. Please try again or email us directly at sending@sdnfaucet.com",
+  emailFailedText:
+    "Your inquiry was saved, but email delivery failed. Please contact us via WhatsApp or email.",
   turnstileError:
     "Security verification did not complete. Please retry the verification, or contact us directly via email or WhatsApp.",
   turnstileRetry: "Retry Verification",
@@ -107,6 +110,8 @@ export default function QuickInquiry({
   >("loading");
   // true when the last submit failed because no Turnstile token was available
   const [tokenError, setTokenError] = useState(false);
+  // custom error message from the API (e.g. email_failed), localized via labels
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   useEffect(() => {
     const w = window as any;
@@ -183,6 +188,7 @@ export default function QuickInquiry({
 
     setStatus("submitting");
     setTokenError(false);
+    setErrorMessage(null);
 
     try {
       const turnstileToken = (window as any).turnstileToken;
@@ -198,7 +204,19 @@ export default function QuickInquiry({
         body: JSON.stringify({ ...form, turnstileToken }),
       });
 
-      if (!res.ok) throw new Error("Submission failed");
+      const result = (await res.json().catch(() => ({}))) as {
+        code?: string;
+        error?: string;
+      };
+      if (!res.ok) {
+        setErrorMessage(
+          result.code === "email_failed"
+            ? labels.emailFailedText
+            : result.error || labels.errorMessage,
+        );
+        setStatus("error");
+        return;
+      }
       setStatus("success");
       const w = window as any;
       w.turnstileToken = undefined;
@@ -411,7 +429,9 @@ export default function QuickInquiry({
       {status === "error" && (
         <div className="text-center">
           <p className="text-sm text-red-500">
-            {tokenError ? labels.turnstileError : labels.errorMessage}
+            {tokenError
+              ? labels.turnstileError
+              : errorMessage || labels.errorMessage}
           </p>
           {tokenError && (
             <button
