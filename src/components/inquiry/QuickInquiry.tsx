@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback } from "react";
 
 interface InquiryFormData {
   name: string;
@@ -9,85 +9,68 @@ interface InquiryFormData {
   message: string;
 }
 
-export interface InquiryLabels {
-  name: string;
-  email: string;
-  company: string;
-  quantity: string;
-  requirements: string;
-  namePlaceholder: string;
-  emailPlaceholder: string;
-  companyPlaceholder: string;
-  quantityPlaceholder: string;
-  messagePlaceholder: string;
-  nameRequired: string;
-  emailRequired: string;
-  emailInvalid: string;
-  messageRequired: string;
-  interestTemplate: string;
-  submit: string;
-  submitting: string;
-  successTitle: string;
-  successMessage: string;
-  errorMessage: string;
-  emailFailedText: string;
-  turnstileError: string;
-  turnstileRetry: string;
-  turnstileConfigMessage: string;
-  turnstileFallbackEmail: string;
-  turnstileFallbackWhatsApp: string;
-  privacyNote: string;
-}
-
-const defaultLabels: InquiryLabels = {
-  name: "Name",
-  email: "Email",
-  company: "Company",
-  quantity: "Quantity (approx.)",
-  requirements: "Requirements",
-  namePlaceholder: "Your full name",
-  emailPlaceholder: "your@company.com",
-  companyPlaceholder: "Your company",
-  quantityPlaceholder: "e.g. 500 pcs",
-  messagePlaceholder:
-    "Tell us about: target market, finish preference, OEM needs, packaging requirements...",
-  nameRequired: "Name is required",
-  emailRequired: "Email is required",
-  emailInvalid: "Please enter a valid email",
-  messageRequired: "Please describe your requirements",
-  interestTemplate:
-    "I'm interested in {productName} ({productModel}). Please send pricing and MOQ details.",
-  submit: "Send Inquiry Now",
-  submitting: "Submitting...",
-  successTitle: "Inquiry Sent Successfully!",
-  successMessage: "We'll review your requirements and respond within 24 hours.",
-  errorMessage:
-    "Submission failed. Please try again or email us directly at sending@sdnfaucet.com",
-  emailFailedText:
-    "Your inquiry was saved, but email delivery failed. Please contact us via WhatsApp or email.",
-  turnstileError:
-    "Security verification did not complete. Please retry the verification, or contact us directly via email or WhatsApp.",
-  turnstileRetry: "Retry Verification",
-  turnstileConfigMessage:
-    "The inquiry form is temporarily unavailable. Please contact us directly:",
-  turnstileFallbackEmail: "Email us",
-  turnstileFallbackWhatsApp: "Chat on WhatsApp",
-  privacyNote:
-    "Protected by Turnstile. Your info is only used to respond to this inquiry.",
-};
-
 interface QuickInquiryProps {
   productModel?: string;
   productName?: string;
-  inquiryLabels?: Partial<InquiryLabels>;
+  lang?: string;
+  labels?: {
+    name?: string;
+    namePlaceholder?: string;
+    email?: string;
+    emailPlaceholder?: string;
+    company?: string;
+    companyPlaceholder?: string;
+    quantity?: string;
+    quantityPlaceholder?: string;
+    message?: string;
+    messagePlaceholder?: string;
+    submit?: string;
+    submitting?: string;
+    successTitle?: string;
+    successText?: string;
+    errorText?: string;
+    emailFailedText?: string;
+    retry?: string;
+    privacy?: string;
+    errorNameRequired?: string;
+    errorEmailRequired?: string;
+    errorEmailInvalid?: string;
+    errorMessageRequired?: string;
+  };
 }
 
 export default function QuickInquiry({
   productModel,
   productName,
-  inquiryLabels,
+  lang = "en",
+  labels = {},
 }: QuickInquiryProps) {
-  const labels: InquiryLabels = { ...defaultLabels, ...inquiryLabels };
+  const t = {
+    name: "Name",
+    namePlaceholder: "Your full name",
+    email: "Email",
+    emailPlaceholder: "your@company.com",
+    company: "Company",
+    companyPlaceholder: "Your company",
+    quantity: "Quantity (approx.)",
+    quantityPlaceholder: "e.g. 500 pcs",
+    message: "Requirements",
+    messagePlaceholder:
+      "Tell us about: target market, finish preference, OEM needs, packaging requirements...",
+    submit: "Send Inquiry Now",
+    submitting: "Submitting...",
+    successTitle: "Inquiry Sent Successfully!",
+    successText: "We'll review your requirements and respond within 24 hours.",
+    errorText: "Submission failed. Please try again or email us directly at sending@sdnfaucet.com",
+    emailFailedText: "Your inquiry was saved, but email delivery failed. Please contact us via WhatsApp or email.",
+    retry: "Retry verification",
+    privacy: "Protected by Turnstile. Your info is only used to respond to this inquiry.",
+    errorNameRequired: "Name is required",
+    errorEmailRequired: "Email is required",
+    errorEmailInvalid: "Please enter a valid email",
+    errorMessageRequired: "Please describe your requirements",
+    ...labels,
+  };
 
   const [form, setForm] = useState<InquiryFormData>({
     name: "",
@@ -96,79 +79,32 @@ export default function QuickInquiry({
     product: productModel || "",
     quantity: "",
     message: productName
-      ? labels.interestTemplate
-          .replace("{productName}", productName)
-          .replace("{productModel}", productModel || "")
+      ? lang === "zh" 
+        ? `我对 ${productName} (${productModel}) 很感兴趣。请发送价格和最小起订量详情。`
+        : lang === "ar"
+          ? `أنا مهتم بـ ${productName} (${productModel}). يرجى إرسال تفاصيل الأسعار والحد الأدنى للطلب.`
+          : `I'm interested in ${productName} (${productModel}). Please send pricing and MOQ details.`
       : "",
   });
   const [status, setStatus] = useState<
     "idle" | "submitting" | "success" | "error"
   >("idle");
+  const [errorMessage, setErrorMessage] = useState<string>("");
   const [errors, setErrors] = useState<Partial<InquiryFormData>>({});
-  const [turnstileStatus, setTurnstileStatus] = useState<
-    "loading" | "ready" | "error" | "expired" | "unconfigured"
-  >("loading");
-  // true when the last submit failed because no Turnstile token was available
-  const [tokenError, setTokenError] = useState(false);
-  // custom error message from the API (e.g. email_failed), localized via labels
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
-
-  useEffect(() => {
-    const w = window as any;
-    const onSuccess = () => {
-      setTurnstileStatus("ready");
-      setTokenError(false);
-    };
-    const onError = () => setTurnstileStatus("error");
-    const onExpired = () => setTurnstileStatus("expired");
-    window.addEventListener("turnstile:success", onSuccess);
-    window.addEventListener("turnstile:error", onError);
-    window.addEventListener("turnstile:expired", onExpired);
-
-    // Sync initial state (e.g. site key missing → unconfigured).
-    if (w.__turnstileState && w.__turnstileState.status === "unconfigured") {
-      setTurnstileStatus("unconfigured");
-    }
-    // Make sure the widget is rendered now that this component has mounted
-    // the container — but ONLY when the script does not already own a widget.
-    // Calling render again over an existing widget used to make the script
-    // remove and re-render it (destructive), leaving desktop visitors with
-    // rapid duplicate or stuck widgets.
-    if (typeof w.__renderTurnstile === "function") {
-      const turnstileState = w.__turnstileState;
-      if (!turnstileState || turnstileState.widgetId === null) {
-        w.__renderTurnstile();
-      }
-    }
-
-    return () => {
-      window.removeEventListener("turnstile:success", onSuccess);
-      window.removeEventListener("turnstile:error", onError);
-      window.removeEventListener("turnstile:expired", onExpired);
-    };
-  }, []);
-
-  const handleRetry = useCallback(() => {
-    setTokenError(false);
-    const w = window as any;
-    if (typeof w.__retryTurnstile === "function") {
-      w.__retryTurnstile();
-    }
-  }, []);
 
   const validate = useCallback((): boolean => {
     const newErrors: Partial<InquiryFormData> = {};
-    if (!form.name.trim()) newErrors.name = labels.nameRequired;
+    if (!form.name.trim()) newErrors.name = t.errorNameRequired;
     if (!form.email.trim()) {
-      newErrors.email = labels.emailRequired;
+      newErrors.email = t.errorEmailRequired;
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
-      newErrors.email = labels.emailInvalid;
+      newErrors.email = t.errorEmailInvalid;
     }
     if (!form.message.trim())
-      newErrors.message = labels.messageRequired;
+      newErrors.message = t.errorMessageRequired;
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
-  }, [form, labels]);
+  }, [form, t]);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -187,13 +123,11 @@ export default function QuickInquiry({
     if (!validate()) return;
 
     setStatus("submitting");
-    setTokenError(false);
-    setErrorMessage(null);
 
     try {
       const turnstileToken = (window as any).turnstileToken;
       if (!turnstileToken) {
-        setTokenError(true);
+        setErrorMessage(t.errorText);
         setStatus("error");
         return;
       }
@@ -209,30 +143,27 @@ export default function QuickInquiry({
         error?: string;
       };
       if (!res.ok) {
-        setErrorMessage(
-          result.code === "email_failed"
-            ? labels.emailFailedText
-            : result.error || labels.errorMessage,
-        );
+        if (result.code === "email_failed") {
+          setErrorMessage(t.emailFailedText);
+        } else {
+          setErrorMessage(result.error || t.errorText);
+        }
         setStatus("error");
         return;
       }
       setStatus("success");
-      const w = window as any;
-      w.turnstileToken = undefined;
-      // Reset the live widget so the next inquiry starts with a fresh token.
-      // The script's single source of truth is __turnstileState.widgetId —
-      // the old global turnstileWidgetId was never set, so reset() using it
-      // silently no-op'd and left a consumed token behind.
-      const widgetId = w.__turnstileState && w.__turnstileState.widgetId;
-      if (widgetId) {
-        try {
-          w.turnstile?.reset(widgetId);
-        } catch (err) {
-          /* ignore */
-        }
+      (window as any).turnstileToken = undefined;
+      (window as any).__turnstileState = {
+        ...((window as any).__turnstileState || {}),
+        token: undefined,
+        status: "loading",
+      };
+      const widgetId = (window as any).__turnstileState?.widgetId;
+      if (widgetId !== null && widgetId !== undefined) {
+        (window as any).turnstile?.reset(widgetId);
       }
-    } catch {
+    } catch (err) {
+      setErrorMessage(err instanceof Error ? err.message : t.errorText);
       setStatus("error");
     }
   };
@@ -261,10 +192,10 @@ export default function QuickInquiry({
           </svg>
         </div>
         <h3 className="text-lg font-semibold text-green-800">
-          {labels.successTitle}
+          {t.successTitle}
         </h3>
         <p className="mt-2 text-sm text-green-600">
-          {labels.successMessage}
+          {t.successText}
         </p>
       </div>
     );
@@ -274,7 +205,7 @@ export default function QuickInquiry({
     <form onSubmit={handleSubmit} className="space-y-5" noValidate>
       <div>
         <label htmlFor="iq-name" className={labelClass}>
-          {labels.name} <span className="text-red-500">*</span>
+          {t.name} <span className="text-red-500">*</span>
         </label>
         <input
           type="text"
@@ -283,14 +214,14 @@ export default function QuickInquiry({
           value={form.name}
           onChange={handleChange}
           className={`${inputClass} ${errors.name ? "border-red-400 focus:border-red-500 focus:ring-red-500/20" : ""}`}
-          placeholder={labels.namePlaceholder}
+          placeholder={t.namePlaceholder}
         />
         {errors.name && <p className={errorClass}>{errors.name}</p>}
       </div>
 
       <div>
         <label htmlFor="iq-email" className={labelClass}>
-          {labels.email} <span className="text-red-500">*</span>
+          {t.email} <span className="text-red-500">*</span>
         </label>
         <input
           type="email"
@@ -299,7 +230,7 @@ export default function QuickInquiry({
           value={form.email}
           onChange={handleChange}
           className={`${inputClass} ${errors.email ? "border-red-400 focus:border-red-500 focus:ring-red-500/20" : ""}`}
-          placeholder={labels.emailPlaceholder}
+          placeholder={t.emailPlaceholder}
         />
         {errors.email && <p className={errorClass}>{errors.email}</p>}
       </div>
@@ -307,7 +238,7 @@ export default function QuickInquiry({
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="iq-company" className={labelClass}>
-            {labels.company}
+            {t.company}
           </label>
           <input
             type="text"
@@ -316,12 +247,12 @@ export default function QuickInquiry({
             value={form.company}
             onChange={handleChange}
             className={inputClass}
-            placeholder={labels.companyPlaceholder}
+            placeholder={t.companyPlaceholder}
           />
         </div>
         <div>
           <label htmlFor="iq-quantity" className={labelClass}>
-            {labels.quantity}
+            {t.quantity}
           </label>
           <input
             type="text"
@@ -330,14 +261,14 @@ export default function QuickInquiry({
             value={form.quantity}
             onChange={handleChange}
             className={inputClass}
-            placeholder={labels.quantityPlaceholder}
+            placeholder={t.quantityPlaceholder}
           />
         </div>
       </div>
 
       <div>
         <label htmlFor="iq-message" className={labelClass}>
-          {labels.requirements} <span className="text-red-500">*</span>
+          {t.message} <span className="text-red-500">*</span>
         </label>
         <textarea
           id="iq-message"
@@ -346,56 +277,28 @@ export default function QuickInquiry({
           value={form.message}
           onChange={handleChange}
           className={`${inputClass} resize-y ${errors.message ? "border-red-400 focus:border-red-500 focus:ring-red-500/20" : ""}`}
-          placeholder={labels.messagePlaceholder}
+          placeholder={t.messagePlaceholder}
         />
         {errors.message && <p className={errorClass}>{errors.message}</p>}
       </div>
 
-      <div className="flex justify-center">
+      <div className="flex flex-col items-center gap-2">
         <div id="turnstile-container" className="cf-turnstile"></div>
+        <button
+          type="button"
+          onClick={() => {
+            setErrorMessage("");
+            (window as any).__retryTurnstile?.();
+          }}
+          className="text-xs font-medium text-ocean-600 underline underline-offset-2 hover:text-ocean-700"
+        >
+          {t.retry}
+        </button>
       </div>
-
-      {turnstileStatus === "unconfigured" && (
-        <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800">
-          <p className="text-center">{labels.turnstileConfigMessage}</p>
-          <p className="mt-2 flex flex-wrap items-center justify-center gap-4">
-            <a
-              href="mailto:sending@sdnfaucet.com"
-              className="text-ocean-600 underline hover:text-ocean-700"
-            >
-              {labels.turnstileFallbackEmail}
-            </a>
-            <a
-              href="https://wa.me/8613064536291"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-ocean-600 underline hover:text-ocean-700"
-            >
-              {labels.turnstileFallbackWhatsApp}
-            </a>
-          </p>
-        </div>
-      )}
-
-      {(turnstileStatus === "error" || turnstileStatus === "expired") &&
-        !tokenError && (
-          <div className="flex flex-col items-center gap-2">
-            <p className="text-center text-sm text-red-500">
-              {labels.turnstileError}
-            </p>
-            <button
-              type="button"
-              onClick={handleRetry}
-              className="rounded-lg border border-ocean-600 px-4 py-1.5 text-sm font-medium text-ocean-600 transition-colors hover:bg-ocean-50"
-            >
-              {labels.turnstileRetry}
-            </button>
-          </div>
-        )}
 
       <button
         type="submit"
-        disabled={status === "submitting" || turnstileStatus === "unconfigured"}
+        disabled={status === "submitting"}
         className="btn-primary w-full disabled:cursor-not-allowed disabled:opacity-60"
       >
         {status === "submitting" ? (
@@ -419,34 +322,21 @@ export default function QuickInquiry({
                 d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
               />
             </svg>
-            {labels.submitting}
+            {t.submitting}
           </span>
         ) : (
-          labels.submit
+          t.submit
         )}
       </button>
 
       {status === "error" && (
-        <div className="text-center">
-          <p className="text-sm text-red-500">
-            {tokenError
-              ? labels.turnstileError
-              : errorMessage || labels.errorMessage}
-          </p>
-          {tokenError && (
-            <button
-              type="button"
-              onClick={handleRetry}
-              className="mt-2 rounded-lg border border-ocean-600 px-4 py-1.5 text-sm font-medium text-ocean-600 transition-colors hover:bg-ocean-50"
-            >
-              {labels.turnstileRetry}
-            </button>
-          )}
-        </div>
+        <p className="text-center text-sm text-red-500">
+          {errorMessage || t.errorText}
+        </p>
       )}
 
       <p className="text-center text-xs text-gray-400">
-        {labels.privacyNote}
+        {t.privacy}
       </p>
     </form>
   );

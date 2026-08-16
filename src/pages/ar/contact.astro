@@ -4,32 +4,27 @@ import QuickInquiry from "@components/inquiry/QuickInquiry";
 
 const inquiryLabels = {
   name: "الاسم",
-  email: "البريد الإلكتروني",
-  company: "الشركة",
-  quantity: "الكمية (تقريبًا)",
-  requirements: "المتطلبات",
   namePlaceholder: "اسمك الكامل",
+  email: "البريد الإلكتروني",
   emailPlaceholder: "your@company.com",
+  company: "الشركة",
   companyPlaceholder: "شركتك",
-  quantityPlaceholder: "مثال: 500 قطعة",
-  messagePlaceholder: "أخبرنا عن: السوق المستهدف، تفضيل التشطيب، احتياجات OEM، متطلبات التغليف...",
-  nameRequired: "الاسم مطلوب",
-  emailRequired: "البريد الإلكتروني مطلوب",
-  emailInvalid: "يرجى إدخال بريد إلكتروني صحيح",
-  messageRequired: "يرجى وصف متطلباتك",
-  interestTemplate: "أنا مهتم بـ {productName} ({productModel}). يرجى إرسال الأسعار وتفاصيل الحد الأدنى للطلب.",
-  submit: "إرسال الاستفسار الآن",
-  submitting: "جارٍ الإرسال...",
+  quantity: "الكمية (تقريبية)",
+  quantityPlaceholder: "مثلاً 500 قطعة",
+  message: "المتطلبات",
+  messagePlaceholder: "أخبرنا عن: السوق المستهدف، تفضيلات التشطيب، احتياجات OEM، متطلبات التعبئة والتغليف...",
+  submit: "أرسل الاستفسار الآن",
+  submitting: "جاري الإرسال...",
   successTitle: "تم إرسال الاستفسار بنجاح!",
-  successMessage: "سنراجع متطلباتك ونرد عليك خلال 24 ساعة.",
-  errorMessage: "فشل الإرسال. يرجى المحاولة مرة أخرى أو مراسلتنا مباشرة على sending@sdnfaucet.com",
+  successText: "سنقوم بمراجعة متطلباتك والرد خلال 24 ساعة.",
+  errorText: "فشل الإرسال. يرجى المحاولة مرة أخرى أو مراسلتنا مباشرة على sending@sdnfaucet.com",
   emailFailedText: "تم حفظ استفسارك، لكن فشل إرسال البريد الإلكتروني. يرجى التواصل معنا عبر واتساب أو البريد الإلكتروني.",
-  turnstileError: "لم يكتمل التحقق الأمني. يرجى إعادة المحاولة، أو التواصل معنا مباشرة عبر البريد الإلكتروني أو واتساب.",
-  turnstileRetry: "إعادة التحقق",
-  turnstileConfigMessage: "نموذج الاستفسار غير متاح مؤقتًا. يرجى التواصل معنا مباشرة:",
-  turnstileFallbackEmail: "راسلنا عبر البريد الإلكتروني",
-  turnstileFallbackWhatsApp: "الدردشة عبر واتساب",
-  privacyNote: "محمي بواسطة Turnstile. تُستخدم معلوماتك فقط للرد على هذا الاستفسار.",
+  retry: "إعادة التحقق",
+  privacy: "محمي بواسطة Turnstile. تُستخدم معلوماتك فقط للرد على هذا الاستفسار.",
+  errorNameRequired: "الاسم مطلوب",
+  errorEmailRequired: "البريد الإلكتروني مطلوب",
+  errorEmailInvalid: "يرجى إدخال بريد إلكتروني صحيح",
+  errorMessageRequired: "يرجى وصف متطلباتك",
 };
 ---
 
@@ -48,7 +43,7 @@ const inquiryLabels = {
       </div>
 
       <div class="mt-12">
-        <QuickInquiry client:load {inquiryLabels} />
+        <QuickInquiry client:load lang="ar" labels={inquiryLabels} />
       </div>
 
       <div class="mt-20 rounded-2xl bg-gray-50 p-8 sm:p-12">
