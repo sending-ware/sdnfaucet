@@ -57,7 +57,7 @@ const resolvedLang = lang ?? (localeMatch ? localeMatch[1] : "en");
 }
   </script>
   <Header />
-  <main>
+  <main class="pb-32 sm:pb-0">
     <slot />
   </main>
   <Footer />
@@ -65,4 +65,3 @@ const resolvedLang = lang ?? (localeMatch ? localeMatch[1] : "en");
   <WhatsAppFloat />
   <TurnstileScript />
 </BaseLayout>
-

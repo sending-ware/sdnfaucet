@@ -26,7 +26,7 @@ const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
 const emailLink = "mailto:sending@sdnfaucet.com?subject=Inquiry%20from%20Website&body=Hello%2C%20I%20am%20interested%20in%20your%20faucet%20and%20sanitary%20ware%20products.";
 ---
 
-<div class="fixed bottom-0 left-0 z-[9999] w-full border-t border-gray-100 bg-white/95 backdrop-blur-md p-2 pb-safe shadow-[0_-4px_20px_rgba(0,0,0,0.05)] sm:hidden">
+<div class="fixed bottom-0 left-0 z-[9999] w-full border-t border-gray-100 bg-white/95 backdrop-blur-md pt-2 px-2 pb-[calc(0.5rem+env(safe-area-inset-bottom))] shadow-[0_-4px_20px_rgba(0,0,0,0.05)] sm:hidden">
   <div class="flex gap-2">
     <!-- WhatsApp -->
     <a href={whatsappLink} target="_blank" rel="noopener" style="display:flex;pointer-events:auto" class="pointer-events-auto flex flex-1 flex-col items-center justify-center gap-1 rounded-xl bg-green-500 py-2.5 text-[10px] font-bold text-white transition-all active:scale-95">
