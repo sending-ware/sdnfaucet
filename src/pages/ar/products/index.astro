@@ -1,10 +1,13 @@
 ---
-import { getCollection } from "astro:content";
 import MainLayout from "@layouts/MainLayout.astro";
+import fs from "node:fs";
+import path from "node:path";
 
-const products = await getCollection("products");
+const catalogPath = path.resolve("./public/data/catalog.json");
+const allCatalogItems = JSON.parse(fs.readFileSync(catalogPath, "utf-8"));
 
 const categoryLabels: Record<string, string> = {
+  all: "جميع المنتجات",
   "kitchen-faucets": "خلاطات المطبخ",
   "basin-faucets": "خلاطات الأحواض",
   "shower-systems": "أنظمة الدش",
@@ -13,122 +16,214 @@ const categoryLabels: Record<string, string> = {
 };
 
 const categoryIcons: Record<string, string> = {
+  all: "📦",
   "kitchen-faucets": "🚰",
   "basin-faucets": "🪞",
   "shower-systems": "🚿",
   "bath-mixers": "🛁",
   accessories: "🔩",
 };
-const productNameLabels: Record<string, string> = {
-  "sdn-6317-waterfall-basin": "خلاط حوض شلال SDN-6317",
-  "sdn-7200-kitchen-faucet": "خلاط مطبخ SDN-7200",
-  "sdn-904-shower-head": "دش سقفي مطري SDN-904 / 905",
-  "sdn-accessories": "مستلزمات صحية",
-  "sdn-bath-mixer": "طقم خلاط حوض استحمام SDN-BM01",
-  "sdn-g153-basin-faucet": "خلاط حوض SDN-G153",
+
+const categoryCounts: Record<string, number> = {
+  all: 592,
+  "kitchen-faucets": 110,
+  "basin-faucets": 125,
+  "shower-systems": 229,
+  "bath-mixers": 76,
+  accessories: 52,
 };
 
-const finishLabels: Record<string, string> = {
-  "Black / Chrome / White / Brushed Gold": "أسود / كروم / أبيض / ذهبي مصقول",
-  "Chrome / Brushed Nickel / Matte Black": "كروم / نيكل مصقول / أسود مطفي",
-  "Chrome / Matte Black": "كروم / أسود مطفي",
-  "Chrome / Various": "كروم / متعدد",
-  "Chrome / Brushed Nickel": "كروم / نيكل مصقول",
-  "Chrome / Brushed Nickel / Brushed Gold": "كروم / نيكل مصقول / ذهبي مصقول",
-};
-
-const detailsCta = "عرض المواصفات والتفاصيل";
-const waCta = "احصل على عرض جملة";
-const waLabel = "استفسار واتساب";
-const emailCta = "استفسار بالبريد";
-const moqPrompt = "استفسر عن MOQ";
 const waBase = "https://wa.me/8617750519615";
 const mailTo = "sending@sdnfaucet.com";
-const waHref = (title: string, model: string) =>
-  `${waBase}?text=${encodeURIComponent(`مرحباً SDN Faucet، أود الحصول على عرض جملة لـ ${title} (${model})، يرجى مشاركة السعر وMOQ ومدة التسليم.`)}`;
-const mailHref = (title: string, model: string) =>
-  `mailto:${mailTo}?subject=${encodeURIComponent(`عرض جملة: ${model} — ${title}`)}&body=${encodeURIComponent(`مرحباً SDN Faucet،\n\nأود الحصول على عرض جملة لـ ${title} (${model})، يرجى مشاركة السعر وMOQ ومدة التسليم.\n\nشكراً.`)}`;
 ---
 
-<MainLayout
-  lang="ar"
-  title="كتالوج الأدوات الصحية B2B | خلاطات مطبخ بالجملة ودشات فاخرة"
-  description="استكشف كتالوج SDN Faucet الكامل للبيع بالجملة B2B. أسعار مباشرة من المصنع لخلاطات المطبخ ودشات الأمطار الفاخرة."
->
-  <section class="section-padding">
+<MainLayout lang="ar" title="كتالوج الأدوات الصحية B2B | 592 منتج من خلاطات ودشات بالجملة" description="استكشف كتالوج SDN Faucet الكامل لـ 592 منتج عبر 21 سلسلة. صور حقيقية ومواصفات وأسعار مصنع مباشرة وMOQ.">
+  <section class="section-padding !pt-8" dir="rtl">
     <div class="container-tight">
-      <div class="mx-auto max-w-2xl text-center">
-        <h1 class="heading-1">كتالوج المنتجات</h1>
-        <p class="mt-4 text-lg text-gray-500">
-          {products.length} منتجات في {Object.keys(categoryLabels).length} فئات — جاهزة لاستفسارات B2B
+      <!-- 页面头部 -->
+      <div class="mx-auto max-w-3xl text-center">
+        <span class="inline-flex items-center gap-1.5 rounded-full bg-ocean-50 px-3.5 py-1 text-xs font-semibold tracking-wide text-ocean-700">
+          <span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          عرض الكتالوج الكامل · 592 منتج مع الصور والمواصفات مباشرة
+        </span>
+        <h1 class="heading-1 mt-3 !text-3xl sm:!text-4xl">كتالوج المنتجات</h1>
+        <p class="mt-3 text-base text-gray-600 sm:text-lg">
+          يضم 5 فئات و21 سلسلة لـ 592 منتج — صور حقيقية ومواصفات وأسعار جملة من المصنع ظاهرة مباشرة دون الحاجة لعدة نقرات.
         </p>
       </div>
 
-      <div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <!-- 交互控制面板 -->
+      <div class="mt-10 rounded-2xl border border-gray-200 bg-white p-4 shadow-sm sm:p-6">
+        <!-- 品类筛选标签 -->
+        <div class="flex flex-wrap items-center gap-2 border-b border-gray-100 pb-4" id="categoryNav">
+          {
+            ["all", "kitchen-faucets", "basin-faucets", "shower-systems", "bath-mixers", "accessories"].map((catKey) => {
+              const count = categoryCounts[catKey] || 0;
+              const isDefault = catKey === "all";
+              return (
+                <button
+                  type="button"
+                  class={`cat-tab-btn inline-flex items-center gap-1.5 rounded-xl px-3.5 py-2 text-xs sm:text-sm font-medium transition-all ${
+                    isDefault
+                      ? "bg-ocean-600 text-white shadow-sm ring-2 ring-ocean-600/20"
+                      : "bg-gray-50 text-gray-700 hover:bg-gray-100"
+                  }`}
+                  data-cat={catKey}
+                >
+                  <span>{categoryIcons[catKey]}</span>
+                  <span>{categoryLabels[catKey] || catKey}</span>
+                  <span class={`rounded-full px-2 py-0.2 text-[11px] font-semibold ${isDefault ? "bg-white/20 text-white" : "bg-gray-200 text-gray-600"}`}>
+                    {count}
+                  </span>
+                </button>
+              );
+            })
+          }
+        </div>
+
+        <!-- 搜索与视图工具栏 -->
+        <div class="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div class="relative flex-1">
+            <input
+              type="text"
+              id="productSearchInput"
+              placeholder="ابحث بالرقم (مثل: 7200A, 1217)، اللون، المادة أو الميزات..."
+              class="w-full rounded-xl border border-gray-200 bg-gray-50/50 px-4 py-2.5 pr-10 text-sm transition-all focus:border-ocean-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-ocean-500/20"
+            />
+            <svg class="absolute right-3 top-3 h-4.5 w-4.5 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+            <button id="clearSearchBtn" class="absolute left-3 top-2.5 hidden text-gray-400 hover:text-gray-600 text-sm font-medium">✕</button>
+          </div>
+
+          <!-- 统计计数与视图切换 -->
+          <div class="flex items-center justify-between sm:justify-end gap-3">
+            <div class="text-xs font-medium text-gray-500">
+              المنتجات: <span id="filteredCountText" class="font-bold text-ocean-700">592</span> / 592
+            </div>
+            <div class="inline-flex rounded-lg border border-gray-200 bg-gray-50 p-0.5">
+              <button id="btnViewGrid" class="rounded-md bg-white px-2.5 py-1 text-xs font-medium text-gray-900 shadow-xs">
+                ▦ بطاقات
+              </button>
+              <button id="btnViewTable" class="rounded-md px-2.5 py-1 text-xs font-medium text-gray-600 hover:text-gray-900">
+                ▤ جدول
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 无搜索结果提示 -->
+      <div id="noResultsAlert" class="mt-12 hidden rounded-2xl border border-dashed border-gray-300 p-12 text-center">
+        <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-gray-100 text-2xl">🔍</div>
+        <h3 class="mt-4 text-base font-semibold text-gray-900">لم يتم العثور على نتائج</h3>
+        <p class="mt-1 text-sm text-gray-500">يرجى تجربة كلمات بحث أخرى أو إعادة ضبط الفلاتر.</p>
+        <button id="resetFilterBtn" class="btn-secondary mt-4 !py-2 !text-xs">إعادة ضبط</button>
+      </div>
+
+      <!-- 视图 1: 产品网格卡片流 -->
+      <div id="productGridContainer" class="mt-8 grid gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {
-          products.map((product) => {
-            const { title, model, category, specs, image } = product.data;
-            const slug = product.slug;
-            const displayTitle = productNameLabels[slug] || title;
+          allCatalogItems.map((item, idx) => {
+            const displayName = item.name_en;
+            const displaySeries = item.series_name_en;
+            const waText = `Hello SDN Faucet, I would like to inquire about ${item.model} (${item.finish}, ${item.material}). Please share wholesale quote and lead time.`;
+            const waHref = `${waBase}?text=${encodeURIComponent(waText)}`;
+            const emailSub = `Wholesale Inquiry: ${item.model} - ${displaySeries}`;
+            const emailBody = `Hello SDN Faucet,\n\nI am interested in:\nModel: ${item.model}\nSeries: ${displaySeries}\nFinish: ${item.finish}\nMaterial: ${item.material}\n\nPlease provide MOQ, tiered pricing, and lead time.\n\nThank you.`;
+            const mailHref = `mailto:${mailTo}?subject=${encodeURIComponent(emailSub)}&body=${encodeURIComponent(emailBody)}`;
+            const seriesLink = `/ar/products/${item.series_id}`;
+
             return (
-              <div class="group flex flex-col rounded-xl border border-gray-100 bg-white p-6 transition-all duration-200 hover:border-ocean-200 hover:shadow-lg">
-                <div class="mb-4 flex h-48 items-center justify-center rounded-lg bg-gray-50 p-4">
+              <div
+                class="product-card group flex flex-col rounded-2xl border border-gray-100 bg-white p-4 transition-all duration-200 hover:-translate-y-1 hover:border-ocean-200 hover:shadow-xl text-right"
+                data-index={idx}
+                data-model={item.model.toLowerCase()}
+                data-cat={item.category_id || "kitchen-faucets"}
+                data-series={item.series_id || ""}
+                data-search={`${item.model} ${item.finish} ${item.material} ${item.features} ${item.name_en} ${item.series_name_en}`.toLowerCase()}
+              >
+                <!-- 产品实物图片区域 -->
+                <div class="relative mb-3 flex h-48 w-full items-center justify-center overflow-hidden rounded-xl bg-gray-50/70 p-3 group-hover:bg-ocean-50/30 transition-colors">
                   <img
-                    src={image}
-                    alt={displayTitle}
+                    src={item.image}
+                    alt={`${item.model} - ${displayName}`}
                     loading="lazy"
-                    class="h-full w-full object-contain"
+                    class="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
+                    onerror="this.onerror=null; this.src='https://sc02.alicdn.com/kf/A87f819b98dd94207818e182094f27463Q.png';"
                   />
-                </div>
-                <div class="flex items-center gap-2">
-                  <span class="text-2xl">{categoryIcons[category] || "📦"}</span>
-                  <span class="rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-500">
-                    {categoryLabels[category] || category}
+                  <span class="absolute top-2.5 left-2.5 rounded-md bg-white/90 px-1.5 py-0.5 text-[10px] font-mono font-medium text-gray-500 shadow-xs backdrop-blur-xs">
+                    P.{item.page}
                   </span>
                 </div>
-                <h3 class="mt-3 text-lg font-semibold text-gray-900 group-hover:text-ocean-600">
-                  {displayTitle}
-                </h3>
-                <p class="mt-1 font-mono text-sm text-ocean-600">{model}</p>
-                {
-                  specs?.finish && (
-                    <p class="mt-2 text-sm text-gray-500">{finishLabels[specs.finish] || specs.finish}</p>
-                  )
-                }
-                <p class="mt-2 text-xs font-medium text-gray-400">
-                  MOQ · {moqPrompt}
-                </p>
-                <div class="mt-auto pt-4">
+
+                <!-- 系列标签 -->
+                <div class="mb-1.5 flex items-center gap-1.5">
                   <a
-                    href={`/ar/products/${slug}`}
-                    class="btn-primary w-full !py-2.5 text-center"
+                    href={seriesLink}
+                    class="inline-block truncate text-[11px] font-semibold text-ocean-600 hover:text-ocean-700 hover:underline max-w-[200px]"
+                    title={displaySeries}
                   >
-                    {detailsCta}
+                    {displaySeries}
                   </a>
-                  <div class="mt-2 grid grid-cols-2 gap-2">
+                </div>
+
+                <!-- 型号标题 -->
+                <div class="flex items-baseline justify-between gap-1">
+                  <h3 class="font-mono text-base font-bold text-gray-900 group-hover:text-ocean-600 transition-colors">
+                    {item.model}
+                  </h3>
+                </div>
+
+                <!-- 技术参数明细直接呈现 -->
+                <div class="mt-2.5 space-y-1.5 border-t border-gray-50 pt-2.5 text-xs text-gray-600">
+                  <div class="flex items-center justify-between">
+                    <span class="text-gray-400">الطلاء:</span>
+                    <span class="font-medium text-gray-800 text-left truncate max-w-[140px]" title={item.finish}>{item.finish || "Chrome"}</span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-gray-400">المادة:</span>
+                    <span class="text-gray-700 text-left truncate max-w-[140px]" title={item.material}>{item.material || "304 Stainless / Brass"}</span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-gray-400">الميزات:</span>
+                    <span class="text-gray-700 text-left truncate max-w-[140px]" title={item.features}>{item.features || "Standard Export"}</span>
+                  </div>
+                  <div class="flex items-baseline justify-between border-t border-dashed border-gray-100 pt-1.5">
+                    <span class="text-[11px] text-gray-400">سعر المصنع:</span>
+                    <span class="font-mono text-xs font-bold text-emerald-700 text-left truncate max-w-[150px]" title={item.prices}>
+                      {item.prices || "Inquire"}
+                    </span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-[11px] text-gray-400">MOQ:</span>
+                    <span class="font-mono text-xs font-medium text-gray-700">{item.moq || "10"} pcs</span>
+                  </div>
+                </div>
+
+                <!-- 底部操作按钮 -->
+                <div class="mt-auto pt-3.5 space-y-2">
+                  <a
+                    href={waHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex w-full items-center justify-center gap-1.5 rounded-xl border border-emerald-500 bg-emerald-50 py-2 text-xs font-semibold text-emerald-700 transition-colors hover:bg-emerald-100 hover:border-emerald-600"
+                  >
+                    <span>احصل على عرض جملة</span>
+                  </a>
+
+                  <div class="grid grid-cols-2 gap-1.5">
                     <a
-                      href={waHref(displayTitle, model)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={waLabel}
-                      title={waLabel}
-                      class="inline-flex items-center justify-center gap-1.5 rounded-lg border border-green-600 bg-green-50 px-2 py-2 text-xs font-medium text-green-700 transition-colors hover:bg-green-100"
+                      href={mailHref}
+                      class="flex items-center justify-center gap-1 rounded-lg border border-gray-200 bg-gray-50 py-1.5 text-[11px] font-medium text-gray-700 hover:bg-gray-100"
                     >
-                      <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                      </svg>
-                      <span>{waCta}</span>
+                      استفسار
                     </a>
                     <a
-                      href={mailHref(displayTitle, model)}
-                      aria-label={emailCta}
-                      title={emailCta}
-                      class="inline-flex items-center justify-center gap-1.5 rounded-lg border border-ocean-200 bg-ocean-50 px-2 py-2 text-xs font-medium text-ocean-700 transition-colors hover:bg-ocean-100"
+                      href={seriesLink}
+                      class="flex items-center justify-center gap-1 rounded-lg border border-ocean-200 bg-ocean-50 py-1.5 text-[11px] font-medium text-ocean-700 hover:bg-ocean-100"
                     >
-                      <svg class="h-4 w-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                      </svg>
-                      <span>{emailCta}</span>
+                      التفاصيل ←
                     </a>
                   </div>
                 </div>
@@ -137,6 +232,197 @@ const mailHref = (title: string, model: string) =>
           })
         }
       </div>
+
+      <!-- 分页控制栏 -->
+      <div id="paginationBar" class="mt-10 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-gray-100 pt-6">
+        <div class="text-xs text-gray-500">
+          <span id="pageInfoText">صفحة 1 من 15</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <button id="btnPrevPage" class="rounded-xl border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-40 disabled:pointer-events-none">
+            السابق
+          </button>
+          <div id="pageNumbersContainer" class="flex items-center gap-1"></div>
+          <button id="btnNextPage" class="rounded-xl border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-40 disabled:pointer-events-none">
+            التالي
+          </button>
+        </div>
+      </div>
     </div>
   </section>
+
+  <script is:inline>
+    (function () {
+      const searchInput = document.getElementById("productSearchInput");
+      const clearSearchBtn = document.getElementById("clearSearchBtn");
+      const catButtons = document.querySelectorAll(".cat-tab-btn");
+      const filteredCountText = document.getElementById("filteredCountText");
+      const noResultsAlert = document.getElementById("noResultsAlert");
+      const resetFilterBtn = document.getElementById("resetFilterBtn");
+      const gridContainer = document.getElementById("productGridContainer");
+      const btnPrevPage = document.getElementById("btnPrevPage");
+      const btnNextPage = document.getElementById("btnNextPage");
+      const pageInfoText = document.getElementById("pageInfoText");
+      const pageNumbersContainer = document.getElementById("pageNumbersContainer");
+      const paginationBar = document.getElementById("paginationBar");
+
+      const cards = Array.from(document.querySelectorAll(".product-card"));
+
+      const PAGE_SIZE = 40;
+      let currentPage = 1;
+      let activeCat = "all";
+      let searchKeyword = "";
+
+      let matchingIndices = cards.map((_, i) => i);
+
+      function updateFiltering() {
+        matchingIndices = [];
+        for (let i = 0; i < cards.length; i++) {
+          const card = cards[i];
+          const rowCat = card.getAttribute("data-cat");
+          const searchData = card.getAttribute("data-search") || "";
+
+          const matchesCat = activeCat === "all" || rowCat === activeCat;
+          const matchesSearch = !searchKeyword || searchData.includes(searchKeyword);
+
+          if (matchesCat && matchesSearch) {
+            matchingIndices.push(i);
+          }
+        }
+
+        currentPage = 1;
+        renderCurrentPage();
+      }
+
+      function renderCurrentPage() {
+        const totalMatching = matchingIndices.length;
+        if (filteredCountText) filteredCountText.textContent = totalMatching;
+
+        if (totalMatching === 0) {
+          if (gridContainer) gridContainer.classList.add("hidden");
+          if (paginationBar) paginationBar.classList.add("hidden");
+          if (noResultsAlert) noResultsAlert.classList.remove("hidden");
+          return;
+        }
+
+        if (noResultsAlert) noResultsAlert.classList.add("hidden");
+        if (paginationBar) paginationBar.classList.remove("hidden");
+        if (gridContainer) gridContainer.classList.remove("hidden");
+
+        const totalPages = Math.ceil(totalMatching / PAGE_SIZE);
+        const startIndex = (currentPage - 1) * PAGE_SIZE;
+        const endIndex = Math.min(startIndex + PAGE_SIZE, totalMatching);
+        const activePageIndices = new Set(matchingIndices.slice(startIndex, endIndex));
+
+        for (let i = 0; i < cards.length; i++) {
+          const isVisible = activePageIndices.has(i);
+          cards[i].style.display = isVisible ? "" : "none";
+        }
+
+        if (pageInfoText) {
+          pageInfoText.textContent = `صفحة ${currentPage} من ${totalPages} (${startIndex + 1}-${endIndex})`;
+        }
+
+        if (btnPrevPage) btnPrevPage.disabled = currentPage <= 1;
+        if (btnNextPage) btnNextPage.disabled = currentPage >= totalPages;
+
+        renderPageNumbers(totalPages);
+      }
+
+      function renderPageNumbers(totalPages) {
+        if (!pageNumbersContainer) return;
+        pageNumbersContainer.innerHTML = "";
+
+        const maxButtons = 5;
+        let startP = Math.max(1, currentPage - 2);
+        let endP = Math.min(totalPages, startP + maxButtons - 1);
+        if (endP - startP < maxButtons - 1) {
+          startP = Math.max(1, endP - maxButtons + 1);
+        }
+
+        for (let p = startP; p <= endP; p++) {
+          const btn = document.createElement("button");
+          btn.textContent = p;
+          btn.className = `h-8 w-8 rounded-lg text-xs font-semibold transition-all ${
+            p === currentPage
+              ? "bg-ocean-600 text-white shadow-xs"
+              : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"
+          }`;
+          btn.addEventListener("click", () => {
+            currentPage = p;
+            renderCurrentPage();
+            window.scrollTo({ top: 380, behavior: "smooth" });
+          });
+          pageNumbersContainer.appendChild(btn);
+        }
+      }
+
+      if (btnPrevPage) {
+        btnPrevPage.addEventListener("click", () => {
+          if (currentPage > 1) {
+            currentPage--;
+            renderCurrentPage();
+            window.scrollTo({ top: 380, behavior: "smooth" });
+          }
+        });
+      }
+
+      if (btnNextPage) {
+        btnNextPage.addEventListener("click", () => {
+          const totalPages = Math.ceil(matchingIndices.length / PAGE_SIZE);
+          if (currentPage < totalPages) {
+            currentPage++;
+            renderCurrentPage();
+            window.scrollTo({ top: 380, behavior: "smooth" });
+          }
+        });
+      }
+
+      if (searchInput) {
+        searchInput.addEventListener("input", (e) => {
+          searchKeyword = e.target.value.toLowerCase().trim();
+          if (clearSearchBtn) {
+            clearSearchBtn.classList.toggle("hidden", searchKeyword.length === 0);
+          }
+          updateFiltering();
+        });
+      }
+
+      if (clearSearchBtn) {
+        clearSearchBtn.addEventListener("click", () => {
+          if (searchInput) searchInput.value = "";
+          searchKeyword = "";
+          clearSearchBtn.classList.add("hidden");
+          updateFiltering();
+        });
+      }
+
+      catButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          catButtons.forEach((b) => {
+            b.classList.remove("bg-ocean-600", "text-white", "shadow-sm", "ring-2", "ring-ocean-600/20");
+            b.classList.add("bg-gray-50", "text-gray-700");
+          });
+
+          btn.classList.add("bg-ocean-600", "text-white", "shadow-sm", "ring-2", "ring-ocean-600/20");
+          btn.classList.remove("bg-gray-50", "text-gray-700");
+
+          activeCat = btn.getAttribute("data-cat") || "all";
+          updateFiltering();
+        });
+      });
+
+      if (resetFilterBtn) {
+        resetFilterBtn.addEventListener("click", () => {
+          if (searchInput) searchInput.value = "";
+          searchKeyword = "";
+          if (clearSearchBtn) clearSearchBtn.classList.add("hidden");
+          const allBtn = document.querySelector('.cat-tab-btn[data-cat="all"]');
+          if (allBtn) allBtn.click();
+        });
+      }
+
+      updateFiltering();
+    })();
+  </script>
 </MainLayout>
