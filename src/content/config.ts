@@ -11,8 +11,9 @@ const products = defineCollection({
       "accessories",
     ]),
     model: z.string(),
-    image: z.string(),
-    tech_image: z.string(),
+    image: z.string().default("https://sc02.alicdn.com/kf/A87f819b98dd94207818e182094f27463Q.png"),
+    tech_image: z.string().default("https://sc02.alicdn.com/kf/A365140e7e0044004be9c5b64de4d6234X.png"),
+    description: z.string().optional(),
     featured: z.boolean().default(false),
     publishDate: z.date(),
     specs: z
