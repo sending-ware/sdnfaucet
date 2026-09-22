@@ -1,6 +1,6 @@
 ---
-image: "https://sc02.alicdn.com/kf/A5e65b8d46d514667ae4527d5b98fd9e1W.png"
-tech_image: "https://sc02.alicdn.com/kf/A32081c00e9da46839e098c66cc2de94ca.png"
+image: "/images/products/sdn-063.jpg"
+tech_image: "/images/products/sdn-063.jpg"
 title: "SDN-063 Wall-Mounted Dual-Control Bath Shower Mixer Valve Series"
 description: "Wholesale SDN-063 Wall-Mounted Dual-Control Bath Shower Mixer Valve Series (20 models). Factory-direct B2B sanitary ware from Quanzhou, China. Full catalog specifications, tiered pricing & export MOQ."
 category: "bath-mixers"
@@ -26,26 +26,26 @@ This comprehensive series represents **20 export-certified models** extracted di
 
 | Model No. | Surface Finish | Material | Functional Features | Factory Tiered Price | MOQ | Catalog Page |
 |---|---|---|---|---|---|---|
-| SDN-063 | Chrome/White/Black/Grey | Brass/Aluminum/Zinc Alloy/Stainless Steel | Export Standard B2B Grade | 2-499 pieces: ￥336.04 ≥500 pieces: ￥99.87 | 10 | P.27 |
-| SDN-064 | / | Brass/Aluminum/Zinc Alloy/Stainless Steel | Export Standard B2B Grade | 2-499 pieces: ￥483.31 ≥500 pieces: ￥369.10 | 10 | P.27 |
-| SDN-065 | Chrome | brass | Export Standard B2B Grade | 2-499 pieces: ￥161.95 ≥500 pieces: ￥145.08 | 10 | P.27 |
-| SDN-066 | Chrome | brass | Export Standard B2B Grade | 2-499 pieces: ￥103.92 ≥500 pieces: ￥91.10 | 10 | P.27 |
-| SDN-071 | Chrome | brass | Bath Shower Mixer | 2-499 pieces: ￥161.27 ≥500 pieces: ￥141.70 | 10 | P.27 |
-| SDN-072 | Chrome | brass | Bath Shower Mixer | 2-499 pieces: ￥120.79 ≥500 pieces: ￥105.94 | 10 | P.27 |
-| SDN-077 | Chrome/White/Black/Grey | brass | Bidet Sprayer Set | 2-499 pieces: ￥126.05 ≥500 pieces: / | 10 | P.27 |
-| SDN-078 | Chrome/White/Black/Grey | brass | Bidet Sprayer Set | 2-499 pieces: ￥138.84 ≥500 pieces: / | 10 | P.27 |
-| SDN-079 | Chrome/White/Black/Grey | brass | Bidet Sprayer Set | 2-499 pieces: ￥154.39 ≥500 pieces: / | 10 | P.27 |
-| SDN-080 | Chrome/White/Black/Grey | brass | Bidet Sprayer Set | 2-499 pieces: ￥167.28 ≥500 pieces: / | 10 | P.27 |
-| SDN-067 | Chrome | brass | Export Standard B2B Grade | : ￥161.95 : ￥145.08 | 10 | P.54 |
-| SDN-068 | Chrome | brass | Export Standard B2B Grade | : ￥127.53 : ￥111.34 | 10 | P.54 |
-| SDN-069 | Chrome | brass | Export Standard B2B Grade | : ￥89.75 : ￥78.28 | 10 | P.54 |
-| SDN-070 | Chrome | brass | Export Standard B2B Grade | : ￥143.19 : ￥136.04 | 10 | P.54 |
-| SDN-075 | / | brass | Bath Shower Mixer | : ￥188.94 : ￥165.32 | 10 | P.54 |
-| SDN-076 | / | brass | Bath Shower Mixer | : ￥131.92 : ￥125.38 | 10 | P.54 |
-| SDN-083 | Chrome/Black/Grey | stainless steel | Bidet Sprayer Set | : ￥39.01 : / | 10 | P.54 |
-| SDN-084 | / | stainless steel | Bidet Sprayer Set | : ￥74.23 : ￥66.81 | 10 | P.54 |
-| SDN-081 | / | stainless steel | Bidet Sprayer Set | : ￥58.64 | 10 | P.54 |
-| SDN-082 | Chrome/Black/Grey | stainless steel | Bidet Sprayer Set | : ￥39.07 | 10 | P.54 |
+| **SDN-063** | Chrome/White/Black/Grey | Brass/Aluminum/Zinc Alloy/Stainless Steel | Export Standard B2B Grade | 2-499 pieces: ￥336.04 ≥500 pieces: ￥99.87 | 10 | P.27 |
+| **SDN-064** | / | Brass/Aluminum/Zinc Alloy/Stainless Steel | Export Standard B2B Grade | 2-499 pieces: ￥483.31 ≥500 pieces: ￥369.10 | 10 | P.27 |
+| **SDN-065** | Chrome | brass | Export Standard B2B Grade | 2-499 pieces: ￥161.95 ≥500 pieces: ￥145.08 | 10 | P.27 |
+| **SDN-066** | Chrome | brass | Export Standard B2B Grade | 2-499 pieces: ￥103.92 ≥500 pieces: ￥91.10 | 10 | P.27 |
+| **SDN-071** | Chrome | brass | Bath Shower Mixer | 2-499 pieces: ￥161.27 ≥500 pieces: ￥141.70 | 10 | P.27 |
+| **SDN-072** | Chrome | brass | Bath Shower Mixer | 2-499 pieces: ￥120.79 ≥500 pieces: ￥105.94 | 10 | P.27 |
+| **SDN-077** | Chrome/White/Black/Grey | brass | Bidet Sprayer Set | 2-499 pieces: ￥126.05 ≥500 pieces: / | 10 | P.27 |
+| **SDN-078** | Chrome/White/Black/Grey | brass | Bidet Sprayer Set | 2-499 pieces: ￥138.84 ≥500 pieces: / | 10 | P.27 |
+| **SDN-079** | Chrome/White/Black/Grey | brass | Bidet Sprayer Set | 2-499 pieces: ￥154.39 ≥500 pieces: / | 10 | P.27 |
+| **SDN-080** | Chrome/White/Black/Grey | brass | Bidet Sprayer Set | 2-499 pieces: ￥167.28 ≥500 pieces: / | 10 | P.27 |
+| **SDN-067** | Chrome | brass | Export Standard B2B Grade | : ￥161.95 : ￥145.08 | 10 | P.54 |
+| **SDN-068** | Chrome | brass | Export Standard B2B Grade | : ￥127.53 : ￥111.34 | 10 | P.54 |
+| **SDN-069** | Chrome | brass | Export Standard B2B Grade | : ￥89.75 : ￥78.28 | 10 | P.54 |
+| **SDN-070** | Chrome | brass | Export Standard B2B Grade | : ￥143.19 : ￥136.04 | 10 | P.54 |
+| **SDN-075** | / | brass | Bath Shower Mixer | : ￥188.94 : ￥165.32 | 10 | P.54 |
+| **SDN-076** | / | brass | Bath Shower Mixer | : ￥131.92 : ￥125.38 | 10 | P.54 |
+| **SDN-083** | Chrome/Black/Grey | stainless steel | Bidet Sprayer Set | : ￥39.01 : / | 10 | P.54 |
+| **SDN-084** | / | stainless steel | Bidet Sprayer Set | : ￥74.23 : ￥66.81 | 10 | P.54 |
+| **SDN-081** | / | stainless steel | Bidet Sprayer Set | : ￥58.64 | 10 | P.54 |
+| **SDN-082** | Chrome/Black/Grey | stainless steel | Bidet Sprayer Set | : ￥39.07 | 10 | P.54 |
 
 ### Manufacturing & Quality Assurance
 

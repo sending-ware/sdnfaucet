@@ -1,6 +1,6 @@
 ---
-image: "https://sc02.alicdn.com/kf/A87f819b98dd94207818e182094f27463Q.png"
-tech_image: "https://sc02.alicdn.com/kf/A365140e7e0044004be9c5b64de4d6234X.png"
+image: "/images/products/sdn-7200a.jpg"
+tech_image: "/images/products/sdn-7200a.jpg"
 title: "SDN-7200 Flagship Pull-Out & 360° Rotatable Kitchen Faucet Series"
 description: "Wholesale SDN-7200 Flagship Pull-Out & 360° Rotatable Kitchen Faucet Series (14 models). Factory-direct B2B sanitary ware from Quanzhou, China. Full catalog specifications, tiered pricing & export MOQ."
 category: "kitchen-faucets"
@@ -26,20 +26,20 @@ This comprehensive series represents **14 export-certified models** extracted di
 
 | Model No. | Surface Finish | Material | Functional Features | Factory Tiered Price | MOQ | Catalog Page |
 |---|---|---|---|---|---|---|
-| SDN-7200A | Chrome | stainless steel | Pull-out / 360° rotation | 2-499 pieces: ￥72.00 ≥500 pieces: ￥55.00 | 10 | P.1 |
-| SDN-7200B | Brushed Nickel | stainless steel | Pull-out / 360° rotation | 2-499 pieces: ￥69.00 ≥500 pieces: ￥52.00 | 10 | P.1 |
-| SDN-7200C | Black | stainless steel | Pull-out / 360° rotation | 2-499 pieces: ￥70.00 ≥500 pieces: ￥53.00 | 10 | P.1 |
-| SDN-7200D | Brushed gold | stainless steel | Pull-out / 360° rotation | 2-499 pieces: ￥88.00 ≥500 pieces: ￥68.00 | 10 | P.1 |
-| SDN-7213 | Chrome | stainless steel | Pull-out / 360° rotation | 2-499 pieces: ￥110.00 ≥500 pieces: ￥85.00 | 10 | P.1 |
-| SDN-7214 | Brushed nickel | stainless steel | Pull-out / 360° rotation | 2-499 pieces: ￥110.00 ≥500 pieces: ￥85 | 10 | P.1 |
-| SDN-7011 | Black | stainless steel | Pull-out / 360° rotation | 2-499 pieces: ￥120.00 ≥500 pieces: ￥90.00 | 10 | P.1 |
-| SDN-7012 | Brushed gold | stainless steel | Pull-out / 360° rotation | 2-499 pieces: ￥150.00 ≥500 pieces: ￥110.00 | 10 | P.1 |
-| SDN-7070 | Brushed | stainless steel | 360° rotation | 10-299 pieces: ￥75.00 ≥300 pieces: ￥65.00 | 10 | P.4 |
-| SDN-7070A | Brass | Brass | 360° rotation | 10-299 pieces: ￥172.65 ≥300 pieces: ￥148.96 | 10 | P.4 |
-| SDN-7204A | Chrome | 304 stainless steel | Pull-out / 360° rotation | : ￥90.00 : ￥75.00 | 10 | P.28 |
-| SDN-7204B | Brushed nickel | 304 stainless steel | Pull-out / 360° rotation | : ￥90.00 : ￥75.00 | 10 | P.28 |
-| SDN-7201 | Black | 304 stainless steel | Pull-out / 360° rotation | : ￥90.00 : ￥75.00 | 10 | P.28 |
-| SDN-7056 | Brushed gold | 304 stainless steel | Pull-out / 360° rotation | : ￥110.00 : ￥90.00 | 10 | P.28 |
+| **SDN-7200A** | Chrome | stainless steel | Pull-out / 360° rotation | 2-499 pieces: ￥72.00 ≥500 pieces: ￥55.00 | 10 | P.1 |
+| **SDN-7200B** | Brushed Nickel | stainless steel | Pull-out / 360° rotation | 2-499 pieces: ￥69.00 ≥500 pieces: ￥52.00 | 10 | P.1 |
+| **SDN-7200C** | Black | stainless steel | Pull-out / 360° rotation | 2-499 pieces: ￥70.00 ≥500 pieces: ￥53.00 | 10 | P.1 |
+| **SDN-7200D** | Brushed gold | stainless steel | Pull-out / 360° rotation | 2-499 pieces: ￥88.00 ≥500 pieces: ￥68.00 | 10 | P.1 |
+| **SDN-7213** | Chrome | stainless steel | Pull-out / 360° rotation | 2-499 pieces: ￥110.00 ≥500 pieces: ￥85.00 | 10 | P.1 |
+| **SDN-7214** | Brushed nickel | stainless steel | Pull-out / 360° rotation | 2-499 pieces: ￥110.00 ≥500 pieces: ￥85 | 10 | P.1 |
+| **SDN-7011** | Black | stainless steel | Pull-out / 360° rotation | 2-499 pieces: ￥120.00 ≥500 pieces: ￥90.00 | 10 | P.1 |
+| **SDN-7012** | Brushed gold | stainless steel | Pull-out / 360° rotation | 2-499 pieces: ￥150.00 ≥500 pieces: ￥110.00 | 10 | P.1 |
+| **SDN-7070** | Brushed | stainless steel | 360° rotation | 10-299 pieces: ￥75.00 ≥300 pieces: ￥65.00 | 10 | P.4 |
+| **SDN-7070A** | Brass | Brass | 360° rotation | 10-299 pieces: ￥172.65 ≥300 pieces: ￥148.96 | 10 | P.4 |
+| **SDN-7204A** | Chrome | 304 stainless steel | Pull-out / 360° rotation | : ￥90.00 : ￥75.00 | 10 | P.28 |
+| **SDN-7204B** | Brushed nickel | 304 stainless steel | Pull-out / 360° rotation | : ￥90.00 : ￥75.00 | 10 | P.28 |
+| **SDN-7201** | Black | 304 stainless steel | Pull-out / 360° rotation | : ￥90.00 : ￥75.00 | 10 | P.28 |
+| **SDN-7056** | Brushed gold | 304 stainless steel | Pull-out / 360° rotation | : ￥110.00 : ￥90.00 | 10 | P.28 |
 
 ### Manufacturing & Quality Assurance
 

@@ -1,6 +1,6 @@
 ---
-image: "https://sc02.alicdn.com/kf/A5e65b8d46d514667ae4527d5b98fd9e1W.png"
-tech_image: "https://sc02.alicdn.com/kf/A32081c00e9da46839e098c66cc2de94ca.png"
+image: "/images/products/sdn-041.jpg"
+tech_image: "/images/products/sdn-041.jpg"
 title: "SDN-073 Solid Brass Press-Action Hygienic Toilet Bidet Sprayer Shattaf Series"
 description: "Wholesale SDN-073 Solid Brass Press-Action Hygienic Toilet Bidet Sprayer Shattaf Series (12 models). Factory-direct B2B sanitary ware from Quanzhou, China. Full catalog specifications, tiered pricing & export MOQ."
 category: "bath-mixers"
@@ -26,18 +26,18 @@ This comprehensive series represents **12 export-certified models** extracted di
 
 | Model No. | Surface Finish | Material | Functional Features | Factory Tiered Price | MOQ | Catalog Page |
 |---|---|---|---|---|---|---|
-| SDN-041 | / | brass | Hardware Set | 2-499 pieces: ￥37.12 | 10 pcs | P.25 |
-| SDN-042 | / | brass | Hardware Set | 2-499 pieces: ￥113.09 | 10 pcs | P.25 |
-| SDN-043 | / | 304 SUS | Hardware Set | 2-499 pieces: ￥140.36 | 10 pcs | P.25 |
-| SDN-044 | / | brass | Hardware Set | 2-499 pieces: ￥161.27 | 10 pcs | P.25 |
-| SDN-049 | / | brass | Hardware Set | 2-499 pieces: ￥157.90 ≥500 pieces: / | 10 | P.26 |
-| SDN-073 | Clear | brass | Bath Shower Mixer | 2-499 pieces: ￥303.65 ≥500 pieces: ￥269.91 | 10 | P.27 |
-| SDN-074 | / | brass | Bath Shower Mixer | 2-499 pieces: ￥161.95 ≥500 pieces: ￥141.70 | 10 | P.27 |
-| SDN-040 | / | metal | Hardware Set | : ￥101.22 : / | 10 | P.52 |
-| SDN-045 | / | stainless steel | Hardware Set | : ￥755.74 | 10 pcs | P.52 |
-| SDN-046 | / | brass | Hardware Set | : ￥171.39 | 10 pcs | P.52 |
-| SDN-047 | / | brass | Hardware Set | : ￥171.39 | 10 pcs | P.52 |
-| SDN-048 | / | brass | Hardware Set | : ￥157.90 | 10 pcs | P.52 |
+| **SDN-041** | / | brass | Hardware Set | 2-499 pieces: ￥37.12 | 10 pcs | P.25 |
+| **SDN-042** | / | brass | Hardware Set | 2-499 pieces: ￥113.09 | 10 pcs | P.25 |
+| **SDN-043** | / | 304 SUS | Hardware Set | 2-499 pieces: ￥140.36 | 10 pcs | P.25 |
+| **SDN-044** | / | brass | Hardware Set | 2-499 pieces: ￥161.27 | 10 pcs | P.25 |
+| **SDN-049** | / | brass | Hardware Set | 2-499 pieces: ￥157.90 ≥500 pieces: / | 10 | P.26 |
+| **SDN-073** | Clear | brass | Bath Shower Mixer | 2-499 pieces: ￥303.65 ≥500 pieces: ￥269.91 | 10 | P.27 |
+| **SDN-074** | / | brass | Bath Shower Mixer | 2-499 pieces: ￥161.95 ≥500 pieces: ￥141.70 | 10 | P.27 |
+| **SDN-040** | / | metal | Hardware Set | : ￥101.22 : / | 10 | P.52 |
+| **SDN-045** | / | stainless steel | Hardware Set | : ￥755.74 | 10 pcs | P.52 |
+| **SDN-046** | / | brass | Hardware Set | : ￥171.39 | 10 pcs | P.52 |
+| **SDN-047** | / | brass | Hardware Set | : ￥171.39 | 10 pcs | P.52 |
+| **SDN-048** | / | brass | Hardware Set | : ￥157.90 | 10 pcs | P.52 |
 
 ### Manufacturing & Quality Assurance
 

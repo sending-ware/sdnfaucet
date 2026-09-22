@@ -1,6 +1,6 @@
 ---
-image: "https://sc02.alicdn.com/kf/A2e4fc75d1e314d27ab847e555f2392b0J.png"
-tech_image: "https://sc02.alicdn.com/kf/Ae7c028757d994671983653c6da2e2a52J.png"
+image: "/images/products/sdn-001.jpg"
+tech_image: "/images/products/sdn-001.jpg"
 title: "SDN-ACC Solid Brass & Stainless Steel 5-Piece Complete Bathroom Hardware Accessory Sets"
 description: "Wholesale SDN-ACC Solid Brass & Stainless Steel 5-Piece Complete Bathroom Hardware Accessory Sets (24 models). Factory-direct B2B sanitary ware from Quanzhou, China. Full catalog specifications, tiered pricing & export MOQ."
 category: "accessories"
@@ -26,30 +26,30 @@ This comprehensive series represents **24 export-certified models** extracted di
 
 | Model No. | Surface Finish | Material | Functional Features | Factory Tiered Price | MOQ | Catalog Page |
 |---|---|---|---|---|---|---|
-| SDN-001 | / / Matte white/Black / White/Black / White/Black/Grey | alloy / aluminium | Hardware Set LED | Tiered Pricing (Inquire) | 10 pcs | P.23 |
-| SDN-002 | / / Matte white/Black / White/Black / White/Black/Grey | alloy / aluminium | Hardware Set WIFI | Tiered Pricing (Inquire) | 10 pcs | P.23 |
-| SDN-003 | / / Matte white/Black / White/Black / White/Black/Grey | alloy / aluminium | Hardware Set LED | Tiered Pricing (Inquire) | 10 pcs | P.23 |
-| SDN-004 | / / Matte white/Black / White/Black / White/Black/Grey | alloy / aluminium | Hardware Set WIFI | Tiered Pricing (Inquire) | 10 pcs | P.23 |
-| SDN-009 | White/Black | alloy | Hardware Set LED | 2-499 pieces: ￥258.17 ≥500 pieces: / | 10 | P.24 |
-| SDN-010 | White/Black | alloy | Hardware Set WIFI | 2-499 pieces: ￥283.20 ≥500 pieces: / | 10 | P.24 |
-| SDN-011 | White/Black | alloy | Hardware Set LED | 2-499 pieces: ￥228.55 ≥500 pieces: / | 10 | P.24 |
-| SDN-012 | White/Black | alloy | Hardware Set WIFI | 2-499 pieces: ￥266.81 ≥500 pieces: / | 10 | P.24 |
-| SDN-025 | White/Black/Grey | alloy | Hardware Set LED 4bar | 2-499 pieces: ￥507.49 ≥500 pieces: / | 10 | P.25 |
-| SDN-026 | White/Black/Grey | alloy | Hardware Set WIFI 1bar | 2-499 pieces: ￥532.59 ≥500 pieces: / | 10 | P.25 |
-| SDN-027 | White/Black/Grey | alloy | Hardware Set WIFI 2bar | 2-499 pieces: ￥532.59 ≥500 pieces: / | 10 | P.25 |
-| SDN-028 | White/Black/Grey | alloy | Hardware Set WIFI 3bar | 2-499 pieces: ￥532.59 ≥500 pieces: / | 10 | P.25 |
-| SDN-005 | / / Matte white/Black / White/Black / White/Black/Grey | alloy / aluminium | Hardware Set LED | Tiered Pricing (Inquire) | 10 pcs | P.50 |
-| SDN-006 | / / Matte white/Black / White/Black / White/Black/Grey | alloy / aluminium | Hardware Set WIFI | Tiered Pricing (Inquire) | 10 pcs | P.50 |
-| SDN-007 | / / Matte white/Black / White/Black / White/Black/Grey | alloy / aluminium | Hardware Set LED | Tiered Pricing (Inquire) | 10 pcs | P.50 |
-| SDN-008 | / / Matte white/Black / White/Black / White/Black/Grey | alloy / aluminium | Hardware Set WIFI | Tiered Pricing (Inquire) | 10 pcs | P.50 |
-| SDN-013 | White/Black | alloy | Hardware Set LED | : ￥335.83 : / | 10 | P.51 |
-| SDN-014 | White/Black | alloy | Hardware Set WIFI | : ￥360.93 : / | 10 | P.51 |
-| SDN-015 | / | aluminium | Hardware Set | : ￥194.27 : ￥171.80 | 10 | P.51 |
-| SDN-016 | / | alloy | Hardware Set LED | : ￥432.32 : / | 10 | P.51 |
-| SDN-029 | White/Black/Grey | alloy | Hardware Set WIFI 4bar | : ￥532.59 | 10 | P.52 |
-| SDN-030 | Matte white/Black | alloy | Hardware Set 1bar | : ￥407.29 | 10 | P.52 |
-| SDN-031 | Matte white/Black | alloy | Hardware Set 2bar | : ￥407.29 | 10 | P.52 |
-| SDN-032 | Matte white/Black | alloy | Hardware Set 3bar | : ￥407.29 | 10 | P.52 |
+| **SDN-001** | / / Matte white/Black / White/Black / White/Black/Grey | alloy / aluminium | Hardware Set LED | Tiered Pricing (Inquire) | 10 pcs | P.23 |
+| **SDN-002** | / / Matte white/Black / White/Black / White/Black/Grey | alloy / aluminium | Hardware Set WIFI | Tiered Pricing (Inquire) | 10 pcs | P.23 |
+| **SDN-003** | / / Matte white/Black / White/Black / White/Black/Grey | alloy / aluminium | Hardware Set LED | Tiered Pricing (Inquire) | 10 pcs | P.23 |
+| **SDN-004** | / / Matte white/Black / White/Black / White/Black/Grey | alloy / aluminium | Hardware Set WIFI | Tiered Pricing (Inquire) | 10 pcs | P.23 |
+| **SDN-009** | White/Black | alloy | Hardware Set LED | 2-499 pieces: ￥258.17 ≥500 pieces: / | 10 | P.24 |
+| **SDN-010** | White/Black | alloy | Hardware Set WIFI | 2-499 pieces: ￥283.20 ≥500 pieces: / | 10 | P.24 |
+| **SDN-011** | White/Black | alloy | Hardware Set LED | 2-499 pieces: ￥228.55 ≥500 pieces: / | 10 | P.24 |
+| **SDN-012** | White/Black | alloy | Hardware Set WIFI | 2-499 pieces: ￥266.81 ≥500 pieces: / | 10 | P.24 |
+| **SDN-025** | White/Black/Grey | alloy | Hardware Set LED 4bar | 2-499 pieces: ￥507.49 ≥500 pieces: / | 10 | P.25 |
+| **SDN-026** | White/Black/Grey | alloy | Hardware Set WIFI 1bar | 2-499 pieces: ￥532.59 ≥500 pieces: / | 10 | P.25 |
+| **SDN-027** | White/Black/Grey | alloy | Hardware Set WIFI 2bar | 2-499 pieces: ￥532.59 ≥500 pieces: / | 10 | P.25 |
+| **SDN-028** | White/Black/Grey | alloy | Hardware Set WIFI 3bar | 2-499 pieces: ￥532.59 ≥500 pieces: / | 10 | P.25 |
+| **SDN-005** | / / Matte white/Black / White/Black / White/Black/Grey | alloy / aluminium | Hardware Set LED | Tiered Pricing (Inquire) | 10 pcs | P.50 |
+| **SDN-006** | / / Matte white/Black / White/Black / White/Black/Grey | alloy / aluminium | Hardware Set WIFI | Tiered Pricing (Inquire) | 10 pcs | P.50 |
+| **SDN-007** | / / Matte white/Black / White/Black / White/Black/Grey | alloy / aluminium | Hardware Set LED | Tiered Pricing (Inquire) | 10 pcs | P.50 |
+| **SDN-008** | / / Matte white/Black / White/Black / White/Black/Grey | alloy / aluminium | Hardware Set WIFI | Tiered Pricing (Inquire) | 10 pcs | P.50 |
+| **SDN-013** | White/Black | alloy | Hardware Set LED | : ￥335.83 : / | 10 | P.51 |
+| **SDN-014** | White/Black | alloy | Hardware Set WIFI | : ￥360.93 : / | 10 | P.51 |
+| **SDN-015** | / | aluminium | Hardware Set | : ￥194.27 : ￥171.80 | 10 | P.51 |
+| **SDN-016** | / | alloy | Hardware Set LED | : ￥432.32 : / | 10 | P.51 |
+| **SDN-029** | White/Black/Grey | alloy | Hardware Set WIFI 4bar | : ￥532.59 | 10 | P.52 |
+| **SDN-030** | Matte white/Black | alloy | Hardware Set 1bar | : ￥407.29 | 10 | P.52 |
+| **SDN-031** | Matte white/Black | alloy | Hardware Set 2bar | : ￥407.29 | 10 | P.52 |
+| **SDN-032** | Matte white/Black | alloy | Hardware Set 3bar | : ￥407.29 | 10 | P.52 |
 
 ### Manufacturing & Quality Assurance
 

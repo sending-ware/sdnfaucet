@@ -1,6 +1,6 @@
 ---
-image: "https://sc02.alicdn.com/kf/A2e4fc75d1e314d27ab847e555f2392b0J.png"
-tech_image: "https://sc02.alicdn.com/kf/Ae7c028757d994671983653c6da2e2a52J.png"
+image: "/images/products/sdn-017.jpg"
+tech_image: "/images/products/sdn-017.jpg"
 title: "SDN-017 Smart Carbon Fiber Electric Heated Towel Warmer with Touchscreen & WiFi App Control"
 description: "Wholesale SDN-017 Smart Carbon Fiber Electric Heated Towel Warmer with Touchscreen & WiFi App Control (18 models). Factory-direct B2B sanitary ware from Quanzhou, China. Full catalog specifications, tiered pricing & export MOQ."
 category: "accessories"
@@ -26,24 +26,24 @@ This comprehensive series represents **18 export-certified models** extracted di
 
 | Model No. | Surface Finish | Material | Functional Features | Factory Tiered Price | MOQ | Catalog Page |
 |---|---|---|---|---|---|---|
-| SDN-017 | / | alloy | Hardware Set WIFI | 2-499 pieces: ￥463.63 ≥500 pieces: / | 10 | P.24 |
-| SDN-018 | White/Black | alloy | Hardware Set LED | 2-499 pieces: ￥350.88 ≥500 pieces: / | 10 | P.24 |
-| SDN-019 | White/Black | alloy | Hardware Set WIFI | 2-499 pieces: ￥382.19 ≥500 pieces: / | 10 | P.24 |
-| SDN-020 | White/Black | aluminium | Hardware Set | 2-499 pieces: ￥413.57 ≥500 pieces: ￥365.79 | 10 | P.24 |
-| SDN-033 | / | aluminium | Hardware Set | 2-499 pieces: ￥239.54 ≥500 pieces: / | 10 | P.25 |
-| SDN-034 | / | alloy | Hardware Set | 2-499 pieces: ￥111.54 ≥500 pieces: ￥103.24 | 10 | P.25 |
-| SDN-035 | / | stainless steel | Hardware Set | 2-499 pieces: ￥87.72 ≥500 pieces: ￥67.48 | 10 | P.25 |
-| SDN-036 | / | alloy | Hardware Set | 2-499 pieces: ￥80.98 ≥500 pieces: ￥74.23 | 10 | P.25 |
-| SDN-050 | / | aluminum | Hardware Set | 2-499 pieces: ￥168.69 ≥500 pieces: ￥134.96 | 10 | P.26 |
-| SDN-051 | / | brass | Hardware Set | 2-499 pieces: ￥163.97 ≥500 pieces: / | 10 | P.26 |
-| SDN-052 | / | brass | Hardware Set | 2-499 pieces: ￥150.48 ≥500 pieces: / | 10 | P.26 |
-| SDN-021 | / | alloy | Hardware Set | : ￥208.30 : ￥184.01 | 10 | P.51 |
-| SDN-022 | White/Black/Grey | alloy | Hardware Set LED 1bar | : ￥507.49 : / | 10 | P.51 |
-| SDN-023 | White/Black/Grey | alloy | Hardware Set LED 2bar | : ￥507.49 : / | 10 | P.51 |
-| SDN-024 | White/Black/Grey | alloy | Hardware Set LED 3bar | : ￥507.49 : / | 10 | P.51 |
-| SDN-037 | Chrome | brass | Hardware Set | : ￥195.69 : ￥161.95 | 10 | P.52 |
-| SDN-038 | / | stainless steel | Hardware Set | : ￥632.26 : ￥593.79 | 10 | P.52 |
-| SDN-039 | / | 304 SUS | Hardware Set | : ￥192.99 : ￥168.69 | 10 | P.52 |
+| **SDN-017** | / | alloy | Hardware Set WIFI | 2-499 pieces: ￥463.63 ≥500 pieces: / | 10 | P.24 |
+| **SDN-018** | White/Black | alloy | Hardware Set LED | 2-499 pieces: ￥350.88 ≥500 pieces: / | 10 | P.24 |
+| **SDN-019** | White/Black | alloy | Hardware Set WIFI | 2-499 pieces: ￥382.19 ≥500 pieces: / | 10 | P.24 |
+| **SDN-020** | White/Black | aluminium | Hardware Set | 2-499 pieces: ￥413.57 ≥500 pieces: ￥365.79 | 10 | P.24 |
+| **SDN-033** | / | aluminium | Hardware Set | 2-499 pieces: ￥239.54 ≥500 pieces: / | 10 | P.25 |
+| **SDN-034** | / | alloy | Hardware Set | 2-499 pieces: ￥111.54 ≥500 pieces: ￥103.24 | 10 | P.25 |
+| **SDN-035** | / | stainless steel | Hardware Set | 2-499 pieces: ￥87.72 ≥500 pieces: ￥67.48 | 10 | P.25 |
+| **SDN-036** | / | alloy | Hardware Set | 2-499 pieces: ￥80.98 ≥500 pieces: ￥74.23 | 10 | P.25 |
+| **SDN-050** | / | aluminum | Hardware Set | 2-499 pieces: ￥168.69 ≥500 pieces: ￥134.96 | 10 | P.26 |
+| **SDN-051** | / | brass | Hardware Set | 2-499 pieces: ￥163.97 ≥500 pieces: / | 10 | P.26 |
+| **SDN-052** | / | brass | Hardware Set | 2-499 pieces: ￥150.48 ≥500 pieces: / | 10 | P.26 |
+| **SDN-021** | / | alloy | Hardware Set | : ￥208.30 : ￥184.01 | 10 | P.51 |
+| **SDN-022** | White/Black/Grey | alloy | Hardware Set LED 1bar | : ￥507.49 : / | 10 | P.51 |
+| **SDN-023** | White/Black/Grey | alloy | Hardware Set LED 2bar | : ￥507.49 : / | 10 | P.51 |
+| **SDN-024** | White/Black/Grey | alloy | Hardware Set LED 3bar | : ￥507.49 : / | 10 | P.51 |
+| **SDN-037** | Chrome | brass | Hardware Set | : ￥195.69 : ￥161.95 | 10 | P.52 |
+| **SDN-038** | / | stainless steel | Hardware Set | : ￥632.26 : ￥593.79 | 10 | P.52 |
+| **SDN-039** | / | 304 SUS | Hardware Set | : ￥192.99 : ￥168.69 | 10 | P.52 |
 
 ### Manufacturing & Quality Assurance
 

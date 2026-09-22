@@ -1,6 +1,6 @@
 ---
-image: "https://sc02.alicdn.com/kf/A3b4edd617b2044ea803ef4431c43a60eL.png"
-tech_image: "https://sc02.alicdn.com/kf/Aa60fe5f8bf1d48a0b562629386df76a9c.png"
+image: "/images/products/sdn-1145.jpg"
+tech_image: "/images/products/sdn-1145.jpg"
 title: "SDN-1145 Ergonomic Pull-Out & Upward Fountain Rinse Basin Mixer Series"
 description: "Wholesale SDN-1145 Ergonomic Pull-Out & Upward Fountain Rinse Basin Mixer Series (8 models). Factory-direct B2B sanitary ware from Quanzhou, China. Full catalog specifications, tiered pricing & export MOQ."
 category: "basin-faucets"
@@ -26,14 +26,14 @@ This comprehensive series represents **8 export-certified models** extracted dir
 
 | Model No. | Surface Finish | Material | Functional Features | Factory Tiered Price | MOQ | Catalog Page |
 |---|---|---|---|---|---|---|
-| SDN-1145 | chrome | other | Pull-out | 2-499 pieces: ￥65.00 ≥500 pieces: ￥56.00 | 2 | P.11 |
-| SDN-1146 | shrome/black | other | Pull-out | 2-499 pieces: ￥110.00 ≥500 pieces: ￥90.00 | 2 | P.11 |
-| SDN-1147 | Chrome/black | other | Pull-out | 2-499 pieces: ￥115.00 ≥500 pieces: ￥95.00 | 2 | P.11 |
-| SDN-1148 | Chrome/black | other | Pull-out | 2-499 pieces: ￥75.00 ≥500 pieces: ￥65.00 | 2 | P.11 |
-| SDN-1151 | chrome | Brass | Deck-Mount Buthtub Faucet | 2-499 pieces: ￥167.69 ≥500 pieces: ￥158.90 | 2 | P.11 |
-| SDN-1152 | black | Brass | Deck-Mount Buthtub Faucet | 2-499 pieces: ￥384.05 ≥500 pieces: ￥361.06 | 2 | P.11 |
-| SDN-1153 | black | Brass | Deck-Mount Buthtub Faucet | 2-499 pieces: ￥384.05 ≥500 pieces: ￥361.06 | 2 | P.11 |
-| SDN-1154 | gold | Brass | Deck-Mount Buthtub Faucet | 2-499 pieces: ￥304.26 ≥500 pieces: ￥263.70 | 2 | P.11 |
+| **SDN-1145** | chrome | other | Pull-out | 2-499 pieces: ￥65.00 ≥500 pieces: ￥56.00 | 2 | P.11 |
+| **SDN-1146** | shrome/black | other | Pull-out | 2-499 pieces: ￥110.00 ≥500 pieces: ￥90.00 | 2 | P.11 |
+| **SDN-1147** | Chrome/black | other | Pull-out | 2-499 pieces: ￥115.00 ≥500 pieces: ￥95.00 | 2 | P.11 |
+| **SDN-1148** | Chrome/black | other | Pull-out | 2-499 pieces: ￥75.00 ≥500 pieces: ￥65.00 | 2 | P.11 |
+| **SDN-1151** | chrome | Brass | Deck-Mount Buthtub Faucet | 2-499 pieces: ￥167.69 ≥500 pieces: ￥158.90 | 2 | P.11 |
+| **SDN-1152** | black | Brass | Deck-Mount Buthtub Faucet | 2-499 pieces: ￥384.05 ≥500 pieces: ￥361.06 | 2 | P.11 |
+| **SDN-1153** | black | Brass | Deck-Mount Buthtub Faucet | 2-499 pieces: ￥384.05 ≥500 pieces: ￥361.06 | 2 | P.11 |
+| **SDN-1154** | gold | Brass | Deck-Mount Buthtub Faucet | 2-499 pieces: ￥304.26 ≥500 pieces: ￥263.70 | 2 | P.11 |
 
 ### Manufacturing & Quality Assurance
 

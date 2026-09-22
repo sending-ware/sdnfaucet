@@ -1,8 +1,12 @@
 ---
 import { getCollection } from "astro:content";
 import MainLayout from "@layouts/MainLayout.astro";
+import fs from "node:fs";
+import path from "node:path";
 
 const products = await getCollection("products");
+const catalogPath = path.resolve("./public/data/catalog.json");
+const allCatalogItems = JSON.parse(fs.readFileSync(catalogPath, "utf-8"));
 
 // Language awareness: detect the active locale from the URL.
 //   /products     -> English
@@ -199,6 +203,161 @@ const mailHref = (title: string, model: string) =>
           })
         }
       </div>
+
+      <!-- Full 592 Product Model Matrix -->
+      <div class="mt-24 border-t border-gray-200 pt-16">
+        <div class="mx-auto max-w-3xl text-center">
+          <span class="rounded-full bg-ocean-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-ocean-700">
+            {locale === "zh" ? "全量型号检索" : "Complete Model Directory"}
+          </span>
+          <h2 class="mt-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            {locale === "zh" ? "54页图册 592 款产品完整规格与价格索引" : "All 592 Catalog Products — Full Specifications & Wholesale Directory"}
+          </h2>
+          <p class="mt-3 text-base text-gray-600">
+            {locale === "zh" 
+              ? "支持按型号、颜色、材质实时搜索。所有型号均保留原图册实物图片、出厂阶梯批发价与起订量。"
+              : "Search and filter all 592 factory catalog items by Model No., finish, or material. Each item features authentic photos, tiered pricing, and factory MOQ."}
+          </p>
+        </div>
+
+        <!-- Filter and Search Bar -->
+        <div class="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div class="relative flex-1">
+            <input
+              type="text"
+              id="catalogSearch"
+              placeholder={locale === "zh" ? "输入型号或关键词 (如: 7200, 1217, Black, 恒温, 瀑布)..." : "Search model (e.g. 7200, 1217, Gold, Waterfall, SUS304)..."}
+              class="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 pl-11 text-sm shadow-sm focus:border-ocean-500 focus:outline-none focus:ring-2 focus:ring-ocean-500/20"
+            />
+            <svg class="absolute left-3.5 top-3.5 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+          </div>
+          <div class="flex flex-wrap gap-1.5" id="catFilterButtons">
+            <button class="cat-filter-btn active rounded-lg border border-ocean-600 bg-ocean-600 px-3 py-1.5 text-xs font-medium text-white shadow-sm transition-all" data-cat="all">
+              {locale === "zh" ? "全部 (592)" : "All (592)"}
+            </button>
+            <button class="cat-filter-btn rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 transition-all hover:bg-gray-50" data-cat="kitchen-faucets">
+              🚰 {locale === "zh" ? "厨房 (110)" : "Kitchen (110)"}
+            </button>
+            <button class="cat-filter-btn rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 transition-all hover:bg-gray-50" data-cat="basin-faucets">
+              🪞 {locale === "zh" ? "面盆 (125)" : "Basin (125)"}
+            </button>
+            <button class="cat-filter-btn rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 transition-all hover:bg-gray-50" data-cat="shower-systems">
+              🚿 {locale === "zh" ? "淋浴 (229)" : "Shower (229)"}
+            </button>
+            <button class="cat-filter-btn rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 transition-all hover:bg-gray-50" data-cat="bath-mixers">
+              🛁 {locale === "zh" ? "浴缸 (76)" : "Bath (76)"}
+            </button>
+            <button class="cat-filter-btn rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 transition-all hover:bg-gray-50" data-cat="accessories">
+              🔩 {locale === "zh" ? "配件 (52)" : "Accessories (52)"}
+            </button>
+          </div>
+        </div>
+
+        <!-- Product Table / Cards Grid -->
+        <div class="mt-6 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+          <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-gray-200 text-left text-sm" id="catalogTable">
+              <thead class="bg-gray-50 text-xs font-semibold text-gray-600">
+                <tr>
+                  <th scope="col" class="px-4 py-3.5">Image</th>
+                  <th scope="col" class="px-4 py-3.5">Model No.</th>
+                  <th scope="col" class="px-4 py-3.5">Series & Category</th>
+                  <th scope="col" class="px-4 py-3.5">Finish & Material</th>
+                  <th scope="col" class="px-4 py-3.5">Features</th>
+                  <th scope="col" class="px-4 py-3.5">Tiered Price & MOQ</th>
+                  <th scope="col" class="px-4 py-3.5 text-right">Inquire</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-100 bg-white" id="catalogTableBody">
+                {
+                  allCatalogItems.map((item) => {
+                    const waText = `Hello SDN Faucet, I would like to inquire about ${item.model} (${item.finish}, ${item.material}). Please share quotation and lead time.`;
+                    const waLink = `https://wa.me/8617750519615?text=${encodeURIComponent(waText)}`;
+                    return (
+                      <tr class="catalog-item-row hover:bg-gray-50/80 transition-colors" data-model={item.model.toLowerCase()} data-cat={item.category} data-search={`${item.model} ${item.finish} ${item.material} ${item.features} ${item.series_name}`.toLowerCase()}>
+                        <td class="whitespace-nowrap px-4 py-3">
+                          <img src={item.image} alt={item.model} loading="lazy" class="h-14 w-14 rounded-lg object-contain bg-gray-50 p-1 border border-gray-100" />
+                        </td>
+                        <td class="whitespace-nowrap px-4 py-3 font-semibold text-gray-900 font-mono">
+                          {item.model}
+                        </td>
+                        <td class="px-4 py-3 text-xs">
+                          <a href={`${localePrefix}/products/${item.series_id || "sdn-7200-kitchen-faucet"}`} class="font-medium text-ocean-600 hover:underline block max-w-xs truncate" title={item.series_name || item.category}>
+                            {item.series_name ? item.series_name.split('Series')[0] : (item.category || "Sanitary Ware")}
+                          </a>
+                          <span class="text-gray-400">P.{item.page || 1}</span>
+                        </td>
+                        <td class="px-4 py-3 text-xs text-gray-600">
+                          <div class="font-medium text-gray-800">{item.finish || "Standard Export"}</div>
+                          <div class="text-gray-400">{item.material || "Brass / SUS304"}</div>
+                        </td>
+                        <td class="px-4 py-3 text-xs text-gray-500 max-w-xs truncate" title={item.features}>
+                          {item.features || "Export Grade"}
+                        </td>
+                        <td class="px-4 py-3 text-xs font-mono">
+                          <div class="text-emerald-700 font-medium">{item.prices || "Inquire for quote"}</div>
+                          <div class="text-gray-400">MOQ: {item.moq || "10 pcs"}</div>
+                        </td>
+                        <td class="whitespace-nowrap px-4 py-3 text-right">
+                          <a href={waLink} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 rounded-md bg-green-50 px-2.5 py-1 text-xs font-medium text-green-700 hover:bg-green-100 border border-green-200">
+                            WhatsApp
+                          </a>
+                        </td>
+                      </tr>
+                    );
+                  })
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <script is:inline>
+        const searchInput = document.getElementById("catalogSearch");
+        const catButtons = document.querySelectorAll(".cat-filter-btn");
+        const rows = document.querySelectorAll(".catalog-item-row");
+
+        let currentCat = "all";
+        let searchKeyword = "";
+
+        function filterItems() {
+          rows.forEach((row) => {
+            const rowCat = row.getAttribute("data-cat");
+            const searchData = row.getAttribute("data-search") || "";
+            const matchesCat = currentCat === "all" || rowCat === currentCat;
+            const matchesSearch = !searchKeyword || searchData.includes(searchKeyword);
+
+            if (matchesCat && matchesSearch) {
+              row.style.display = "";
+            } else {
+              row.style.display = "none";
+            }
+          });
+        }
+
+        if (searchInput) {
+          searchInput.addEventListener("input", (e) => {
+            searchKeyword = e.target.value.toLowerCase().trim();
+            filterItems();
+          });
+        }
+
+        catButtons.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            catButtons.forEach((b) => {
+              b.classList.remove("active", "bg-ocean-600", "text-white", "border-ocean-600");
+              b.classList.add("bg-white", "text-gray-700", "border-gray-200");
+            });
+            btn.classList.add("active", "bg-ocean-600", "text-white", "border-ocean-600");
+            btn.classList.remove("bg-white", "text-gray-700", "border-gray-200");
+            currentCat = btn.getAttribute("data-cat") || "all";
+            filterItems();
+          });
+        });
+      </script>
     </div>
   </section>
 </MainLayout>

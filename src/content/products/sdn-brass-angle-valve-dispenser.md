@@ -1,6 +1,6 @@
 ---
-image: "https://sc02.alicdn.com/kf/A2e4fc75d1e314d27ab847e555f2392b0J.png"
-tech_image: "https://sc02.alicdn.com/kf/Ae7c028757d994671983653c6da2e2a52J.png"
+image: "/images/products/sdn-057.jpg"
+tech_image: "/images/products/sdn-057.jpg"
 title: "SDN-053 Heavy Forged Brass Ceramic Quarter-Turn Stop Angle Valves & Soap Dispensers"
 description: "Wholesale SDN-053 Heavy Forged Brass Ceramic Quarter-Turn Stop Angle Valves & Soap Dispensers (10 models). Factory-direct B2B sanitary ware from Quanzhou, China. Full catalog specifications, tiered pricing & export MOQ."
 category: "accessories"
@@ -26,16 +26,16 @@ This comprehensive series represents **10 export-certified models** extracted di
 
 | Model No. | Surface Finish | Material | Functional Features | Factory Tiered Price | MOQ | Catalog Page |
 |---|---|---|---|---|---|---|
-| SDN-057 | / | brass | Angle valve | 2-499 pieces: ￥8.10 ≥500 pieces: ￥6.75 | 10 | P.26 |
-| SDN-058 | / | / | Angle valve | 2-499 pieces: ￥6.08 ≥500 pieces: ￥5.07 | 10 | P.26 |
-| SDN-059 | / | stainless steel | Angle valve | 2-499 pieces: ￥37.12 ≥500 pieces: ￥32.29 | 10 | P.26 |
-| SDN-060 | / | stainless steel | Angle valve | 2-499 pieces: ￥12.83 ≥500 pieces: ￥11.48 | 10 | P.26 |
-| SDN-053 | / | brass | Hardware Set | : ￥130.91 : / | 10 | P.53 |
-| SDN-054 | White/Black | / | Soap dispenser | : ￥62.76 : ￥58.03 | 10 | P.53 |
-| SDN-055 | / | brass | Angle valve | : ￥8.78 : ￥7.43 | 10 | P.53 |
-| SDN-056 | / | brass | Angle valve | : ￥157.90 : / | 10 | P.53 |
-| SDN-061 | / | stainless steel | Angle valve | : ￥12.83 : ￥10.13 | 10 | P.53 |
-| SDN-062 | Chrome | brass | Angle valve | : ￥16.87 : ￥13.50 | 10 | P.53 |
+| **SDN-057** | / | brass | Angle valve | 2-499 pieces: ￥8.10 ≥500 pieces: ￥6.75 | 10 | P.26 |
+| **SDN-058** | / | / | Angle valve | 2-499 pieces: ￥6.08 ≥500 pieces: ￥5.07 | 10 | P.26 |
+| **SDN-059** | / | stainless steel | Angle valve | 2-499 pieces: ￥37.12 ≥500 pieces: ￥32.29 | 10 | P.26 |
+| **SDN-060** | / | stainless steel | Angle valve | 2-499 pieces: ￥12.83 ≥500 pieces: ￥11.48 | 10 | P.26 |
+| **SDN-053** | / | brass | Hardware Set | : ￥130.91 : / | 10 | P.53 |
+| **SDN-054** | White/Black | / | Soap dispenser | : ￥62.76 : ￥58.03 | 10 | P.53 |
+| **SDN-055** | / | brass | Angle valve | : ￥8.78 : ￥7.43 | 10 | P.53 |
+| **SDN-056** | / | brass | Angle valve | : ￥157.90 : / | 10 | P.53 |
+| **SDN-061** | / | stainless steel | Angle valve | : ￥12.83 : ￥10.13 | 10 | P.53 |
+| **SDN-062** | Chrome | brass | Angle valve | : ￥16.87 : ￥13.50 | 10 | P.53 |
 
 ### Manufacturing & Quality Assurance
 

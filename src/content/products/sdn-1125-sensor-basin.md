@@ -1,6 +1,6 @@
 ---
-image: "https://sc02.alicdn.com/kf/A3b4edd617b2044ea803ef4431c43a60eL.png"
-tech_image: "https://sc02.alicdn.com/kf/Aa60fe5f8bf1d48a0b562629386df76a9c.png"
+image: "/images/products/sdn-1125.jpg"
+tech_image: "/images/products/sdn-1125.jpg"
 title: "SDN-1125 Commercial Touchless Infrared Automatic Sensor Faucet Series"
 description: "Wholesale SDN-1125 Commercial Touchless Infrared Automatic Sensor Faucet Series (20 models). Factory-direct B2B sanitary ware from Quanzhou, China. Full catalog specifications, tiered pricing & export MOQ."
 category: "basin-faucets"
@@ -26,26 +26,26 @@ This comprehensive series represents **20 export-certified models** extracted di
 
 | Model No. | Surface Finish | Material | Functional Features | Factory Tiered Price | MOQ | Catalog Page |
 |---|---|---|---|---|---|---|
-| SDN-1125 | gold/black/chrome | other | Sensor Faucet | 2-499 pieces: ￥229.89 ≥500 pieces: ￥202.84 | 2 | P.10 |
-| SDN-1126 | chrome | Brass | Sensor Faucet | 2-499 pieces: ￥260.32 ≥500 pieces: ￥229.89 | 2 | P.10 |
-| SDN-1127 | chrome | Brass | Sensor Faucet | 2-499 pieces: ￥230.57 ≥500 pieces: ￥202.84 | 2 | P.10 |
-| SDN-1128 | chrome | Brass | Sensor Faucet | 2-499 pieces: ￥217.04 ≥500 pieces: ￥196.08 | 2 | P.10 |
-| SDN-1133 | chrome | other | Sensor Faucet | 2-499 pieces: ￥297.50 ≥500 pieces: ￥260.32 | 2 | P.10 |
-| SDN-1134 | Oil Rubbed | other | Sensor Faucet | 2-499 pieces: ￥229.89 ≥500 pieces: ￥202.84 | 2 | P.10 |
-| SDN-1135 | chrome | Brass | Sensor Faucet | 2-499 pieces: ￥286.01 ≥500 pieces: ￥250.31 | 2 | P.10 |
-| SDN-1136 | chrome | Brass | Sensor Faucet | 2-499 pieces: ￥283.98 ≥500 pieces: ￥248.48 | 2 | P.10 |
-| SDN-1141 | chrome | Brass | Sensor Faucet | 2-499 pieces: ￥169.04 ≥500 pieces: ￥148.75 | 2 | P.10 |
-| SDN-1142 | chrome | Brass | Sensor Faucet | 2-499 pieces: ￥169.04 ≥500 pieces: ￥148.75 | 2 | P.10 |
-| SDN-1143 | white | Brass | Sensor Faucet | 2-499 pieces: ￥162.28 ≥500 pieces: ￥145.37 | 2 | P.10 |
-| SDN-1144 | chrome | Brass | Sensor Faucet | 2-499 pieces: ￥234.62 ≥500 pieces: ￥205.55 | 2 | P.10 |
-| SDN-1129 | gold/black/chrome | Brass | Sensor Faucet | : ￥229.89 : ￥201.15 | 10 pcs | P.37 |
-| SDN-1130 | chrome | Brass | Sensor Faucet | : ￥128.47 : ￥116.30 | 10 pcs | P.37 |
-| SDN-1131 | chrome | Brass | Sensor Faucet | : ￥131.17 : ￥114.95 | 10 pcs | P.37 |
-| SDN-1132 | Polished | other | Sensor Faucet | : ￥229.89 : ￥202.84 | 10 pcs | P.37 |
-| SDN-1137 | chrome | Brass | Sensor Faucet | : ￥162.28 : ￥145.37 | 10 pcs | P.37 |
-| SDN-1138 | Chrome/black/gold | Brass | Sensor Faucet | : ￥200.82 : ￥175.80 | 10 pcs | P.37 |
-| SDN-1139 | chrome | Brass | Sensor Faucet | : ￥186.62 : ￥163.29 | 10 pcs | P.37 |
-| SDN-1140 | Polished | Brass | Sensor Faucet | : ￥208.25 : ￥182.56 | 10 pcs | P.37 |
+| **SDN-1125** | gold/black/chrome | other | Sensor Faucet | 2-499 pieces: ￥229.89 ≥500 pieces: ￥202.84 | 2 | P.10 |
+| **SDN-1126** | chrome | Brass | Sensor Faucet | 2-499 pieces: ￥260.32 ≥500 pieces: ￥229.89 | 2 | P.10 |
+| **SDN-1127** | chrome | Brass | Sensor Faucet | 2-499 pieces: ￥230.57 ≥500 pieces: ￥202.84 | 2 | P.10 |
+| **SDN-1128** | chrome | Brass | Sensor Faucet | 2-499 pieces: ￥217.04 ≥500 pieces: ￥196.08 | 2 | P.10 |
+| **SDN-1133** | chrome | other | Sensor Faucet | 2-499 pieces: ￥297.50 ≥500 pieces: ￥260.32 | 2 | P.10 |
+| **SDN-1134** | Oil Rubbed | other | Sensor Faucet | 2-499 pieces: ￥229.89 ≥500 pieces: ￥202.84 | 2 | P.10 |
+| **SDN-1135** | chrome | Brass | Sensor Faucet | 2-499 pieces: ￥286.01 ≥500 pieces: ￥250.31 | 2 | P.10 |
+| **SDN-1136** | chrome | Brass | Sensor Faucet | 2-499 pieces: ￥283.98 ≥500 pieces: ￥248.48 | 2 | P.10 |
+| **SDN-1141** | chrome | Brass | Sensor Faucet | 2-499 pieces: ￥169.04 ≥500 pieces: ￥148.75 | 2 | P.10 |
+| **SDN-1142** | chrome | Brass | Sensor Faucet | 2-499 pieces: ￥169.04 ≥500 pieces: ￥148.75 | 2 | P.10 |
+| **SDN-1143** | white | Brass | Sensor Faucet | 2-499 pieces: ￥162.28 ≥500 pieces: ￥145.37 | 2 | P.10 |
+| **SDN-1144** | chrome | Brass | Sensor Faucet | 2-499 pieces: ￥234.62 ≥500 pieces: ￥205.55 | 2 | P.10 |
+| **SDN-1129** | gold/black/chrome | Brass | Sensor Faucet | : ￥229.89 : ￥201.15 | 10 pcs | P.37 |
+| **SDN-1130** | chrome | Brass | Sensor Faucet | : ￥128.47 : ￥116.30 | 10 pcs | P.37 |
+| **SDN-1131** | chrome | Brass | Sensor Faucet | : ￥131.17 : ￥114.95 | 10 pcs | P.37 |
+| **SDN-1132** | Polished | other | Sensor Faucet | : ￥229.89 : ￥202.84 | 10 pcs | P.37 |
+| **SDN-1137** | chrome | Brass | Sensor Faucet | : ￥162.28 : ￥145.37 | 10 pcs | P.37 |
+| **SDN-1138** | Chrome/black/gold | Brass | Sensor Faucet | : ￥200.82 : ￥175.80 | 10 pcs | P.37 |
+| **SDN-1139** | chrome | Brass | Sensor Faucet | : ￥186.62 : ￥163.29 | 10 pcs | P.37 |
+| **SDN-1140** | Polished | Brass | Sensor Faucet | : ￥208.25 : ￥182.56 | 10 pcs | P.37 |
 
 ### Manufacturing & Quality Assurance
 

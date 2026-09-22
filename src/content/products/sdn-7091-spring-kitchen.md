@@ -1,6 +1,6 @@
 ---
-image: "https://sc02.alicdn.com/kf/A87f819b98dd94207818e182094f27463Q.png"
-tech_image: "https://sc02.alicdn.com/kf/A365140e7e0044004be9c5b64de4d6234X.png"
+image: "/images/products/sdn-7091a.jpg"
+tech_image: "/images/products/sdn-7091a.jpg"
 title: "SDN-7091 Industrial Heavy-Duty Spring Pre-Rinse Kitchen Faucet Series"
 description: "Wholesale SDN-7091 Industrial Heavy-Duty Spring Pre-Rinse Kitchen Faucet Series (18 models). Factory-direct B2B sanitary ware from Quanzhou, China. Full catalog specifications, tiered pricing & export MOQ."
 category: "kitchen-faucets"
@@ -26,24 +26,24 @@ This comprehensive series represents **18 export-certified models** extracted di
 
 | Model No. | Surface Finish | Material | Functional Features | Factory Tiered Price | MOQ | Catalog Page |
 |---|---|---|---|---|---|---|
-| SDN-7091A | Brushed gold | stainless steel | Pull-out | 2-499 pieces: ￥120.00 ≥500 pieces: ￥90.00 | 10 pcs | P.1 |
-| SDN-7091A | Black | Copper, stainless steel, zinc alloy | Pull-down / 360° rotation | 2-499 pieces: ￥210.00 | 10 pcs | P.2 |
-| SDN-7091B | Silver /BLACK | draw wire | Pull-down / 360° rotation | 2-499 pieces: ￥60.00 | 10 pcs | P.2 |
-| SDN-7092A | Silver faucet+water inlet/BLACK faucet+water inlet | draw wire | Pull-down / 360° rotation | 2-499 pieces: ￥70.00 | 10 pcs | P.2 |
-| SDN-7092B | Silver faucet+water inlet+cover plate/BLACK faucet+water inlet+cover plate | draw wire | Pull-down / 360° rotation | 2-499 pieces: ￥80.00 | 10 pcs | P.2 |
-| SDN-7094A | BLACK | 304 stainless steel | Pull-down / 360° rotation | 10-299 pieces: ￥85.00 ≥300 pieces: ￥75.00 | 10 | P.3 |
-| SDN-7094B | Brushed gold | 304 stainless steel | Pull-down / 360° rotation | 10-299 pieces: ￥95.00 ≥300 pieces: ￥85.00 | 10 | P.3 |
-| SDN-7094C | plating | Copper, stainless steel, zinc alloy | Pull-down / 360° rotation | 10-299 pieces: ￥71.00 ≥300 pieces: ￥61.00 | 10 | P.3 |
-| SDN-7095A | Black | Brass | 360° rotation | 10-299 pieces: ￥70.00 ≥300 pieces: ￥55.00 | 10 | P.3 |
-| SDN-7095B | Chrome | elastic | Pull-out / 360° rotation | 10-299 pieces: ￥165.00 ≥300 pieces: ￥140.00 | 10 | P.3 |
-| SDN-7095C | Black | elastic | Pull-out / 360° rotation | 10-299 pieces: ￥175.00 ≥300 pieces: ￥155.00 | 10 | P.3 |
-| SDN-7096A | Brushed nickel | elastic | Pull-out / 360° rotation | 10-299 pieces: ￥165.00 ≥300 pieces: ￥140.00 | 10 | P.3 |
-| SDN-7092C | Silver /BLACK/Dark Gray | ABS | 360° rotation | : ￥58.00 : / | 10 pcs | P.28 |
-| SDN-7094D | BLACK/Silver /plating | brass | Pull down / 360° rotation | : ￥140.00 : ￥115.00 | 10 | P.29 |
-| SDN-7096B | Brushed gold | Brass | 360° rotation | : ￥201.09 : ￥177.39 | 10 | P.29 |
-| SDN-7096C | Black+brushed+gold | zinc alloy | 360° rotation | : ￥85.00 : ￥75.00 | 10 | P.29 |
-| SDN-7097A | Brushed nickel+black+Chrome+Brushed nickel | Copper, stainless steel, zinc alloy | Pull-out / 360° rotation | : ￥213.95 : ￥201.77 | 10 | P.29 |
-| SDN-7097B | Black/white/Chrome/Brushed nickel | 304 stainless steel | Pull-out / 360° rotation | : ￥114.43 : ￥103.59 | 10 | P.29 |
+| **SDN-7091A** | Brushed gold | stainless steel | Pull-out | 2-499 pieces: ￥120.00 ≥500 pieces: ￥90.00 | 10 pcs | P.1 |
+| **SDN-7091A** | Black | Copper, stainless steel, zinc alloy | Pull-down / 360° rotation | 2-499 pieces: ￥210.00 | 10 pcs | P.2 |
+| **SDN-7091B** | Silver /BLACK | draw wire | Pull-down / 360° rotation | 2-499 pieces: ￥60.00 | 10 pcs | P.2 |
+| **SDN-7092A** | Silver faucet+water inlet/BLACK faucet+water inlet | draw wire | Pull-down / 360° rotation | 2-499 pieces: ￥70.00 | 10 pcs | P.2 |
+| **SDN-7092B** | Silver faucet+water inlet+cover plate/BLACK faucet+water inlet+cover plate | draw wire | Pull-down / 360° rotation | 2-499 pieces: ￥80.00 | 10 pcs | P.2 |
+| **SDN-7094A** | BLACK | 304 stainless steel | Pull-down / 360° rotation | 10-299 pieces: ￥85.00 ≥300 pieces: ￥75.00 | 10 | P.3 |
+| **SDN-7094B** | Brushed gold | 304 stainless steel | Pull-down / 360° rotation | 10-299 pieces: ￥95.00 ≥300 pieces: ￥85.00 | 10 | P.3 |
+| **SDN-7094C** | plating | Copper, stainless steel, zinc alloy | Pull-down / 360° rotation | 10-299 pieces: ￥71.00 ≥300 pieces: ￥61.00 | 10 | P.3 |
+| **SDN-7095A** | Black | Brass | 360° rotation | 10-299 pieces: ￥70.00 ≥300 pieces: ￥55.00 | 10 | P.3 |
+| **SDN-7095B** | Chrome | elastic | Pull-out / 360° rotation | 10-299 pieces: ￥165.00 ≥300 pieces: ￥140.00 | 10 | P.3 |
+| **SDN-7095C** | Black | elastic | Pull-out / 360° rotation | 10-299 pieces: ￥175.00 ≥300 pieces: ￥155.00 | 10 | P.3 |
+| **SDN-7096A** | Brushed nickel | elastic | Pull-out / 360° rotation | 10-299 pieces: ￥165.00 ≥300 pieces: ￥140.00 | 10 | P.3 |
+| **SDN-7092C** | Silver /BLACK/Dark Gray | ABS | 360° rotation | : ￥58.00 : / | 10 pcs | P.28 |
+| **SDN-7094D** | BLACK/Silver /plating | brass | Pull down / 360° rotation | : ￥140.00 : ￥115.00 | 10 | P.29 |
+| **SDN-7096B** | Brushed gold | Brass | 360° rotation | : ￥201.09 : ￥177.39 | 10 | P.29 |
+| **SDN-7096C** | Black+brushed+gold | zinc alloy | 360° rotation | : ￥85.00 : ￥75.00 | 10 | P.29 |
+| **SDN-7097A** | Brushed nickel+black+Chrome+Brushed nickel | Copper, stainless steel, zinc alloy | Pull-out / 360° rotation | : ￥213.95 : ￥201.77 | 10 | P.29 |
+| **SDN-7097B** | Black/white/Chrome/Brushed nickel | 304 stainless steel | Pull-out / 360° rotation | : ￥114.43 : ￥103.59 | 10 | P.29 |
 
 ### Manufacturing & Quality Assurance
 
