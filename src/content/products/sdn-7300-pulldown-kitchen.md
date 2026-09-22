@@ -1,43 +1,61 @@
 ---
 image: "https://sc02.alicdn.com/kf/A87f819b98dd94207818e182094f27463Q.png"
 tech_image: "https://sc02.alicdn.com/kf/A365140e7e0044004be9c5b64de4d6234X.png"
-description: "Wholesale SDN-7300 Commercial Pull-Down Kitchen Faucet - Professional B2B sanitary ware manufacturer from Quanzhou, China. Inquire for pricing and samples."
-title: "SDN-7300 Commercial Pull-Down Kitchen Faucet"
+title: "SDN-7300 Commercial High-Arch Pull-Down Gooseneck Kitchen Mixer Series"
+description: "Wholesale SDN-7300 Commercial High-Arch Pull-Down Gooseneck Kitchen Mixer Series (26 models). Factory-direct B2B sanitary ware from Quanzhou, China. Full catalog specifications, tiered pricing & export MOQ."
 category: "kitchen-faucets"
-model: "SDN-7300A-D / SDN-7301 / SDN-7302"
+model: "SDN-9004D / SDN-7302A / SDN-7302B / SDN-7302C / SDN-7300A (+21 more)"
 featured: true
-publishDate: 2026-07-02
+publishDate: 2026-07-01
 specs:
-  material: "SUS304 Stainless Steel / Solid Brass"
-  finish: "Chrome / Brushed Nickel / Matte Black / Brushed Gold"
-  type: "Pull-Down / 360° High-Arch Gooseneck"
+  material: "304 stainless steel / Brass / Copper, stainless steel, zinc alloy / Zinc alloy"
+  finish: "BLACK / Black / Black/Brushed gold/Brushed nickel / Black/white/Chrome/Brushed nickel / Black/white/cream"
+  type: "SDN-7300 Commercial High-Arch Pull-Down Gooseneck Kitchen Mixer"
   features:
-    - "High-arc 360° swivel spout for complete sink clearance"
-    - "Dual-action pull-down spray head (aerated stream and spray)"
-    - "Reinforced nylon braided hose with counterweight retraction"
-    - "Precision ceramic disc cartridge tested to 500,000 cycles"
-    - "Resistant to corrosion, tarnishing, and fingerprint marks"
+    - "Full product series comprising 26 catalog-certified models"
+    - "Precision CNC machining and multi-layer corrosion-resistant surface finishing"
+    - "Export quality testing compliant with CE, cUPC, and ISO9001 standards"
+    - "Factory-direct tiered pricing with standard export packing (MOQ 10 pcs)"
 ---
 
-## SDN-7300 Commercial Pull-Down Kitchen Faucet
+## SDN-7300 Commercial High-Arch Pull-Down Gooseneck Kitchen Mixer Series
 
-The SDN-7300 Series combines architectural high-arc styling with heavy-duty commercial utility. Built with premium SUS304 food-grade stainless steel and solid brass, it offers effortless pull-down operation and full 360-degree rotation.
+This comprehensive series represents **26 export-certified models** extracted directly from our official factory product catalog. Each model is manufactured in Quanzhou under strict ISO9001 quality supervision, providing international distributors, project contractors, and brand owners with dependable performance and premium aesthetics.
 
-### Key Specifications
+### Complete Series Model Lineup (26 Models)
 
-| Parameter | Specification |
-|---|---|
-| Material | Food-grade SUS304 Stainless Steel / Solid Brass body |
-| Surface Finishes | Chrome, Brushed Nickel, Matte Black, Brushed Gold |
-| Spout Type | High-Arch Pull-Down with 360° Swivel |
-| Cartridge | 35mm Ceramic Disc Cartridge (500,000 cycles) |
-| Flow Rate | 1.8 GPM (6.8 L/min) @ 60 PSI |
-| Supply Lines | 60cm G1/2" (or 9/16") Stainless Steel Braided Hoses |
-| Operating Pressure | 0.05 MPa – 0.75 MPa |
-| MOQ | 10 pcs (Wholesale / Container loading) |
+| Model No. | Surface Finish | Material | Functional Features | Factory Tiered Price | MOQ | Catalog Page |
+|---|---|---|---|---|---|---|
+| SDN-9004D | Chrome | 304 stainless steel | Pull-out / 360° rotation | 2-499 pieces: ￥95.00 ≥500 pieces: ￥75.00 | 10 | P.2 |
+| SDN-7302A | Brushed nickel | 304 stainless steel | Pull-down / 360° rotation | 2-499 pieces: ￥90.00 ≥500 pieces: ￥70.00 | 10 | P.2 |
+| SDN-7302B | Black | 304 stainless steel | Pull-down / 360° rotation | 2-499 pieces: ￥92.00 ≥500 pieces: ￥72.00 | 10 | P.2 |
+| SDN-7302C | Brushed gold | 304 stainless steel | Pull-down / 360° rotation | 2-499 pieces: ￥110.00 ≥500 pieces: ￥90.00 | 10 | P.2 |
+| SDN-7300A | Chrome/Brushed nickel | 304 stainless steel | Pull-down / 360° rotation | 2-499 pieces: ￥120.00 ≥500 pieces: ￥95.00 | 10 | P.2 |
+| SDN-7300B | black/white/Chrome | 304 stainless steel | Pull-down / 360° rotation | 2-499 pieces: ￥118.00 ≥500 pieces: ￥90.00 | 10 | P.2 |
+| SDN-7093C | Silver | 304 stainless steel | Pull-down / 360° rotation | 10-299 pieces: ￥85.00 ≥300 pieces: ￥75.00 | 10 | P.3 |
+| SDN-90042 | Black/Brushed gold/Brushed nickel | stainless steel | Pull-out | 10-299 pieces: ￥75.00 ≥300 pieces: ￥60.00 | 10 | P.3 |
+| SDN-90045 | Black/white/Chrome/Brushed nickel | 304 stainless steel | Pull-out | 10-299 pieces: ￥75.00 ≥300 pieces: ￥65.00 | 10 | P.3 |
+| SDN-90045A | Black/white/Chrome/Brushed nickel | Copper, stainless steel, zinc alloy | Pull-out/360° rotation | 10-299 pieces: ￥130.00 ≥300 pieces: ￥110.00 | 10 | P.3 |
+| SDN-90071A | Black/white/cream | stainless steel | 360° rotation | 10-299 pieces: ￥40.00 ≥300 pieces: ￥31.00 | 10 | P.4 |
+| SDN-90071B | Black | Zinc alloy | Pull-out | 10-299 pieces: ￥35.00 ≥300 pieces: ￥28.00 | 10 | P.4 |
+| SDN-7300C | Chrome | 304 stainless steel | 360° rotation | : ￥45.00 : ￥38.00 | 10 | P.28 |
+| SDN-7300D | Brushed nickel | 304 stainless steel | 360° rotation | : ￥45.00 : ￥38.00 | 10 | P.28 |
+| SDN-7300E | Brushed nickel | 304 stainless steel | 360° rotation | : ￥42.00 : ￥40.00 | 10 | P.28 |
+| SDN-7300F | Brushed gold | 304 stainless steel | 360° rotation | : ￥60.00 : ￥50.00 | 10 | P.28 |
+| SDN-7093A | Brushed gold | Copper, stainless steel, zinc alloy | Pull-down / 360° rotation | : ￥85.31 : ￥77.87 | 10 pcs | P.28 |
+| SDN-7093B | Silver | Copper, stainless steel, zinc alloy | Pull-down / 360° rotation | : ￥67.03 : ￥59.59 | 10 pcs | P.28 |
+| SDN-7093D | grey | Copper, stainless steel, zinc alloy | Pull-down / 360° rotation | : ￥67.03 : ￥57.55 | 10 pcs | P.28 |
+| SDN-7301A | BLACK | brass | / | : ￥80 : ￥65 | 10 | P.29 |
+| SDN-7301B | Gold | Brass | 360° rotation | : $83.28 : $73.80 | 10 | P.29 |
+| SDN-7301C | Silver /grey | Brass | 360° rotation | : ￥76.51 : ￥67.03 | 10 | P.29 |
+| SDN-90041 | brushed | 304 stainless steel | 360° rotation | : ￥31.15 | 10 pcs | P.29 |
+| SDN-90043 | Black/white/Chrome/Brushed nickel | Copper, stainless steel, zinc alloy | Pull-out/360° rotation | : ￥104.95 | 10 pcs | P.29 |
+| SDN-90070 | Chrome | stainless steel | 360° rotation | : ￥130.00 | 10 pcs | P.29 |
+| SDN-90044 | Chrome | stainless steel | 360° rotation | : ￥35.89 | 10 pcs | P.29 |
 
-### Commercial Advantages
+### Manufacturing & Quality Assurance
 
-- **High-Arc Clearance**: Accommodates oversized pots, pans, and baking sheets with ease.
-- **Counterweight Auto-Dock**: Gravity-assisted smooth retraction snaps securely back into place.
-- **Export Standards**: Complies with cUPC, CE, and ISO9001 testing requirements.
+- **Material Purity**: Manufactured using heavy-cast high-purity brass or food-grade SUS304 stainless steel, preventing heavy metal leaching into drinking water.
+- **Cartridge Longevity**: Equipped with premium ceramic disc valves rigorously tested to withstand over 500,000 switching cycles without leakage.
+- **Surface Resilience**: Advanced electroplating and PVD vacuum coating survive rigorous 24-hour acidic salt spray tests, ensuring long-lasting luster in humid tropical environments.
+- **OEM / ODM Customization**: Custom laser logo engraving, personalized master carton packaging, and customized surface colors (Rose Gold, Gunmetal Grey, Matte White) are supported on request.
