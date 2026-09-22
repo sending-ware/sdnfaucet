@@ -4,7 +4,6 @@ import MainLayout from "@layouts/MainLayout.astro";
 import fs from "node:fs";
 import path from "node:path";
 
-const products = await getCollection("products");
 const catalogPath = path.resolve("./public/data/catalog.json");
 const allCatalogItems = JSON.parse(fs.readFileSync(catalogPath, "utf-8"));
 
@@ -19,6 +18,7 @@ const localePrefix = locale === "en" ? "" : `/${locale}`;
 
 const categoryLabels: Record<string, Record<string, string>> = {
   en: {
+    all: "All Products",
     "kitchen-faucets": "Kitchen Faucets",
     "basin-faucets": "Basin Faucets",
     "shower-systems": "Shower Systems",
@@ -26,6 +26,7 @@ const categoryLabels: Record<string, Record<string, string>> = {
     accessories: "Accessories",
   },
   zh: {
+    all: "全部产品",
     "kitchen-faucets": "厨房水龙头",
     "basin-faucets": "面盆龙头",
     "shower-systems": "淋浴系统",
@@ -33,6 +34,7 @@ const categoryLabels: Record<string, Record<string, string>> = {
     accessories: "卫浴配件",
   },
   ar: {
+    all: "جميع المنتجات",
     "kitchen-faucets": "خلاطات المطبخ",
     "basin-faucets": "خلاطات الأحواض",
     "shower-systems": "أنظمة الدش",
@@ -42,11 +44,21 @@ const categoryLabels: Record<string, Record<string, string>> = {
 };
 
 const categoryIcons: Record<string, string> = {
+  all: "📦",
   "kitchen-faucets": "🚰",
   "basin-faucets": "🪞",
   "shower-systems": "🚿",
   "bath-mixers": "🛁",
   accessories: "🔩",
+};
+
+const categoryCounts: Record<string, number> = {
+  all: 592,
+  "kitchen-faucets": 110,
+  "basin-faucets": 125,
+  "shower-systems": 229,
+  "bath-mixers": 76,
+  accessories: 52,
 };
 
 const pageText: Record<
@@ -55,58 +67,98 @@ const pageText: Record<
     title: string;
     description: string;
     heading: string;
-    subtitle: (count: number, cats: number) => string;
-    detailsCta: string;
+    subtitle: string;
+    searchPlaceholder: string;
+    viewGrid: string;
+    viewTable: string;
+    finishLabel: string;
+    materialLabel: string;
+    featuresLabel: string;
+    priceLabel: string;
+    moqLabel: string;
+    catalogPageLabel: string;
+    seriesLabel: string;
     waCta: string;
     waLabel: string;
     emailCta: string;
-    moqPrompt: string;
-    waText: (title: string, model: string) => string;
-    emailSubject: (title: string, model: string) => string;
-    emailBody: (title: string, model: string) => string;
+    detailsCta: string;
+    noResults: string;
+    paginationPrev: string;
+    paginationNext: string;
+    paginationPage: (curr: number, total: number) => string;
   }
 > = {
   en: {
-    title: "B2B Sanitary Ware Catalog | Wholesale Kitchen Faucets & Luxury Showers",
-    description: "Explore SDN Faucet's complete B2B catalog. Factory-direct pricing on commercial kitchen mixers and luxury rainfall showers.",
+    title: "B2B Sanitary Ware Catalog | 592 Wholesale Faucets, Showers & Accessories",
+    description: "Explore SDN Faucet's complete 592-product B2B catalog across 21 series. Real photos, specifications, factory tiered prices and MOQ directly visible.",
     heading: "Product Catalog",
-    subtitle: (count, cats) => `592 catalog products across ${count} series in ${cats} categories — ready for B2B inquiry`,
-    detailsCta: "View details & inquire",
-    waCta: "Get wholesale quote",
+    subtitle: "592 catalog products across 21 series in 5 categories — all photos, specifications & wholesale pricing directly visible",
+    searchPlaceholder: "Search model (e.g. 7200A, 1217, G153), finish, material or features...",
+    viewGrid: "Card View",
+    viewTable: "Matrix Table",
+    finishLabel: "Finish",
+    materialLabel: "Material",
+    featuresLabel: "Features",
+    priceLabel: "Factory Price",
+    moqLabel: "MOQ",
+    catalogPageLabel: "Catalog",
+    seriesLabel: "Series",
+    waCta: "WhatsApp Quote",
     waLabel: "WhatsApp inquiry",
-    emailCta: "Email inquiry",
-    moqPrompt: "Ask about MOQ",
-    waText: (title, model) => `Hello SDN Faucet, I'd like a wholesale quote for ${title} (${model}). Please share pricing, MOQ and lead time.`,
-    emailSubject: (title, model) => `Wholesale quote: ${model} — ${title}`,
-    emailBody: (title, model) => `Hello SDN Faucet,\n\nI'd like a wholesale quote for ${title} (${model}).\nPlease share pricing, MOQ and lead time.\n\nThank you.`,
+    emailCta: "Email Quote",
+    detailsCta: "Series Info",
+    noResults: "No products match your search criteria. Please try different keywords or reset filters.",
+    paginationPrev: "Previous",
+    paginationNext: "Next",
+    paginationPage: (curr, total) => `Page ${curr} of ${total}`,
   },
   zh: {
-    title: "卫浴产品目录 | 批发厨房水龙头与豪华淋浴系统",
-    description: "浏览SDN Faucet完整B2B产品目录。商用厨房混水龙头与豪华顶喷淋浴系统，工厂直销价格。",
+    title: "卫浴产品目录 | 592 款批发水龙头、淋浴系统与五金配件",
+    description: "浏览SDN Faucet完整592款B2B产品图册，归入21大主推系列。实物图片、技术规格、出厂阶梯批发价与起订量一目了然。",
     heading: "产品目录",
-    subtitle: (count, cats) => `收录全图册 592 款产品，归入 ${count} 大系列，覆盖 ${cats} 大核心品类 —— 欢迎B2B询价`,
-    detailsCta: "查看规格与详情",
-    waCta: "获取批发报价",
+    subtitle: "收录 54 页图册全量 592 款产品，归入 21 大系列与 5 大核心品类 —— 图片、参数、阶梯价直接呈现，一目了然",
+    searchPlaceholder: "输入型号 (如: 7200A, 1217, G153)、颜色、材质或功能特点实时检索...",
+    viewGrid: "图文卡片视图",
+    viewTable: "参数明细表",
+    finishLabel: "表面处理",
+    materialLabel: "材质构成",
+    featuresLabel: "出水功能",
+    priceLabel: "出厂批发价",
+    moqLabel: "起订量",
+    catalogPageLabel: "图册页码",
+    seriesLabel: "所属系列",
+    waCta: "WhatsApp 报价",
     waLabel: "WhatsApp 询价",
     emailCta: "邮件询价",
-    moqPrompt: "可询问 MOQ",
-    waText: (title, model) => `您好，SDN Faucet，我想咨询 ${title}（${model}）的批发报价，请分享价格、MOQ 和交期。`,
-    emailSubject: (title, model) => `批发报价：${model} — ${title}`,
-    emailBody: (title, model) => `您好，SDN Faucet，\n\n我想咨询 ${title}（${model}）的批发报价，请分享价格、MOQ 和交期。\n\n谢谢。`,
+    detailsCta: "系列详情",
+    noResults: "未找到符合条件的产品，请尝试不同搜索词或重置品类筛选。",
+    paginationPrev: "上一页",
+    paginationNext: "下一页",
+    paginationPage: (curr, total) => `第 ${curr} 页 / 共 ${total} 页`,
   },
   ar: {
-    title: "كتالوج الأدوات الصحية B2B | خلاطات مطبخ بالجملة ودشات فاخرة",
-    description: "استكشف كتالوج SDN Faucet الكامل للبيع بالجملة B2B. أسعار مباشرة من المصنع لخلاطات المطبخ ودشات الأمطار الفاخرة.",
+    title: "كتالوج الأدوات الصحية B2B | 592 منتج من خلاطات ودشات وملحقات بالجملة",
+    description: "استكشف كتالوج SDN Faucet الكامل لـ 592 منتج عبر 21 سلسلة. صور حقيقية ومواصفات وأسعار مصنع مباشرة وMOQ.",
     heading: "كتالوج المنتجات",
-    subtitle: (count, cats) => `${count} منتجات في ${cats} فئات — جاهزة لاستفسارات B2B`,
-    detailsCta: "عرض المواصفات والتفاصيل",
-    waCta: "احصل على عرض جملة",
+    subtitle: "592 منتج في الكتالوج عبر 21 سلسلة في 5 فئات — صور ومواصفات وأسعار جملة ظاهرة مباشرة",
+    searchPlaceholder: "ابحث بالرقم (مثل: 7200A, 1217)، اللون، المادة أو الميزات...",
+    viewGrid: "عرض البطاقات",
+    viewTable: "جدول المواصفات",
+    finishLabel: "الطلاء",
+    materialLabel: "المادة",
+    featuresLabel: "الميزات",
+    priceLabel: "سعر المصنع",
+    moqLabel: "الحد الأدنى",
+    catalogPageLabel: "صفحة الكتالوج",
+    seriesLabel: "السلسلة",
+    waCta: "عرض واتساب",
     waLabel: "استفسار واتساب",
-    emailCta: "استفسار بالبريد",
-    moqPrompt: "استفسر عن MOQ",
-    waText: (title, model) => `مرحباً SDN Faucet، أود الحصول على عرض جملة لـ ${title} (${model})، يرجى مشاركة السعر وMOQ ومدة التسليم.`,
-    emailSubject: (title, model) => `عرض جملة: ${model} — ${title}`,
-    emailBody: (title, model) => `مرحباً SDN Faucet،\n\nأود الحصول على عرض جملة لـ ${title} (${model})، يرجى مشاركة السعر وMOQ ومدة التسليم.\n\nشكراً.`,
+    emailCta: "استفسار بريدي",
+    detailsCta: "تفاصيل السلسلة",
+    noResults: "لم يتم العثور على منتجات تطابق معايير البحث الخاصة بك.",
+    paginationPrev: "السابق",
+    paginationNext: "التالي",
+    paginationPage: (curr, total) => `صفحة ${curr} من ${total}`,
   },
 };
 
@@ -115,86 +167,199 @@ const labels = categoryLabels[locale] ?? categoryLabels.en;
 
 const waBase = "https://wa.me/8617750519615";
 const mailTo = "sending@sdnfaucet.com";
-const waHref = (title: string, model: string) =>
-  `${waBase}?text=${encodeURIComponent(t.waText(title, model))}`;
-const mailHref = (title: string, model: string) =>
-  `mailto:${mailTo}?subject=${encodeURIComponent(t.emailSubject(title, model))}&body=${encodeURIComponent(t.emailBody(title, model))}`;
 ---
 
 <MainLayout lang={locale} title={t.title} description={t.description}>
-  <section class="section-padding">
+  <section class="section-padding !pt-8">
     <div class="container-tight">
-      <div class="mx-auto max-w-2xl text-center">
-        <h1 class="heading-1">{t.heading}</h1>
-        <p class="mt-4 text-lg text-gray-500">
-          {t.subtitle(products.length, Object.keys(labels).length)}
+      <!-- 页面头部标语 -->
+      <div class="mx-auto max-w-3xl text-center">
+        <span class="inline-flex items-center gap-1.5 rounded-full bg-ocean-50 px-3.5 py-1 text-xs font-semibold tracking-wide text-ocean-700">
+          <span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          {locale === "zh" ? "官方图册全量同步 · 592 款产品实物直观呈现" : "Official Catalog Fully Synced · 592 Products Directly Visible"}
+        </span>
+        <h1 class="heading-1 mt-3 !text-3xl sm:!text-4xl">{t.heading}</h1>
+        <p class="mt-3 text-base text-gray-600 sm:text-lg">
+          {t.subtitle}
         </p>
       </div>
 
-      <div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <!-- 交互控制面板: 品类标签栏 + 实时搜索框 + 视图切换 -->
+      <div class="mt-10 rounded-2xl border border-gray-200 bg-white p-4 shadow-sm sm:p-6">
+        <!-- 5 大品类筛选标签 -->
+        <div class="flex flex-wrap items-center gap-2 border-b border-gray-100 pb-4" id="categoryNav">
+          {
+            ["all", "kitchen-faucets", "basin-faucets", "shower-systems", "bath-mixers", "accessories"].map((catKey) => {
+              const count = categoryCounts[catKey] || 0;
+              const isDefault = catKey === "all";
+              return (
+                <button
+                  type="button"
+                  class={`cat-tab-btn inline-flex items-center gap-1.5 rounded-xl px-3.5 py-2 text-xs sm:text-sm font-medium transition-all ${
+                    isDefault
+                      ? "bg-ocean-600 text-white shadow-sm ring-2 ring-ocean-600/20"
+                      : "bg-gray-50 text-gray-700 hover:bg-gray-100"
+                  }`}
+                  data-cat={catKey}
+                >
+                  <span>{categoryIcons[catKey]}</span>
+                  <span>{labels[catKey] || catKey}</span>
+                  <span class={`rounded-full px-2 py-0.2 text-[11px] font-semibold ${isDefault ? "bg-white/20 text-white" : "bg-gray-200 text-gray-600"}`}>
+                    {count}
+                  </span>
+                </button>
+              );
+            })
+          }
+        </div>
+
+        <!-- 搜索与视图工具栏 -->
+        <div class="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div class="relative flex-1">
+            <input
+              type="text"
+              id="productSearchInput"
+              placeholder={t.searchPlaceholder}
+              class="w-full rounded-xl border border-gray-200 bg-gray-50/50 px-4 py-2.5 pl-10 text-sm transition-all focus:border-ocean-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-ocean-500/20"
+            />
+            <svg class="absolute left-3 top-3 h-4.5 w-4.5 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+            <button id="clearSearchBtn" class="absolute right-3 top-2.5 hidden text-gray-400 hover:text-gray-600 text-sm font-medium">✕</button>
+          </div>
+
+          <!-- 统计计数与视图切换 -->
+          <div class="flex items-center justify-between sm:justify-end gap-3">
+            <div class="text-xs font-medium text-gray-500">
+              <span id="filteredCountText">592</span> / 592
+            </div>
+            <div class="inline-flex rounded-lg border border-gray-200 bg-gray-50 p-0.5">
+              <button id="btnViewGrid" class="rounded-md bg-white px-2.5 py-1 text-xs font-medium text-gray-900 shadow-xs" title={t.viewGrid}>
+                ▦ {t.viewGrid}
+              </button>
+              <button id="btnViewTable" class="rounded-md px-2.5 py-1 text-xs font-medium text-gray-600 hover:text-gray-900" title={t.viewTable}>
+                ▤ {t.viewTable}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 无搜索结果提示 -->
+      <div id="noResultsAlert" class="mt-12 hidden rounded-2xl border border-dashed border-gray-300 p-12 text-center">
+        <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-gray-100 text-2xl">🔍</div>
+        <h3 class="mt-4 text-base font-semibold text-gray-900">未找到匹配产品</h3>
+        <p class="mt-1 text-sm text-gray-500">{t.noResults}</p>
+        <button id="resetFilterBtn" class="btn-secondary mt-4 !py-2 !text-xs">重置筛选条件</button>
+      </div>
+
+      <!-- 视图 1: 产品网格卡片流 (Grid View) -->
+      <div id="productGridContainer" class="mt-8 grid gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {
-          products.map((product) => {
-            const { title, model, category, specs, image } = product.data;
-            const slug = product.slug;
+          allCatalogItems.map((item, idx) => {
+            const displayName = locale === "zh" ? (item.name_zh || item.name_en) : item.name_en;
+            const displaySeries = locale === "zh" ? (item.series_name_zh || item.series_name_en) : item.series_name_en;
+            const waText = `Hello SDN Faucet, I would like to inquire about ${item.model} (${item.finish}, ${item.material}). Please share wholesale quote and lead time.`;
+            const waHref = `${waBase}?text=${encodeURIComponent(waText)}`;
+            const emailSub = `Wholesale Inquiry: ${item.model} - ${item.series_name_en}`;
+            const emailBody = `Hello SDN Faucet,\n\nI am interested in:\nModel: ${item.model}\nSeries: ${item.series_name_en}\nFinish: ${item.finish}\nMaterial: ${item.material}\n\nPlease provide MOQ, tiered pricing, and sample delivery time.\n\nThank you.`;
+            const mailHref = `mailto:${mailTo}?subject=${encodeURIComponent(emailSub)}&body=${encodeURIComponent(emailBody)}`;
+            const seriesLink = `${localePrefix}/products/${item.series_id}`;
+
             return (
-              <div class="group flex flex-col rounded-xl border border-gray-100 bg-white p-6 transition-all duration-200 hover:border-ocean-200 hover:shadow-lg">
-                <div class="mb-4 flex h-48 items-center justify-center rounded-lg bg-gray-50 p-4">
+              <div
+                class="product-card group flex flex-col rounded-2xl border border-gray-100 bg-white p-4 transition-all duration-200 hover:-translate-y-1 hover:border-ocean-200 hover:shadow-xl"
+                data-index={idx}
+                data-model={item.model.toLowerCase()}
+                data-cat={item.category_id || "kitchen-faucets"}
+                data-series={item.series_id || ""}
+                data-search={`${item.model} ${item.finish} ${item.material} ${item.features} ${item.name_zh} ${item.name_en} ${item.series_name_zh} ${item.series_name_en}`.toLowerCase()}
+              >
+                <!-- 产品实物图片区域 -->
+                <div class="relative mb-3 flex h-48 w-full items-center justify-center overflow-hidden rounded-xl bg-gray-50/70 p-3 group-hover:bg-ocean-50/30 transition-colors">
                   <img
-                    src={image}
-                    alt={title}
+                    src={item.image}
+                    alt={`${item.model} - ${displayName}`}
                     loading="lazy"
-                    class="h-full w-full object-contain"
+                    class="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
+                    onerror="this.onerror=null; this.src='https://sc02.alicdn.com/kf/A87f819b98dd94207818e182094f27463Q.png';"
                   />
-                </div>
-                <div class="flex items-center gap-2">
-                  <span class="text-2xl">{categoryIcons[category] || "📦"}</span>
-                  <span class="rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-500">
-                    {labels[category] || category}
+                  <!-- 图册页码标识 -->
+                  <span class="absolute top-2.5 right-2.5 rounded-md bg-white/90 px-1.5 py-0.5 text-[10px] font-mono font-medium text-gray-500 shadow-xs backdrop-blur-xs">
+                    P.{item.page}
                   </span>
                 </div>
-                <h3 class="mt-3 text-lg font-semibold text-gray-900 group-hover:text-ocean-600">
-                  {title}
-                </h3>
-                <p class="mt-1 font-mono text-sm text-ocean-600">{model}</p>
-                {
-                  specs?.finish && (
-                    <p class="mt-2 text-sm text-gray-500">{specs.finish}</p>
-                  )
-                }
-                <p class="mt-2 text-xs font-medium text-gray-400">
-                  MOQ · {t.moqPrompt}
-                </p>
-                <div class="mt-auto pt-4">
+
+                <!-- 系列标签 -->
+                <div class="mb-1.5 flex items-center gap-1.5">
                   <a
-                    href={`${localePrefix}/products/${slug}`}
-                    class="btn-primary w-full !py-2.5 text-center"
+                    href={seriesLink}
+                    class="inline-block truncate text-[11px] font-semibold text-ocean-600 hover:text-ocean-700 hover:underline max-w-[200px]"
+                    title={displaySeries}
                   >
-                    {t.detailsCta}
+                    {displaySeries}
                   </a>
-                  <div class="mt-2 grid grid-cols-2 gap-2">
+                </div>
+
+                <!-- 型号标题 -->
+                <div class="flex items-baseline justify-between gap-1">
+                  <h3 class="font-mono text-base font-bold text-gray-900 group-hover:text-ocean-600 transition-colors">
+                    {item.model}
+                  </h3>
+                </div>
+
+                <!-- 技术参数摘要 -->
+                <div class="mt-2.5 space-y-1.5 border-t border-gray-50 pt-2.5 text-xs text-gray-600">
+                  <div class="flex items-center justify-between">
+                    <span class="text-gray-400">{t.finishLabel}:</span>
+                    <span class="font-medium text-gray-800 text-right truncate max-w-[140px]" title={item.finish}>{item.finish || "Chrome"}</span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-gray-400">{t.materialLabel}:</span>
+                    <span class="text-gray-700 text-right truncate max-w-[140px]" title={item.material}>{item.material || "304 Stainless / Brass"}</span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-gray-400">{t.featuresLabel}:</span>
+                    <span class="text-gray-700 text-right truncate max-w-[140px]" title={item.features}>{item.features || "Export Standard"}</span>
+                  </div>
+                  <div class="flex items-baseline justify-between border-t border-dashed border-gray-100 pt-1.5">
+                    <span class="text-[11px] text-gray-400">{t.priceLabel}:</span>
+                    <span class="font-mono text-xs font-bold text-emerald-700 text-right truncate max-w-[150px]" title={item.prices}>
+                      {item.prices || "Inquire"}
+                    </span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-[11px] text-gray-400">{t.moqLabel}:</span>
+                    <span class="font-mono text-xs font-medium text-gray-700">{item.moq || "10"} pcs</span>
+                  </div>
+                </div>
+
+                <!-- 底部操作按钮 -->
+                <div class="mt-auto pt-3.5 space-y-2">
+                  <a
+                    href={waHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex w-full items-center justify-center gap-1.5 rounded-xl border border-emerald-500 bg-emerald-50 py-2 text-xs font-semibold text-emerald-700 transition-colors hover:bg-emerald-100 hover:border-emerald-600"
+                  >
+                    <svg class="h-3.5 w-3.5 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    </svg>
+                    <span>{t.waCta}</span>
+                  </a>
+
+                  <div class="grid grid-cols-2 gap-1.5">
                     <a
-                      href={waHref(title, model)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={t.waLabel}
-                      title={t.waLabel}
-                      class="inline-flex items-center justify-center gap-1.5 rounded-lg border border-green-600 bg-green-50 px-2 py-2 text-xs font-medium text-green-700 transition-colors hover:bg-green-100"
+                      href={mailHref}
+                      class="flex items-center justify-center gap-1 rounded-lg border border-gray-200 bg-gray-50 py-1.5 text-[11px] font-medium text-gray-700 hover:bg-gray-100"
                     >
-                      <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                      </svg>
-                      <span>{t.waCta}</span>
+                      ✉️ {t.emailCta}
                     </a>
                     <a
-                      href={mailHref(title, model)}
-                      aria-label={t.emailCta}
-                      title={t.emailCta}
-                      class="inline-flex items-center justify-center gap-1.5 rounded-lg border border-ocean-200 bg-ocean-50 px-2 py-2 text-xs font-medium text-ocean-700 transition-colors hover:bg-ocean-100"
+                      href={seriesLink}
+                      class="flex items-center justify-center gap-1 rounded-lg border border-ocean-200 bg-ocean-50 py-1.5 text-[11px] font-medium text-ocean-700 hover:bg-ocean-100"
                     >
-                      <svg class="h-4 w-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                      </svg>
-                      <span>{t.emailCta}</span>
+                      {t.detailsCta} →
                     </a>
                   </div>
                 </div>
@@ -204,160 +369,334 @@ const mailHref = (title: string, model: string) =>
         }
       </div>
 
-      <!-- Full 592 Product Model Matrix -->
-      <div class="mt-24 border-t border-gray-200 pt-16">
-        <div class="mx-auto max-w-3xl text-center">
-          <span class="rounded-full bg-ocean-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-ocean-700">
-            {locale === "zh" ? "全量型号检索" : "Complete Model Directory"}
-          </span>
-          <h2 class="mt-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            {locale === "zh" ? "54页图册 592 款产品完整规格与价格索引" : "All 592 Catalog Products — Full Specifications & Wholesale Directory"}
-          </h2>
-          <p class="mt-3 text-base text-gray-600">
-            {locale === "zh" 
-              ? "支持按型号、颜色、材质实时搜索。所有型号均保留原图册实物图片、出厂阶梯批发价与起订量。"
-              : "Search and filter all 592 factory catalog items by Model No., finish, or material. Each item features authentic photos, tiered pricing, and factory MOQ."}
-          </p>
-        </div>
+      <!-- 视图 2: 产品表格明细流 (Table View) -->
+      <div id="productTableContainer" class="mt-8 hidden overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
+        <div class="overflow-x-auto">
+          <table class="min-w-full divide-y divide-gray-200 text-left text-sm">
+            <thead class="bg-gray-50 text-xs font-semibold text-gray-600">
+              <tr>
+                <th scope="col" class="px-4 py-3.5">实物图片</th>
+                <th scope="col" class="px-4 py-3.5">型号代码</th>
+                <th scope="col" class="px-4 py-3.5">归属系列</th>
+                <th scope="col" class="px-4 py-3.5">表面处理</th>
+                <th scope="col" class="px-4 py-3.5">材质标准</th>
+                <th scope="col" class="px-4 py-3.5">出水功能</th>
+                <th scope="col" class="px-4 py-3.5">出厂阶梯批发价</th>
+                <th scope="col" class="px-4 py-3.5">MOQ</th>
+                <th scope="col" class="px-4 py-3.5 text-right">一键询价</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100 bg-white" id="productTableBody">
+              {
+                allCatalogItems.map((item) => {
+                  const displaySeries = locale === "zh" ? (item.series_name_zh || item.series_name_en) : item.series_name_en;
+                  const waText = `Hello SDN Faucet, I would like to inquire about ${item.model} (${item.finish}, ${item.material}). Please share quotation and lead time.`;
+                  const waLink = `${waBase}?text=${encodeURIComponent(waText)}`;
+                  const seriesLink = `${localePrefix}/products/${item.series_id}`;
 
-        <!-- Filter and Search Bar -->
-        <div class="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div class="relative flex-1">
-            <input
-              type="text"
-              id="catalogSearch"
-              placeholder={locale === "zh" ? "输入型号或关键词 (如: 7200, 1217, Black, 恒温, 瀑布)..." : "Search model (e.g. 7200, 1217, Gold, Waterfall, SUS304)..."}
-              class="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 pl-11 text-sm shadow-sm focus:border-ocean-500 focus:outline-none focus:ring-2 focus:ring-ocean-500/20"
-            />
-            <svg class="absolute left-3.5 top-3.5 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-            </svg>
-          </div>
-          <div class="flex flex-wrap gap-1.5" id="catFilterButtons">
-            <button class="cat-filter-btn active rounded-lg border border-ocean-600 bg-ocean-600 px-3 py-1.5 text-xs font-medium text-white shadow-sm transition-all" data-cat="all">
-              {locale === "zh" ? "全部 (592)" : "All (592)"}
-            </button>
-            <button class="cat-filter-btn rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 transition-all hover:bg-gray-50" data-cat="kitchen-faucets">
-              🚰 {locale === "zh" ? "厨房 (110)" : "Kitchen (110)"}
-            </button>
-            <button class="cat-filter-btn rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 transition-all hover:bg-gray-50" data-cat="basin-faucets">
-              🪞 {locale === "zh" ? "面盆 (125)" : "Basin (125)"}
-            </button>
-            <button class="cat-filter-btn rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 transition-all hover:bg-gray-50" data-cat="shower-systems">
-              🚿 {locale === "zh" ? "淋浴 (229)" : "Shower (229)"}
-            </button>
-            <button class="cat-filter-btn rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 transition-all hover:bg-gray-50" data-cat="bath-mixers">
-              🛁 {locale === "zh" ? "浴缸 (76)" : "Bath (76)"}
-            </button>
-            <button class="cat-filter-btn rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 transition-all hover:bg-gray-50" data-cat="accessories">
-              🔩 {locale === "zh" ? "配件 (52)" : "Accessories (52)"}
-            </button>
-          </div>
-        </div>
-
-        <!-- Product Table / Cards Grid -->
-        <div class="mt-6 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
-          <div class="overflow-x-auto">
-            <table class="min-w-full divide-y divide-gray-200 text-left text-sm" id="catalogTable">
-              <thead class="bg-gray-50 text-xs font-semibold text-gray-600">
-                <tr>
-                  <th scope="col" class="px-4 py-3.5">Image</th>
-                  <th scope="col" class="px-4 py-3.5">Model No.</th>
-                  <th scope="col" class="px-4 py-3.5">Series & Category</th>
-                  <th scope="col" class="px-4 py-3.5">Finish & Material</th>
-                  <th scope="col" class="px-4 py-3.5">Features</th>
-                  <th scope="col" class="px-4 py-3.5">Tiered Price & MOQ</th>
-                  <th scope="col" class="px-4 py-3.5 text-right">Inquire</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-gray-100 bg-white" id="catalogTableBody">
-                {
-                  allCatalogItems.map((item) => {
-                    const waText = `Hello SDN Faucet, I would like to inquire about ${item.model} (${item.finish}, ${item.material}). Please share quotation and lead time.`;
-                    const waLink = `https://wa.me/8617750519615?text=${encodeURIComponent(waText)}`;
-                    return (
-                      <tr class="catalog-item-row hover:bg-gray-50/80 transition-colors" data-model={item.model.toLowerCase()} data-cat={item.category} data-search={`${item.model} ${item.finish} ${item.material} ${item.features} ${item.series_name}`.toLowerCase()}>
-                        <td class="whitespace-nowrap px-4 py-3">
-                          <img src={item.image} alt={item.model} loading="lazy" class="h-14 w-14 rounded-lg object-contain bg-gray-50 p-1 border border-gray-100" />
-                        </td>
-                        <td class="whitespace-nowrap px-4 py-3 font-semibold text-gray-900 font-mono">
-                          {item.model}
-                        </td>
-                        <td class="px-4 py-3 text-xs">
-                          <a href={`${localePrefix}/products/${item.series_id || "sdn-7200-kitchen-faucet"}`} class="font-medium text-ocean-600 hover:underline block max-w-xs truncate" title={item.series_name || item.category}>
-                            {item.series_name ? item.series_name.split('Series')[0] : (item.category || "Sanitary Ware")}
-                          </a>
-                          <span class="text-gray-400">P.{item.page || 1}</span>
-                        </td>
-                        <td class="px-4 py-3 text-xs text-gray-600">
-                          <div class="font-medium text-gray-800">{item.finish || "Standard Export"}</div>
-                          <div class="text-gray-400">{item.material || "Brass / SUS304"}</div>
-                        </td>
-                        <td class="px-4 py-3 text-xs text-gray-500 max-w-xs truncate" title={item.features}>
-                          {item.features || "Export Grade"}
-                        </td>
-                        <td class="px-4 py-3 text-xs font-mono">
-                          <div class="text-emerald-700 font-medium">{item.prices || "Inquire for quote"}</div>
-                          <div class="text-gray-400">MOQ: {item.moq || "10 pcs"}</div>
-                        </td>
-                        <td class="whitespace-nowrap px-4 py-3 text-right">
-                          <a href={waLink} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 rounded-md bg-green-50 px-2.5 py-1 text-xs font-medium text-green-700 hover:bg-green-100 border border-green-200">
-                            WhatsApp
-                          </a>
-                        </td>
-                      </tr>
-                    );
-                  })
-                }
-              </tbody>
-            </table>
-          </div>
+                  return (
+                    <tr
+                      class="product-table-row hover:bg-gray-50/80 transition-colors"
+                      data-model={item.model.toLowerCase()}
+                      data-cat={item.category_id || "kitchen-faucets"}
+                      data-series={item.series_id || ""}
+                      data-search={`${item.model} ${item.finish} ${item.material} ${item.features} ${item.name_zh} ${item.name_en} ${item.series_name_zh} ${item.series_name_en}`.toLowerCase()}
+                    >
+                      <td class="whitespace-nowrap px-4 py-3">
+                        <img
+                          src={item.image}
+                          alt={item.model}
+                          loading="lazy"
+                          class="h-14 w-14 rounded-lg object-contain bg-gray-50 p-1 border border-gray-100"
+                          onerror="this.onerror=null; this.src='https://sc02.alicdn.com/kf/A87f819b98dd94207818e182094f27463Q.png';"
+                        />
+                      </td>
+                      <td class="whitespace-nowrap px-4 py-3 font-mono font-bold text-gray-900">
+                        {item.model}
+                      </td>
+                      <td class="px-4 py-3 text-xs">
+                        <a href={seriesLink} class="font-medium text-ocean-600 hover:underline block max-w-xs truncate" title={displaySeries}>
+                          {displaySeries}
+                        </a>
+                        <span class="text-gray-400">P.{item.page}</span>
+                      </td>
+                      <td class="px-4 py-3 text-xs font-medium text-gray-800">
+                        {item.finish || "Chrome"}
+                      </td>
+                      <td class="px-4 py-3 text-xs text-gray-600">
+                        {item.material || "304 Stainless / Brass"}
+                      </td>
+                      <td class="px-4 py-3 text-xs text-gray-600 max-w-xs truncate" title={item.features}>
+                        {item.features || "Standard Export"}
+                      </td>
+                      <td class="px-4 py-3 text-xs font-mono font-semibold text-emerald-700">
+                        {item.prices || "Inquire"}
+                      </td>
+                      <td class="whitespace-nowrap px-4 py-3 font-mono text-xs text-gray-600">
+                        {item.moq || "10"} pcs
+                      </td>
+                      <td class="whitespace-nowrap px-4 py-3 text-right">
+                        <a
+                          href={waLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="inline-flex items-center gap-1 rounded-lg border border-emerald-500 bg-emerald-50 px-2.5 py-1.5 text-xs font-semibold text-emerald-700 hover:bg-emerald-100"
+                        >
+                          WhatsApp 报价
+                        </a>
+                      </td>
+                    </tr>
+                  );
+                })
+              }
+            </tbody>
+          </table>
         </div>
       </div>
 
-      <script is:inline>
-        const searchInput = document.getElementById("catalogSearch");
-        const catButtons = document.querySelectorAll(".cat-filter-btn");
-        const rows = document.querySelectorAll(".catalog-item-row");
-
-        let currentCat = "all";
-        let searchKeyword = "";
-
-        function filterItems() {
-          rows.forEach((row) => {
-            const rowCat = row.getAttribute("data-cat");
-            const searchData = row.getAttribute("data-search") || "";
-            const matchesCat = currentCat === "all" || rowCat === currentCat;
-            const matchesSearch = !searchKeyword || searchData.includes(searchKeyword);
-
-            if (matchesCat && matchesSearch) {
-              row.style.display = "";
-            } else {
-              row.style.display = "none";
-            }
-          });
-        }
-
-        if (searchInput) {
-          searchInput.addEventListener("input", (e) => {
-            searchKeyword = e.target.value.toLowerCase().trim();
-            filterItems();
-          });
-        }
-
-        catButtons.forEach((btn) => {
-          btn.addEventListener("click", () => {
-            catButtons.forEach((b) => {
-              b.classList.remove("active", "bg-ocean-600", "text-white", "border-ocean-600");
-              b.classList.add("bg-white", "text-gray-700", "border-gray-200");
-            });
-            btn.classList.add("active", "bg-ocean-600", "text-white", "border-ocean-600");
-            btn.classList.remove("bg-white", "text-gray-700", "border-gray-200");
-            currentCat = btn.getAttribute("data-cat") || "all";
-            filterItems();
-          });
-        });
-      </script>
+      <!-- 分页控制栏 (Pagination Controls) -->
+      <div id="paginationBar" class="mt-10 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-gray-100 pt-6">
+        <div class="text-xs text-gray-500">
+          <span id="pageInfoText">第 1 页 / 共 15 页</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <button id="btnPrevPage" class="rounded-xl border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-40 disabled:pointer-events-none">
+            ← {t.paginationPrev}
+          </button>
+          <div id="pageNumbersContainer" class="flex items-center gap-1"></div>
+          <button id="btnNextPage" class="rounded-xl border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-40 disabled:pointer-events-none">
+            {t.paginationNext} →
+          </button>
+        </div>
+      </div>
     </div>
   </section>
+
+  <!-- 客户端交互脚本：高效即时搜索、分类切换、视图切换与分页联动 -->
+  <script is:inline>
+    (function () {
+      const searchInput = document.getElementById("productSearchInput");
+      const clearSearchBtn = document.getElementById("clearSearchBtn");
+      const catButtons = document.querySelectorAll(".cat-tab-btn");
+      const filteredCountText = document.getElementById("filteredCountText");
+      const noResultsAlert = document.getElementById("noResultsAlert");
+      const resetFilterBtn = document.getElementById("resetFilterBtn");
+      const gridContainer = document.getElementById("productGridContainer");
+      const tableContainer = document.getElementById("productTableContainer");
+      const btnViewGrid = document.getElementById("btnViewGrid");
+      const btnViewTable = document.getElementById("btnViewTable");
+
+      const btnPrevPage = document.getElementById("btnPrevPage");
+      const btnNextPage = document.getElementById("btnNextPage");
+      const pageInfoText = document.getElementById("pageInfoText");
+      const pageNumbersContainer = document.getElementById("pageNumbersContainer");
+      const paginationBar = document.getElementById("paginationBar");
+
+      const cards = Array.from(document.querySelectorAll(".product-card"));
+      const tableRows = Array.from(document.querySelectorAll(".product-table-row"));
+
+      const PAGE_SIZE = 40; // 每页展示 40 款，浏览丝滑不卡顿
+      let currentPage = 1;
+      let activeCat = "all";
+      let searchKeyword = "";
+      let isTableView = false;
+
+      let matchingIndices = cards.map((_, i) => i);
+
+      function updateFiltering() {
+        matchingIndices = [];
+        for (let i = 0; i < cards.length; i++) {
+          const card = cards[i];
+          const rowCat = card.getAttribute("data-cat");
+          const searchData = card.getAttribute("data-search") || "";
+
+          const matchesCat = activeCat === "all" || rowCat === activeCat;
+          const matchesSearch = !searchKeyword || searchData.includes(searchKeyword);
+
+          if (matchesCat && matchesSearch) {
+            matchingIndices.push(i);
+          }
+        }
+
+        currentPage = 1;
+        renderCurrentPage();
+      }
+
+      function renderCurrentPage() {
+        const totalMatching = matchingIndices.length;
+        if (filteredCountText) filteredCountText.textContent = totalMatching;
+
+        if (totalMatching === 0) {
+          if (gridContainer) gridContainer.classList.add("hidden");
+          if (tableContainer) tableContainer.classList.add("hidden");
+          if (paginationBar) paginationBar.classList.add("hidden");
+          if (noResultsAlert) noResultsAlert.classList.remove("hidden");
+          return;
+        }
+
+        if (noResultsAlert) noResultsAlert.classList.add("hidden");
+        if (paginationBar) paginationBar.classList.remove("hidden");
+
+        if (isTableView) {
+          if (gridContainer) gridContainer.classList.add("hidden");
+          if (tableContainer) tableContainer.classList.remove("hidden");
+        } else {
+          if (gridContainer) gridContainer.classList.remove("hidden");
+          if (tableContainer) tableContainer.classList.add("hidden");
+        }
+
+        const totalPages = Math.ceil(totalMatching / PAGE_SIZE);
+        const startIndex = (currentPage - 1) * PAGE_SIZE;
+        const endIndex = Math.min(startIndex + PAGE_SIZE, totalMatching);
+        const activePageIndices = new Set(matchingIndices.slice(startIndex, endIndex));
+
+        // 仅显示当前页项目
+        for (let i = 0; i < cards.length; i++) {
+          const isVisible = activePageIndices.has(i);
+          cards[i].style.display = isVisible ? "" : "none";
+          if (tableRows[i]) tableRows[i].style.display = isVisible ? "" : "none";
+        }
+
+        // 更新分页栏
+        if (pageInfoText) {
+          pageInfoText.textContent = `第 ${currentPage} 页 / 共 ${totalPages} 页 (展示 ${startIndex + 1}-${endIndex} 款)`;
+        }
+
+        if (btnPrevPage) btnPrevPage.disabled = currentPage <= 1;
+        if (btnNextPage) btnNextPage.disabled = currentPage >= totalPages;
+
+        renderPageNumbers(totalPages);
+      }
+
+      function renderPageNumbers(totalPages) {
+        if (!pageNumbersContainer) return;
+        pageNumbersContainer.innerHTML = "";
+
+        // 显示最多 5 个页码按钮
+        const maxButtons = 5;
+        let startP = Math.max(1, currentPage - 2);
+        let endP = Math.min(totalPages, startP + maxButtons - 1);
+        if (endP - startP < maxButtons - 1) {
+          startP = Math.max(1, endP - maxButtons + 1);
+        }
+
+        for (let p = startP; p <= endP; p++) {
+          const btn = document.createElement("button");
+          btn.textContent = p;
+          btn.className = `h-8 w-8 rounded-lg text-xs font-semibold transition-all ${
+            p === currentPage
+              ? "bg-ocean-600 text-white shadow-xs"
+              : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"
+          }`;
+          btn.addEventListener("click", () => {
+            currentPage = p;
+            renderCurrentPage();
+            window.scrollTo({ top: 380, behavior: "smooth" });
+          });
+          pageNumbersContainer.appendChild(btn);
+        }
+      }
+
+      if (btnPrevPage) {
+        btnPrevPage.addEventListener("click", () => {
+          if (currentPage > 1) {
+            currentPage--;
+            renderCurrentPage();
+            window.scrollTo({ top: 380, behavior: "smooth" });
+          }
+        });
+      }
+
+      if (btnNextPage) {
+        btnNextPage.addEventListener("click", () => {
+          const totalPages = Math.ceil(matchingIndices.length / PAGE_SIZE);
+          if (currentPage < totalPages) {
+            currentPage++;
+            renderCurrentPage();
+            window.scrollTo({ top: 380, behavior: "smooth" });
+          }
+        });
+      }
+
+      // 搜索监听
+      if (searchInput) {
+        searchInput.addEventListener("input", (e) => {
+          searchKeyword = e.target.value.toLowerCase().trim();
+          if (clearSearchBtn) {
+            clearSearchBtn.classList.toggle("hidden", searchKeyword.length === 0);
+          }
+          updateFiltering();
+        });
+      }
+
+      if (clearSearchBtn) {
+        clearSearchBtn.addEventListener("click", () => {
+          if (searchInput) searchInput.value = "";
+          searchKeyword = "";
+          clearSearchBtn.classList.add("hidden");
+          updateFiltering();
+        });
+      }
+
+      // 品类切换监听
+      catButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          catButtons.forEach((b) => {
+            b.classList.remove("bg-ocean-600", "text-white", "shadow-sm", "ring-2", "ring-ocean-600/20");
+            b.classList.add("bg-gray-50", "text-gray-700");
+            const badge = b.querySelector("span:last-child");
+            if (badge) {
+              badge.classList.remove("bg-white/20", "text-white");
+              badge.classList.add("bg-gray-200", "text-gray-600");
+            }
+          });
+
+          btn.classList.add("bg-ocean-600", "text-white", "shadow-sm", "ring-2", "ring-ocean-600/20");
+          btn.classList.remove("bg-gray-50", "text-gray-700");
+          const activeBadge = btn.querySelector("span:last-child");
+          if (activeBadge) {
+            activeBadge.classList.add("bg-white/20", "text-white");
+            activeBadge.classList.remove("bg-gray-200", "text-gray-600");
+          }
+
+          activeCat = btn.getAttribute("data-cat") || "all";
+          updateFiltering();
+        });
+      });
+
+      if (resetFilterBtn) {
+        resetFilterBtn.addEventListener("click", () => {
+          if (searchInput) searchInput.value = "";
+          searchKeyword = "";
+          if (clearSearchBtn) clearSearchBtn.classList.add("hidden");
+          const allBtn = document.querySelector('.cat-tab-btn[data-cat="all"]');
+          if (allBtn) allBtn.click();
+        });
+      }
+
+      // 视图切换
+      if (btnViewGrid && btnViewTable) {
+        btnViewGrid.addEventListener("click", () => {
+          isTableView = false;
+          btnViewGrid.classList.add("bg-white", "text-gray-900", "shadow-xs");
+          btnViewGrid.classList.remove("text-gray-600");
+          btnViewTable.classList.remove("bg-white", "text-gray-900", "shadow-xs");
+          btnViewTable.classList.add("text-gray-600");
+          renderCurrentPage();
+        });
+
+        btnViewTable.addEventListener("click", () => {
+          isTableView = true;
+          btnViewTable.classList.add("bg-white", "text-gray-900", "shadow-xs");
+          btnViewTable.classList.remove("text-gray-600");
+          btnViewGrid.classList.remove("bg-white", "text-gray-900", "shadow-xs");
+          btnViewGrid.classList.add("text-gray-600");
+          renderCurrentPage();
+        });
+      }
+
+      // 初始化渲染
+      updateFiltering();
+    })();
+  </script>
 </MainLayout>
